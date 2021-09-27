@@ -1,0 +1,403 @@
+\documentclass[stat333]{subfiles}
+
+%% ========================================================
+%% document
+
+\begin{document}
+
+    \chap{Conditional Distributions} 
+
+    \section{Jointly Discrete Case}
+
+    \np For convenience, we shall only consider \textit{bivariate} case. Let $X_1,X_2$ be discrete random variables and let $x_2\in\R$ throughout this section.
+    
+    \begin{definition}{Conditional PMF}{}
+        If $p_{X_2}\left( x_2 \right)>0$, then we define the \emph{conditional pmf} of $X_1$ given $X_2=x_2$, denoted as $p_{X_1|X_2}\left( \cdot|x_2 \right)$, is defined by
+        \begin{equation*}
+            p_{X_1|X_2}\left( x_1|x_2 \right) = \frac{p_{\left( X_1,X_2 \right)}\left( x_1,x_2 \right)}{p_{X_2}\left( x_2 \right)}
+        \end{equation*}
+        for all $x_1\in\R$. We denote the resulting distribution by $X_1|\left( X_2=x_2 \right)$.
+    \end{definition}
+
+    \np 
+    \begin{enumerate}
+        \item We alternatively write $\PP\left( X_1=\cdot|X_2=x_2 \right)$ to denote $p_{X_1|X_2}\left( \cdot|x_2 \right)$. Also note that
+            \begin{equation*}
+                p_{X_1|X_2}\left( x_1|x_2 \right) 
+                = \PP\left( X_1=x_1 \right)
+                = \frac{\PP\left( X_1=x_2,X_2=x_2 \right)}{\PP\left( X_2=x_2 \right)}
+                = \frac{p_{\left( X_1,X_2 \right)}\left( x_1,x_2 \right)}{p_{X_2}\left( x_2 \right)}
+            \end{equation*}
+        \item If $X_1,X_2$ are \textit{independent}, then
+            \begin{equation*}
+                p_{\left( X_1,X_2 \right)}\left( x_1,x_2 \right) = p_{X_1}\left( x_1 \right)p_{X_2}\left( x_2 \right)
+            \end{equation*}
+            for every $x_1,x_2\in\R$, which means
+            \begin{equation*}
+                p_{X_1|X_2}\left( x_1|x_2 \right)=p_{X_1}\left( x_1 \right)
+            \end{equation*}
+            for all $x_1,x_2\in\R$ such that $p_{X_2}\left( x_2 \right)>0$.
+    \end{enumerate}
+
+    \begin{definition}{Conditional Expectation}{}
+        If $p_{X_2}\left( x_2 \right)>0$, then we define the \emph{conditional mean}, denoted as $\EE\left( X_1|X_2=x_2 \right)$, of $X_1|\left( X_2=x_2 \right)$ by
+        \begin{equation*}
+            \EE\left( X_1|X_2=x_2 \right) = \sum^{}_{x_1\in\R:p_{X_1|X_2}\left( x_1|x_2 \right)>0}x_1p_{X_1|X_2}\left( x_1|x_2 \right).
+        \end{equation*}
+    \end{definition}
+
+    \begin{prop}{}
+        Let $w:\R^2\to\R$. Then
+        \begin{equation*}
+            \EE\left( w\left( X_1,X_2 \right)|X_2=x_2 \right) = \EE\left( w\left( X_1,x_2 \right)|X_2=x_2 \right).
+        \end{equation*}
+    \end{prop}
+
+    \begin{cor}{}
+        Given any $g,h:\R\to\R$,
+        \begin{equation*}
+            \EE\left( g\left( X_1 \right)h\left( X_2 \right)|X_2=x_2 \right) = \EE\left( g\left( X_1 \right)h\left( x_2 \right)|X_2=x_2 \right).
+        \end{equation*}
+    \end{cor}	
+
+    \begin{cor}{}
+        Let $X_3$ be a random variable and let $x_3\in\R$ be such that $p_{X_3}\left( x_3 \right)>0$. Then
+        \begin{equation*}
+            \EE\left( X_1+X_2|X_3=x_3 \right) = \EE\left( X_1|X_3=x_3 \right) + \EE\left( X_2|X_3=x_3 \right).
+        \end{equation*}
+    \end{cor}	
+
+    \begin{definition}{Conditional Variance}{}
+        We define the \emph{conditional variance} of $X_1|X_2=x_2$, denoted as $\var\left( X_1|X_2=x_2 \right)$, by
+        \begin{equation*}
+            \var\left( X_1|X_2=x_2 \right)=\EE\left( \left( X_1-\EE\left( X_1|X_2=x_2 \right) \right)^{2}|X_2=x_2 \right).
+        \end{equation*}
+    \end{definition}
+
+    \begin{prop}{}
+        We have
+        \begin{equation*}
+            \var\left( X_1|X_2=x_2 \right) = \EE\left( X_1^{2}|X_2=x_2 \right)-\EE\left( X_1|X_2=x_2 \right)^{2}.
+        \end{equation*}
+    \end{prop}
+
+    \ex Suppose $X_1\sim\binomdis\left( n_1,p \right), X_2\sim\binomdis\left( n_2,p \right)$ for some $n_1,n_2\in\N\cup\left\lbrace 0 \right\rbrace, p\in\left( 0,1 \right]$ are independent and let $m\in\N\cup\left\lbrace 0 \right\rbrace$. Find $p_{X_1|X_1+X_2}\left( \cdot|X_1+X_2=m \right)$.
+
+    \begin{subproof}[Answer]
+        We may assume $m\leq n_1+n_2$, since otherwise $p_{X_1+X_2}\left( m \right)=0$. Then observe that
+        \begin{flalign*}
+            && p_{X_1|X_1+X_2}\left( x_1|X_1+X_2=m \right) & = \frac{\PP\left( X_1=x_1,X_1+X_2=m \right)}{\PP\left( X_1+X_2=m \right)} && \\
+            && & = \frac{\PP\left( X_1=x_1,X_2=m-x_1 \right)}{\PP\left( X_1+X_2=m \right)} && \\ 
+            && & = \frac{\PP\left( X_1=x_1 \right)\PP\left( X_2=m-x_1 \right)}{\PP\left( X_1+X_2=m \right)}  && \substack{\text{since $X_1,X_2$ are}\\\text{independent}} \\
+            && & = \frac{\binom{n_1}{x_1}p^{x_1}\left( 1-p \right)^{n_1-x_1}\binom{n_2}{m-x_1}p^{m-x_1}\left( 1-p \right)^{1-m+x_1}}{\binom{n_1+n_2}{m}p^m\left( 1-p \right)^{1-m}} && \substack{\text{since}\\X_1+X_2\sim\binomdis\left( n_1+n_2,p \right)}
+        \end{flalign*} 
+        for all $x_1\in\left\lbrace 0,\ldots,n_1\right\rbrace$. But note that this is exactly the pmf of $\hypdis\left( n_1+n_2,n_1,m \right)$. That is,
+        \begin{equation*}
+            X_1|\left( X_1+X_2=m \right)\sim\hypdis\left( n_1+n_2,n_1,m \right). \eqqedsym
+        \end{equation*}
+    \end{subproof}
+
+    \noindent Here is an intuitive explanation of why $X_1|\left( X_1+X_2=m \right)\sim\hypdis\left( n_1+n_2,n_1,m \right)$. Consider a sequence of $n_1+n_2$ Bernoulli trials $\left( B_{i} \right)^{n_1+n_2}_{i=1}$, each with success probability $p$. We know exactly $m$ of $B_1,\ldots,B_{n_1+n_2}$ are successes, and we also know exactly $n_1$ of $B_1,\ldots,B_{n_1}$ are successes. But each $B_i$ has success probability $p$, so we end up with a hypergeometric distribution. See (1.11).
+
+    \ex Let $X_1\sim\poidis\left( \lambda_1 \right),\ldots,X_m\sim\poidis\left( \lambda_m \right)$ for some $\lambda_1,\ldots,\lambda_m>0$ be independent and let $Y=\sum^{m}_{i=1} X_i$. Find the conditional distribution of $X_j|\left( Y=n \right)$, where $j\in\left\lbrace 1,\ldots,m \right\rbrace,n\in\N$.
+
+    \begin{subproof}[Answer]
+        First note that $X_j, \sum^{m}_{i=1,i\neq j}X_i$ are independent, since $X_1,\ldots,X_m$ are independent. Fix $x_j\in\left\lbrace 0,\ldots,n \right\rbrace$. Then
+        \begin{flalign*}
+            && p_{X_j|Y}\left( x_j|n \right)& = \frac{\PP\left( X_j=x_j ,Y=n\right)}{\PP\left( Y=n \right)} && \\ 
+            && & = \frac{\PP\left( X_j=x_j, \sum^{m}_{i=1}X_i=n \right)}{\PP\left( Y=n \right)} && \\
+            && & = \frac{\PP\left( X_j=x_j, \sum^{m}_{i=1,i\neq j} X_i=n-x_j \right)}{\PP\left( Y=n \right)} && \\
+            && & = \frac{\PP\left( X_j=x_j \right)\PP\left( \sum^{m}_{i=1,i\neq j}X_i=n-x_j \right)}{\PP\left( Y=n \right)}. && \substack{\text{since $X_j, \sum^{m}_{i=1,i\neq j}X_i$}\\\text{are independent}}\\
+        \end{flalign*} 
+        But
+        \begin{equation}
+            Y\sim\poidis\left( \sum^{m}_{i=1}\lambda_i \right), \sum^{m}_{i=1,i\neq j}X_i\sim\poidis\left( \sum^{m}_{i=1,i\neq j}\lambda_i \right)
+        \end{equation}
+        as sums of random variables, so
+        \begin{flalign*} 
+            && p_{X_j|Y}\left( x_j|n \right)& = \frac{\frac{e^{-\lambda_j}\lambda_j^{x_j}}{x_j!}\frac{e^{-\sum^{m}_{i=1,i\neq j}\lambda_i}\left( \sum^{m}_{i=1,i\neq j}\lambda_i \right)^{n-x_j}}{\left( n-\lambda_j \right)!}}{\frac{e^{\sum^{m}_{i=1}\lambda_i}\left( \sum^{m}_{i=1}\lambda_i \right)^{n}}{n!}}. && \substack{\text{by [2.1]}}\\
+            && & = \binom{n}{x_j} \frac{\lambda_j^{x_j}\left( \sum^{m}_{i=1,i\neq j}\lambda_i \right)^{n-x_j}}{\left( \sum^{m}_{i=1}\lambda_i \right)^n} && \\
+            && & = \binom{n}{x_j} \frac{\lambda_j^{x_j}\left( \lambda-\lambda_j \right)^{n-x_j}}{\lambda^n} && \substack{\text{by letting}\\\lambda=\sum^{m}_{i=1}\lambda_i} \\
+            && & = \binom{n}{x_j} \left( \frac{\lambda_j}{\lambda} \right)^{x_j}\left( \frac{\lambda-\lambda_j}{\lambda} \right)^{n-x_j} && \\
+            && & = \binom{n}{x_j} \left( \frac{\lambda_j}{\lambda} \right)^{x_j}\left( 1-\frac{\lambda_j}{\lambda} \right)^{n-x_j} && \\
+            && & = \binom{n}{x_j}p^{x_j}\left( 1-p \right)^{n-x_j}. && \substack{\text{by letting}\\p=\frac{\lambda_i}{\lambda}}
+        \end{flalign*} 
+        Since $0<\lambda_i\geq\lambda$, $p\in\left( 0,1 \right]$, so it follows that
+        \begin{equation*}
+            X_j|\left( Y=n \right)\sim\binomdis\left( n,\frac{\lambda_j}{\sum^{m}_{i=1}}\lambda_i \right). \eqqedsym
+        \end{equation*}
+    \end{subproof}
+
+    \section{Jointly Continuous Case}
+
+    \np Let $X,Y$ be jointly continuous random variables and let $y\in\R$ throughout this section.
+    
+    \begin{definition}{Conditional PDF}{}
+        We define the \emph{conditional pdf} of $X$ given $Y=y$, denoted as $f_{X|Y}\left( \cdot|y \right)$, by
+        \begin{equation*}
+            f_{X|Y}\left( x|y \right) = \frac{f\left( x,y \right)}{f\left( y \right)}
+        \end{equation*}
+        for all $x\in\R$.
+    \end{definition}
+
+    \np Given $a,b\in\R, a\leq b$, observe that
+    \begin{equation*}
+        \PP\left( a\leq X\leq b|Y=y \right) = \int^{b}_{a}f_{X|Y}\left( x|y \right)\dx.
+    \end{equation*}
+
+    \clearpage
+    \begin{definition}{Conditional Expectation}{}
+        We define the \emph{conditional expectation} of $X$ given $Y=y$, denoted as $\EE\left( X|Y=y \right)$, as
+        \begin{equation*}
+            \EE\left( X|Y=y \right) = \int^{\infty}_{-\infty}xf_{X|Y}\left( x|y \right)\dx.
+        \end{equation*}
+    \end{definition}
+
+    \begin{prop}{}
+        Let $g:\R\to\R$. Then
+        \begin{equation*}
+            \EE\left( g\left( X \right)|Y=y \right)=\int^{\infty}_{-\infty}g\left( x \right)f_{X|Y}\left( x|y \right)\dx.
+        \end{equation*}
+    \end{prop}
+
+    \begin{definition}{Conditional Variance}{}
+        We define the \emph{conditional variance} of $X$ given $Y=y$, denoted as $\var\left( X|Y=y \right)$, as
+        \begin{equation*}
+            \var\left( X|Y=y \right)=\EE\left( \left( X-\EE\left( X|Y=y \right) \right)^{2}|Y=y \right).
+        \end{equation*}
+    \end{definition}
+
+    \begin{prop}{}
+        We have
+        \begin{equation*}
+            \var\left( X|Y=y \right)=\EE\left( X^{2}|Y=y \right)-\EE\left( X|Y=y \right)^{2}.
+        \end{equation*}
+    \end{prop}
+
+    \section{Conditioning}
+
+    \np Let $X,Y$ be random variables. Then we can define $v:\R\to\R$ by
+    \begin{equation*}
+        v\left( y \right) = \EE\left( X|Y=y \right)
+    \end{equation*}
+    for all $y\in\R$.
+
+    \begin{notation}{$\EE\left( X|Y \right)$}{}
+        Consider the setting of (2.7). We write $\EE\left( X|Y \right)$ to denote $v\left( Y \right)$.
+    \end{notation}
+
+    \noindent Since any real-valued function of a random variable is a random variable, so it makes sense to consider the expectation of $\EE\left( X|Y \right)$:
+    \begin{equation}
+        \EE\left( \EE\left( X|Y \right) \right) =
+        \begin{cases} 
+            \sum^{}_{y\in\R:p_Y\left( y \right)>0} \EE\left( X|Y=y \right)p_Y\left( y \right) & \text{if $Y$ is discrete} \\
+            \int^{\infty}_{-\infty}\EE\left( X|Y=y \right)f_Y\left( y \right)\dy & \text{if $Y$ is continuous}
+        \end{cases}.
+    \end{equation}
+
+    \begin{theorem}{Law of Total Expectation}
+        Let $X,Y$ be random variables. Then
+        \begin{equation*}
+            \EE\left( X \right) = \EE\left( \EE\left( X|Y \right) \right).
+        \end{equation*}
+    \end{theorem}
+
+    \begin{proof}
+        We shall consider the continuous case only --- assume $X,Y$ are jointly continuous. Recall from the definition of $\EE\left( X|Y \right)$ that
+        \begin{equation*}
+            \EE\left( \EE\left( X|Y \right) \right)=\int^{\infty}_{-\infty}\EE\left( X|Y=y \right)f_Y\left( y \right)\dy.
+        \end{equation*}
+        But
+        \begin{flalign*}
+            && \EE\left( X|Y=y \right) & = \int^{\infty}_{-\infty}xf_{X|Y}\left( x|y \right)\dx && \\ 
+            && & = \int^{\infty}_{-\infty}x \frac{f_{\left( X,Y \right)}\left( x,y \right)}{f_Y\left( y \right)}\dx.
+        \end{flalign*} 
+        It follows that
+        \begin{flalign*}
+            && \EE\left( \EE\left( X|Y \right) \right)&=\int^{\infty}_{-\infty}\int^{\infty}_{-\infty}xf_{X|Y}\left( x|y \right)\dx f_Y\left( y \right)\dy && \\ 
+            && & = \int^{\infty}_{-\infty}\int^{\infty}_{-\infty}x \frac{f_{\left( X,Y \right)}\left( x,y \right)}{f_Y\left( y \right)}\dx f_Y\left( y \right)\dy && \\
+            && & = \int^{\infty}_{-\infty}\int^{\infty}_{-\infty}xf_{\left( X,Y \right)}\left( x,y \right)\dx\dy && \\
+            && & = \int^{\infty}_{-\infty}x\int^{\infty}_{-\infty}f_{\left( X,Y \right)}\left( x,y \right)\dy\dx && \\
+            && & = \int^{\infty}_{-\infty}xf_X\left( x \right)\dx && \\
+            && & = \EE\left( X \right),
+        \end{flalign*} 
+        as desired.
+    \end{proof}
+
+    \np Suppose $X\sim\geodis_t\left( p \right)$ where $p\in\left( 0,1 \right]$. Calculate $\EE\left( X \right),\var\left( X \right)$ using the law of total expectation.
+
+    \begin{subproof}[Answer]
+        Recall that $X$ is the number of iid Bernoulli trials, each with success probability $p$, needed to obtain the first success. So let $Y$ be the first trial. Then observe that
+        \begin{equation*}
+            X|\left( Y=1 \right)=1
+        \end{equation*}
+        but
+        \begin{equation*}
+            X|\left( Y=0 \right)=X+1.
+        \end{equation*}
+        By the law of total expeectation,
+        \begin{flalign*}
+            && \EE\left( X \right) & = \EE\left( \EE\left( X|Y \right) \right)=p_Y\left( 0 \right)\EE\left( X|Y=0 \right)+p_Y\left( 1 \right)\EE\left( X|Y=1 \right) && \\ 
+            && & = \left( 1-p \right)\EE\left( X+1 \right)+p\EE\left( 1 \right)=\left( 1-p \right)+\left( 1-p \right)\EE\left( X \right)+p = 1+\left( 1-p \right)\EE\left( X \right),
+        \end{flalign*} 
+        so rearranging gives
+        \begin{equation*}
+            \EE\left( X \right)=\frac{1}{p}.
+        \end{equation*}
+        On the other hand,
+        \begin{flalign*}
+            && \EE\left( X^{2} \right)&=\EE\left( \EE\left( X^{2}|Y \right) \right)=p_Y\left( 0 \right)\EE\left( X^{2}|Y=0 \right)+p_Y\left( 1 \right)\EE\left( X^{2}|Y=1 \right) && \\ 
+            && & = \left( 1-p \right)\EE\left( X^{2}+2x+1 \right)+p\EE\left( 1 \right)=\left( 1-p \right)\EE\left( X^{2} \right)+2\left( 1-p \right)\EE\left( X \right)+1,
+        \end{flalign*} 
+        so
+        \begin{equation*}
+            \EE\left( X^{2} \right)=\frac{2\left( 1-p \right)\EE\left( X \right)+1}{p}=\frac{\frac{2-p}{p}+1}{p} = \frac{2}{p^{2}} - \frac{1}{p} + \frac{1}{p} = \frac{2}{p^{2}}.
+        \end{equation*}
+        Thus
+        \begin{equation*}
+            \var\left( X \right)=\EE\left( X^{2} \right)-\EE\left( X \right)^{2}=\frac{2}{p^{2}}-\left( \frac{1}{p} \right)^{2}=\frac{1}{p^{2}}. \eqqedsym
+        \end{equation*}
+    \end{subproof}
+
+    \noindent Note that the obtained expectation and variance agree with the known results.
+
+    \begin{notation}{$\var\left( X|Y \right)$}{}
+        Let $X,Y$ be random variables. Let $v:\R\to\R$ be defined by
+        \begin{equation*}
+            v\left( y \right)=\var\left( X|Y=y \right)
+        \end{equation*}
+        for all $y\in\R$. Then we write $\var\left( X|Y \right)$ to denote $v\left( Y \right)$.
+    \end{notation}
+
+    \np Similar to $\EE\left( X|Y \right)$, $\var\left( X|Y \right)$ is a random variable as a function, $v$, of a random variable, $Y$. The following is a \textit{variance analogue} of the law of total probability.
+
+    \begin{theorem}{Conditional Variance Formula}
+        Let $X,Y$ be random variables. Then
+        \begin{equation*}
+            \var\left( X \right)=\EE\left( \var\left( X|Y \right) \right)+\var\left( \EE\left( X|Y \right) \right).
+        \end{equation*}
+    \end{theorem}
+
+    \begin{proof}
+        First note that, for any $y\in\R$,
+        \begin{equation*}
+            \var\left( X|Y=y \right)=\EE\left( X^{2}|Y=y \right)-\EE\left( X|Y=y \right)^{2},
+        \end{equation*}
+        which means
+        \begin{equation*}
+            \var\left( X|Y \right)=\EE\left( X^{2}|Y \right)-\EE\left( X|Y \right)^{2}.
+        \end{equation*}
+        On the other hand,
+        \begin{equation*}
+            \var\left( \EE\left( X|Y \right) \right) = \EE\left( \EE\left( X|Y \right)^{2} \right)-\EE\left( \EE\left( X|Y \right) \right)^{2}.
+        \end{equation*}
+        It follows from the law of total expectation that
+        \begin{equation*}
+            \EE\left( \var\left( X|Y \right) \right)+\var\left( \EE\left( X|Y \right) \right) = \EE\left( \EE\left( X^{2}|Y \right) \right)-\EE\left( \EE\left( X|Y \right) \right)^{2}=\EE\left( X^{2} \right)-\EE\left( X \right)^{2}=\var\left( X \right).\eqedsym
+        \end{equation*}
+    \end{proof}
+
+    \ex[Random Sum]Let $\left( X_{i} \right)^{\infty}_{i=1}$ be an iid sequence of random variables with common mean $\mu\in\R$ and common variance $\sigma^{2}\geq 0$ and let $N$ be a nonnegative integer-valued random variable that is independent of $X_1,\ldots$. Let
+    \begin{equation*}
+        T = \sum^{N}_{i=1}X_i.
+    \end{equation*}
+    Find $\EE\left( T \right),\var\left( T \right)$.
+
+    \begin{subproof}[Answer]
+        By the law of total probability,
+        \begin{flalign*}
+            && \EE\left( T \right)&=\EE\left( \EE\left( T|N \right) \right)=\EE\left( \EE\left( T|N=n \right)|_{n=N} \right) =\EE\left( \EE\left( \sum^{N}_{i=1}X_i|N=n \right)|_{n=N} \right) && \\
+            && & = \EE\left( \EE\left( \sum^{n}_{i=1}X_i|N=n \right)|_{n=N} \right) = \EE\left( \EE\left( \sum^{n}_{i=1}X_i \right)|_{n=N} \right) = \EE\left( \sum^{N}_{i=1}X_i \right)&& \\ 
+            && & = \EE\left( \mu N \right) = \mu\EE\left( N \right).
+        \end{flalign*} 
+        Moreover,
+        \begin{equation*}
+            \var\left( T|N=n \right) = \var\left( \sum^{N}_{i=1}X_i|N=n \right)=\var\left( \sum^{n}_{i=1}X_i|N=n \right)=\var\left( \sum^{n}_{i=1}X_i \right) = n\sigma^{2},
+        \end{equation*}
+        which means
+        \begin{equation*}
+            \EE\left( \var\left( T|N \right) \right)=\EE\left( N\sigma^{2} \right)=\sigma^{2}\EE\left( N \right).
+        \end{equation*}
+        On the other hand,
+        \begin{equation*}
+            \var\left( \EE\left( T|N \right) \right)=\var\left( \mu N \right)=\mu^{2}\var\left( N \right).
+        \end{equation*}
+        Thus
+        \begin{equation*}
+            \var\left( T \right)=\EE\left( \var\left( T|N \right) \right)+\var\left( \EE\left( T|N \right) \right)=\sigma^{2}\EE\left( N \right)+\mu^{2}\var\left( N \right)
+        \end{equation*}
+        by the conditional variance formula.
+    \end{subproof}
+
+    \np Recall from [2.2] that, given any random variables $X,Y$,
+    \begin{equation*}
+        \EE\left( \EE\left( X|Y \right) \right) =
+        \begin{cases} 
+            \sum^{}_{y\in\R:p_Y\left( y \right)>0} \EE\left( X|Y=y \right)p_Y\left( y \right) & \text{if $Y$ is discrete} \\
+            \int^{\infty}_{-\infty}\EE\left( X|Y=y \right)f_Y\left( y \right)\dy & \text{if $Y$ is continuous}
+        \end{cases}.
+    \end{equation*}
+    Now, suppose that $A$ represents some event of interest and we desire to determine $\PP\left( A \right)$. Define an \textit{indicator random variable} $X$ by
+    \begin{equation*}
+        X = 
+        \begin{cases} 
+            0 &\text{if }A^{C}\text{ occurs} \\
+            1 &\text{if }A\text{ occurs} \\
+        \end{cases}.
+    \end{equation*}
+    Clearly, $\PP\left( X=1 \right)=\PP\left( A \right), \PP\left( X=0 \right)=1-\PP\left( A \right)$, so that $X\sim\berdis\left( \PP\left( A \right) \right)$. Hence $\EE\left( X \right)=\PP\left( A \right)$ and
+    \begin{flalign*}
+        && \EE\left( X|Y=y \right)& = \sum^{}_{x\in\left\lbrace 0,1 \right\rbrace}x\PP\left( X=x|Y=y \right) && \\ 
+        && & = 0\PP\left( X=0|Y=y \right)+1\PP\left( X=1|Y=y \right) && \\
+        && & = \PP\left( X=1|Y=y \right) && \\
+        && & = \PP\left( A|Y=y \right).
+    \end{flalign*} 
+    for any random variable $Y$. Hence [2.2] becomes
+    \begin{equation}
+        \PP\left( A \right)=
+        \begin{cases} 
+            \sum^{}_{y\in\R:p_Y\left( y \right)>0} \EE\left( A|Y=y \right)p_Y\left( y \right) & \text{if $Y$ is discrete} \\
+            \int^{\infty}_{-\infty}\EE\left( A|Y=y \right)f_Y\left( y \right)\dy & \text{if $Y$ is continuous}
+        \end{cases}
+    \end{equation}
+    for all random variable $Y$.
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

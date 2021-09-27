@@ -1,0 +1,539 @@
+\documentclass[stat333]{subfiles}
+
+%% ========================================================
+%% document
+
+\begin{document}
+
+    \chap{Review of Probability} 
+
+    \section{Probability Spaces}
+
+    \begin{definition}{Probability Space}{}
+        A \emph{probability space} is a triple $\left( \Omega,\mF,\PP \right)$ such that the following holds.
+        \begin{enumerate}
+            \item The \emph{sample space} $\Omega$ is nonempty.
+            \item The \emph{event space} $\mF$ is a $\sigma$-algebra on $\Omega$. That is, $\mF\subseteq 2^{\Omega}$ with the following properties:
+                \begin{enumerate}
+                    \item $\Omega\in\mF$;
+                    \item for every $A\in\mF$, $\left( \Omega\setminus A \right) \in\mF$; and\hfill\textit{closure under complements}
+                    \item for every countable $\left\lbrace A_i \right\rbrace^{\infty}_{i=1}\subseteq\mF$, $\bigcup^{\infty}_{i=1} A_i\in\mF$.\hfill\textit{closure under countable unions}
+                \end{enumerate}
+            \item The \emph{probability function} $\PP:\mF\to\left[ 0,1 \right]$ satisfies the following.
+                \begin{enumerate}
+                    \item For every countable and pairwise disjoint $\left\lbrace A_i \right\rbrace^{\infty}_{i=1} \subseteq\mF$,
+                        \begin{equation*}
+                            \PP\left( \bigcup^{\infty}_{i=1} A_i \right) = \sum^{\infty}_{i=1} \PP\left( A_i \right). \eqno\text{\textit{$\sigma$-additivity}}
+                        \end{equation*}
+                    \item $\PP\left( \Omega \right) = 1$.
+                \end{enumerate}
+        \end{enumerate}
+    \end{definition}
+
+    \np For simplicity, fix a probability space $\left( \Omega,\mF,\PP \right)$ throughout this section.
+
+    \np[Probability of the Complement of an Event]A direct consequence of Def'n 1.1 is the following: for every $A\in\mF$,
+    \begin{equation*}
+        \PP\left( \Omega\setminus A \right) = 1-\PP\left( A \right) .
+    \end{equation*}
+
+    \begin{definition}{Conditional Probability}{}
+        Let $A,B\in\mF$ be such that $\PP\left( B \right)\neq 0$. The \emph{conditional probability} of $A$ given $B$ occurs, denoted as $\PP\left( A|B \right)$, is defined as
+        \begin{equation*}
+            \PP\left( A|B \right) = \frac{\PP\left( A\cap B \right) }{\PP\left( B \right) }.
+        \end{equation*}
+    \end{definition}
+
+    \np Let $A,B\in\mF$ be such that $\PP\left( B \right) \neq 0$.
+    \begin{enumerate}
+        \item Note that
+            \begin{equation*}
+                \PP\left( A|\Omega \right) = \frac{\PP\left( A\cap \Omega \right) }{\PP\left( \Omega \right) } = \frac{\PP\left( A \right) }{1} = \PP\left( A \right) ,
+            \end{equation*}
+            as expected.
+        \item By rearranging,
+            \begin{equation*}
+                \PP\left( A\cap B \right) = \PP\left( A|B \right) \PP\left( B \right).\eqno\text{\textit{multiplication rule}}
+            \end{equation*}
+            For any finite $\left\lbrace A_i \right\rbrace^{n}_{i=1} \subseteq\mF$, we can generalize the multiplication rule as follows:
+            \begin{equation*}
+                \PP\left( \bigcap^{n}_{i=1} A_i \right) = \prod^{n}_{i=1} \PP\left( A_i|\bigcap^{i}_{j=1} A_j \right),\eqno\text{\textit{generalized multiplication rule}}
+            \end{equation*}
+            provided that $\PP\left( \bigcap^{i}_{j=1} A_j \right) \neq 0$ for all $i\in\left\lbrace 1,\ldots,n \right\rbrace$.
+    \end{enumerate}
+
+    \ex[Rolling a Fair Die]Suppose that we roll a fair six-sided die once. Let $A$ denote the event of rolling a number less than $4$ and let $B$ denote the event of rolling an odd number. Given that the roll is odd, what is the probability that the number rolled is less than $4$?
+
+    \begin{subproof}[Answer]
+        Note that we are trying to calculate $\PP\left( A|B \right)$. By definition, $A=\left\lbrace 1,2,3 \right\rbrace, B=\left\lbrace 1,3,5 \right\rbrace$. So it follows that
+        \begin{equation*}
+            \PP\left( A|B \right) = \frac{\PP\left( A\cap B \right) }{\PP\left( B \right) } = \frac{\PP\left\lbrace 1,3 \right\rbrace }{\PP\left\lbrace 1,3,5 \right\rbrace } = \frac{\frac{2}{6}}{\frac{3}{6}} = \frac{2}{3}. \eqqedsym
+        \end{equation*}
+    \end{subproof}
+
+    \noindent Note that we are \textit{implicitly} defining the probability space $\left( \Omega,\mF,\PP \right)$ as $\left( \left\lbrace 1,\ldots,6 \right\rbrace , 2^{\left\lbrace 1,\ldots,6 \right\rbrace }, \left| \cdot \right|  \right)$ for (EX 1.4).
+
+    \begin{definition}{Independent}{Events}
+        We say $A,B\in\mF$ are \emph{independent} if
+        \begin{equation*}
+            \PP\left( A\cap B \right) = \PP\left( A \right) \PP\left( B \right) .
+        \end{equation*}
+    \end{definition}
+
+    \begin{theorem}{Law of Total Probability}
+        Let $\mC\subseteq\mF$ be a countable partition of $\Omega$. Then
+        \begin{equation*}
+            \PP\left( A \right) = \sum^{}_{B\in\mC} \PP\left( A|B \right) \PP\left( B \right) 
+        \end{equation*}
+        for every $A\in\mF$.
+    \end{theorem}
+
+    \begin{cor}{Bayes' Formula}
+        Consider the setting of Theorem 1.1. Then for every $C\in\mC$,
+        \begin{equation*}
+            \PP\left( C|A \right) = \frac{\PP\left( A|C \right) \PP\left( C \right) }{\sum^{}_{B\in\mC}\PP\left( A|B \right) \PP\left( B \right)  }.
+        \end{equation*}
+    \end{cor}	
+
+    \section{Random Variables}
+
+    \begin{definition}{Random Variable}{}
+        A \emph{random variable} (or \emph{rv} for short) $X$ is a function of the form $X:\Omega\to\R$, where $\Omega$ is the sample space of a probability space.
+    \end{definition}
+
+    \begin{definition}{Discrete}{Random Variable}
+        Let $X$ be a random variable. When the image of $X$ is countable, we say $X$ is \emph{discrete}. There are two important functions that are associated with $X$.
+        \begin{enumerate}
+            \item We define the \emph{probability mass function} (or \emph{pmf} for short) for $X$, denoted as $p_X$, by
+                \begin{equation*}
+                    p_X\left( x \right) = \PP\left\lbrace X=x \right\rbrace \hspace{2cm}\forall x\in\R.
+                \end{equation*}
+            \item We define the \emph{cumulative distribution function} (or \emph{cdf} for short) for $X$, denoted as $F_X$, by
+                \begin{equation*}
+                    F_X\left( x \right) = \PP\left\lbrace X\leq x \right\rbrace = \sum^{}_{y\leq x}p_X\left( x \right) \hspace{2cm}\forall x\in\R. 
+                \end{equation*}
+        \end{enumerate}
+    \end{definition}
+
+    \np Let $X$ be a discrete random variable.
+    \begin{enumerate}
+        \item Sometimes it is handy to have the \emph{tail probability function} (or \emph{tpf} for short) for $X$, denoted as $\overline{F}_X$: it is defined as
+            \begin{equation*}
+                \overline{F}_X\left( x \right) = 1-F\left( x \right) \hspace{2cm}\forall x\in\R. 
+            \end{equation*}
+        \item Let $S$ be the image of $X$. We can order the elements of $S$ in the increasing order, so that $S = \left\lbrace x_i \right\rbrace^{n}_{i=1} $ if $S$ is finite or $S = \left\lbrace x_i \right\rbrace^{\infty}_{i=1}$ if $S$ is infinite, where $x_i < x_{i+1}$ for all $i$. Then note that we can \textit{recover} the pmf $p_X$ of $X$ from $F_X$ by
+            \begin{equation*}
+                p_X\left( x_1 \right) = F_X\left( x_1 \right) 
+            \end{equation*}
+            and
+            \begin{equation*}
+                p_X\left( x_i \right) = F_X\left( x_i \right) - F_X\left( x_{i-1} \right) 
+            \end{equation*}
+            for every $i\geq 2$.
+    \end{enumerate}
+    
+    \np[Bernoulli]A \emph{Bernoulli trial} is a random trial with probability $p\in\left[ 0,1 \right]$ of being a \textit{success} and probability $1-p$ of being a \textit{failure}. If we let $X=1$ if the trial is successful and $X=0$ if it fails, then $X$ is said to be a \emph{Bernoulli} random variable with parameter $p$, denoted as $X\sim\berdis\left( p \right)$. Note that $X$ has a pmf
+    \begin{equation*}
+        p_X\left( x \right) = p^x\left( 1-p \right) ^{1-x}
+    \end{equation*}
+    for all $x\in\left\lbrace 0,1 \right\rbrace$.
+
+    \np[Binomial]\textit{A binomial random variable generalizes Bernoulli random variable}. Consider the case where we run $n\in\N$ \textit{independent} Bernoulli trials, each with probability $p\in\left( 0,1 \right]$, where we let $X$ denote the number of successes. Then we say $X$ is a \emph{binomial} random variable with parameters $n,p$, denoted as $X\sim\binomdis\left( n,p \right)$. The pmf of $X$ is given by
+    \begin{equation}
+        p_X\left( x \right) = \binom{n}{x}p^x\left( 1-p \right) ^{n-x}
+    \end{equation}
+    for all $x\in\left\lbrace 0,\ldots,n \right\rbrace$. Note that $\binom{n}{x}$ is the \textit{number of distinct $x$-subsets of a $n$-set}. Here are some remarks.
+    \begin{enumerate}
+        \item A $\binomdis\left( 1,p \right)$ simplifies to become $\berdis\left( p \right)$.
+        \item Note that [1.1] is even defined for $n=0$, in which case $p_X\left( 0 \right) = 1$. Such a distribution is said to be \textit{degenerate} at $0$.
+    \end{enumerate}
+
+    \np[Negative Binomial]Suppose that we have independent Bernoulli trials, each with success probability $p\in\left( 0,1 \right]$ required to observe $n\in\N$ successes. If we let $X$ denote the number of trials needed, then $X$ is a \emph{negative binomial} random variable with parameters $n,p$, denoted as $X\sim\negdis_t\left( n,p \right)$. $X$ has a pmf
+    \begin{equation}
+        p_X\left( x \right) = \binom{x-1}{n-1}p^n\left( 1-p \right) ^{x-n} 
+    \end{equation}
+    for every $x\in\N, x\geq n$.
+    \begin{enumerate}
+        \item Note that the apparence of $\binom{x-1}{n-1}$ instead of $\binom{x}{n}$ in [1.2]; this is because the final trial (i.e. the $n$th trial) must always be a success.
+        \item Sometimes, a negative binomial distribution is alternatively defined as the number of \textit{failures} observed to achieve $n$ successes. If $Y$ denotes such a random variable and $X\sim\negdis_t\left( n,p \right)$, then clearly $X=Y+n$, which implies
+            \begin{equation*}
+                p_Y\left( y \right) = \binom{y+n-1}{n-1}p^n\left( 1-p \right) ^y
+            \end{equation*}
+            for all $y\in\N\cup\left\lbrace 0 \right\rbrace$. We denote $Y\sim\negdis_f\left( n,p \right)$.
+    \end{enumerate}
+
+    \np[Geometric]A \emph{geometric} random variable is a \textit{special case of negative binomial}: that is, if $X\sim\negdis_t\left( 1,p \right)$ for some $p\in\left( 0,1 \right]$, then we say $X$ is a geometric random variable with success probability $p$, denoted as $X\sim\geodis_t\left( p \right)$.\footnote{Similar to negative binomial, we write $X\sim\geodis_f\left( p \right)$ if $X\sim\negdis_f\left( 1,p \right)$.}
+
+    \np[Discrete Uniform]If a random variable $X$ is \textit{equally likely} to take on values in a finite set $\left\lbrace a,a+1,\ldots,b \right\rbrace$ for some $a,b\in\Z, a\leq b$, then we say $X$ is a \emph{discrete uniform} random variable, denoted as $X\sim\dudis\left( a,b \right)$. $X$ has a pmf
+    \begin{equation*}
+        p_X\left( x \right) = \frac{1}{b-a+1}
+    \end{equation*}
+    for every $x\in \left\lbrace a,a+1,\ldots,b \right\rbrace$.
+
+    \np[Hypergeometric]If $X$ denotes the number of success objects in $n\in\N$ draws \textit{without replacement} from a finite set of size $N\in\N$ containing exactly $r\in\N$ success objects, then $X$ is a \emph{hypergeometric} random variable with parameters $N,r,n$, denoted as $X\sim\hypdis\left( N,r,n \right)$. $X$ has a pmf
+    \begin{equation*}
+        p_X\left( x \right) = \frac{\binom{r}{x}\binom{N-r}{n-x}}{\binom{N}{n}}
+    \end{equation*}
+    for all $x\in\left\lbrace \max\left\lbrace 0,n-N+r \right\rbrace , \ldots, \min\left\lbrace n,r \right\rbrace  \right\rbrace $.
+
+    \np[Poisson]A random variable is called \emph{Poisson} with parameter $\lambda>0$, denoted as $X\sim\poidis\left( \lambda \right)$, if
+    \begin{equation}
+        p_X\left( x \right) = \frac{e^{-\lambda}\lambda^x}{x!}
+    \end{equation}
+    for all $x\in\N\cup\left\lbrace 0 \right\rbrace $. Note that [1.3] is even defined for $\lambda=0$, in which case $p_X\left( 0 \right) = 1$ (i.e. $X$ is degenerate at $0$).
+
+    \ex[Approximating Binomial with Poisson]Show that when $n\in\N$ is large and $p\in\left( 0,1 \right]$ is small, $p_X\sim p_Y$ where $X\sim\binomdis\left( n,p \right) , Y\sim\poidis\left( np \right)$.
+
+    \begin{subproof}
+        Let $x\in\left\lbrace 0,\ldots,n \right\rbrace$. Then
+        \begin{equation*}
+            p_X\left( x \right) = \binom{n}{x}p^x\left( 1-p \right) ^{n-x} = \frac{n!}{x!\left( n-x \right) !}\left( \frac{\lambda}{n} \right) ^x\left( 1-\frac{\lambda}{n} \right) ^{n-x} = \frac{\lambda^x}{x!} \frac{\left( n \right) _x}{x!} \frac{\left( 1-\frac{\lambda}{n} \right) ^n}{\left( 1-\lambda_n \right) ^x}.
+        \end{equation*}
+        where $\lambda = np$. Now note that $\left( n \right) _x\sim n^x$, $1-\frac{\lambda}{n}\sim 1$, and $\left( 1-\frac{\lambda}{n} \right) ^n \sim e^{-\lambda}$ since $n$ is large and $p = \frac{\lambda}{n}$ is small. Hence
+        \begin{equation*}
+            p_X\left( x \right) = \frac{\lambda^x}{x!} \frac{\left( n \right) _x}{x!} \frac{\left( 1-\frac{\lambda}{n} \right) ^n}{\left( 1-\frac{\lambda}{n} \right) ^x} \sim e^{-\lambda} \frac{\lambda^x}{x!} = p_Y\left( x \right) ,
+        \end{equation*}
+        as required.
+    \end{subproof}
+
+    \begin{definition}{Continuous}{Random Variable}
+        Let $X$ be a random variable. We say $X$ is \emph{continuous} if there exists nonnegative $f_X:\R\to\R$ such that
+        \begin{equation*}
+            \PP\left\lbrace X\in B \right\rbrace = \int^{}_{x\in B} f_X\left( x \right) \dx
+        \end{equation*}
+        for all measurable $B\subseteq\R$, where $f_X$ is called the \emph{probability density function} (\emph{pmf}) of $X$. We also define the \emph{cumulative distribution function} $F_X:\R\to\left[ 0,1 \right]$ of $X$ by
+        \begin{equation*}
+            F_X\left( x \right) = \int^{x}_{-\infty} f_X\left( t \right) \dt \hspace{2cm}\forall x\in\R.
+        \end{equation*}
+    \end{definition}
+
+    \np Let $X$ be a continuous random variable. Then note that
+    \begin{equation*}
+        f_X = F_X'
+    \end{equation*}
+    by the fundamental theorem of calculus.
+
+    \np[Uniform]A random variable $X$ is called a \emph{uniform} random variable on an interval $\left( a,b \right) \subseteq\R$, denoted as $X\sim\unidis\left( a,b \right)$ if 
+    \begin{equation*}
+        f_X\left( x \right) = \frac{1}{b-a} \hspace{2cm}\forall x\in\left( a,b \right) .
+    \end{equation*}
+
+    \np[Beta]A random variable $X$ is called \emph{Beta} with parameters $m,n\in\N$, denoted as $X\sim\betadis\left( m,n \right)$, if
+    \begin{equation*}
+        f_X\left( x \right) = \frac{\left( m+n-1 \right) !}{\left( m-1 \right) !\left( n-1 \right) !}x^{m-1}\left( 1-x \right) ^{n-1} \hspace{2cm}\forall x\in\left( 0,1 \right) .
+    \end{equation*}
+
+    \np[Erlang]A random variable $X$ is called \emph{Erlang} with parameters $n\in\N, \lambda>0$, denoted as $X\sim\erdis\left( n,\lambda \right)$ if
+    \begin{equation*}
+        f_X\left( x \right) = \frac{\lambda^nx^{n-1}e^{-\lambda x}}{\left( n-1 \right) !} \hspace{2cm}\forall x>0.
+    \end{equation*}
+
+    \np[Exponential]A random variable $X$ is called \emph{exponential} with parameter $\lambda>0$, denoted as $X\sim\expdis\left( \lambda \right)$, if
+    \begin{equation*}
+        f_X\left( x \right) = \lambda e^{-\lambda x} \hspace{2cm}\forall x>0.
+    \end{equation*}
+    Note that $\erdis\left( 1,\lambda \right)$ simplifies to $\expdis\left( \lambda \right)$.
+
+    \section{Expectation}
+    
+    \begin{definition}{Expectation}{of a Random Variable}
+        Let $X$ be a random variable. Then we define the \emph{expectation} of $X$, denoted as $\EE\left( X \right)$, by
+        \begin{equation*}
+            \EE\left( X \right) = 
+            \begin{cases} 
+                \sum^{}_{x\in\R: p_X\left( x \right) >0}xp_X\left( x \right) & \text{if }X\text{ is discrete} \\
+                \int^{}_{\R} xf_X\left( x \right) \dx & \text{if }X\text{ is continuous}
+            \end{cases}
+        \end{equation*}
+        if exists.
+    \end{definition}
+
+    \begin{definition}{$n$th Moment}{of a Random Variable}
+        Let $X$ be a random variable. For any $n\in\N\cup\left\lbrace 0 \right\rbrace $, if $\EE\left( X^n \right)$ exists, then it is called the \emph{$n$th moment} of $X$.
+    \end{definition}
+
+    \begin{definition}{Variance, Standard Deviation}{of a Random Variable}
+        Let $X$ be a random variable. We define the \emph{variance} of $X$, denoted as $\var\left( X \right)$, by
+        \begin{equation*}
+            \var\left( X \right) = \EE\left( \left( X-\EE\left( X \right)  \right) ^{2}  \right) .
+        \end{equation*}
+        We define the \emph{standard deviation} (\emph{stdev}) of $X$, denoted as $\sd\left( X \right)$, by
+        \begin{equation*}
+            \sd\left( X \right) = \sqrt{\var\left( X \right) }.
+        \end{equation*}
+    \end{definition}
+
+    \begin{theorem}{Law of the Unconscious Statistician (LOTUS)}
+        Let $X$ be a random variable and let $g:\R\to\R$ be measurable. Then
+        \begin{equation*}
+            \EE\left( g\left( X \right)  \right) =
+            \begin{cases} 
+                \sum^{}_{x\in\R:p_X\left( x \right) > 0} g\left( x \right) p_X\left( x \right) & \text{if }X\text{ is discrete}  \\
+                \int^{}_{\R}g\left( x \right) f_X\left( x \right)  \dx & \text{if }X\text{ is continuous}
+            \end{cases}.
+        \end{equation*}
+    \end{theorem}
+
+    \begin{cor}{}
+        Let $X$ be a random variable and let $a,b\in\R$.
+        \begin{enumerate}
+            \item $\EE\left( aX+b \right) = a\EE\left( X \right) + b$.
+            \item $\var\left( aX+b \right) = a^{2} \var\left( X \right)$.
+        \end{enumerate}
+    \end{cor}
+
+    \begin{definition}{Moment Generating Function}{of a Random Variable}
+        Let $X$ be a random variable. We define the \emph{moment generating function} (\emph{mgf}) of $X$, denoted as $\varphi_X$, by
+        \begin{equation*}
+            \varphi_X\left( t \right) = \EE\left( e^{tX} \right) \hspace{2cm}\forall t\in\R.
+        \end{equation*}
+    \end{definition}
+
+    \np Note that
+    \begin{equation*}
+        \varphi_X\left( t \right) = \EE\left( e^{tX} \right) = \EE\left( \sum^{\infty}_{n=0} \frac{\left( tX \right) ^n}{n!} \right) = \sum^{\infty}_{n=0} \EE\left( X^n \right) \frac{t^n}{n!},
+    \end{equation*}
+    implying that $\EE\left( X^n \right)$ is the coefficient of $\frac{t^n}{n!}$ in the above series expansion. In particular,
+    \begin{equation*}
+        \EE\left( X^n \right) = \varphi_X^{\left( n \right) }\left( 0 \right) 
+    \end{equation*}
+    for all $n\in\N$.
+
+    \np It is worth noting that a mgf \textit{uniquely} determines the probability distribution of a random variable.
+
+    \ex Let $X\sim\binomdis\left( n,p \right)$, where $n\in\N, p\in\left( 0,1 \right]$. Find $\varphi_X$ and use it to calculate $\EE\left( X \right)$.
+
+    \begin{subproof}[Answer]
+        Observe that, for every $t\in\R$,
+        \begin{flalign*}
+            && \varphi_X\left( t \right) & = \EE\left( e^{tX} \right) = \sum^{n}_{x=0} e^{tX}p_X\left( x \right) = \sum^{n}_{x=0} e^{tx}\binom{n}{x}p^x\left( 1-p \right) ^{n-x}  && \\
+            && & = \sum^{n}_{x=0} \binom{n}{x}\left( e^tp \right) ^x\left( 1-p \right) ^{n-x} = \left( e^tp+1-p \right) ^n,
+        \end{flalign*} 
+        where the last equality holds by the binomial theorem. It follows that
+        \begin{equation*}
+            \EE\left( X \right) = \varphi_X'\left( 0 \right) = \left.\frac{\dif}{\dt} \left( e^tp+1-p \right) ^n \right|_{t=0} = \left.n\left( e^tp+1-p \right) ^{n-1}e^tp\right|_{t=0} = np. \eqqedsym
+        \end{equation*}
+    \end{subproof}
+
+    \clearpage
+    \section{Joint Distributions}
+
+    \begin{definition}{Random Vector}{}
+        Let $X_1,\ldots,X_n$ be random variables. Then we call the $n$-tuple $\vec{X} = \left( X_1,\ldots,X_n \right)$ a \emph{random vector}.
+        \begin{enumerate}
+            \item The \emph{joint cdf} of $\vec{X}$, denoted as $F_{\vec{X}}$, is defined as
+                \begin{equation*}
+                    F_{\vec{X}}\left( \vec{x} \right) = \PP\left\lbrace \vec{X}\leq\vec{x}  \right\rbrace \hspace{2cm}\forall \vec{x}\in\R^n.
+                \end{equation*}
+            \item When $X_1,\ldots,X_n$ is discrete, we say $\vec{X}$ is \emph{jointly discrete}, and define the \emph{joint pmf} of $\vec{X}$, denoted as $p_\vec{X}$, by
+                \begin{equation*}
+                    p_\vec{X}\left( \vec{x} \right) = \PP\left\lbrace \vec{X}=\vec{x} \right\rbrace \hspace{2cm}\forall \vec{x}\in\R^n.
+                \end{equation*}
+            \item When there exists nonnegative $f_{\vec{X}}:\R^n\to\R$ such that
+                \begin{equation*}
+                    \PP\left\lbrace \vec{X}\in S \right\rbrace = \int^{}_{S}f_\vec{X}\left( \vec{x} \right) \dif\vec{x}
+                \end{equation*}
+                for every $S\subseteq\R^n$, then we say $\vec{X}$ is \emph{jointly continuous} and call $f_{\vec{X}}$ a \emph{joint pdf} of $\vec{X}$.
+        \end{enumerate}
+    \end{definition}
+    
+    \np Let $\vec{X} = \left( X_1,\ldots,X_n \right)$ be a random vector.
+    \begin{enumerate}
+        \item Note that, for every $i\in\left\lbrace 1,\ldots,n \right\rbrace$,
+            \begin{equation*}
+                F_{X_i}\left( x_i \right) = F_{\vec{X}}\left( \infty,\ldots,\infty,\underbrace{x_i}_{\clap{\text{\tiny$i$th position}}},\infty,\ldots,\infty \right)  \hspace{2cm}\forall x_i\in\R.
+            \end{equation*}
+            We call $F_{X_i}$ the \emph{$i$th marginal cdf} of $\vec{X}$.
+        \item In case $\vec{X}$ is jointly discrete, for every $i\in\left\lbrace 1,\ldots,n \right\rbrace$,
+            \begin{equation*}
+                p_{X_i}\left( x_i \right) = \sum^{}_{\substack{x_1,\ldots,x_{i-1},x_{i+1},\ldots,x_n\in\R\\:p_{\vec{X}}\left( x_1,\ldots,x_n \right) > 0}} p_{\vec{X}}\left( x_1,\ldots,x_n \right) \hspace{2cm}\forall x_i\in\R. 
+            \end{equation*}
+            We call $p_{X_i}$ the \emph{$i$th marginal pmf} of $\vec{X}$.
+        \item In case $\vec{X}$ is jointly continuous, each $X_i$ is continuous, and for every $i\in\left\lbrace 1,\ldots,n \right\rbrace$,
+            \begin{equation*}
+                f_{X_i}\left( x_i \right) = \int^{\infty}_{-\infty} \cdots\int^{\infty}_{-\infty} \underbrace{\int^{x_i}_{-\infty}}_{\clap{\text{\tiny$i$th from right}}} \int^{\infty}_{-\infty} \cdots \int^{\infty}_{-\infty} f_{\vec{X}}\left(t_1,\ldots,t_n \right) \dt_1\cdots\dt_n \hspace{2cm}\forall x_i\in\R.
+            \end{equation*}
+            We call $f_{X_i}$ the \emph{$i$th marginal pdf} of $\vec{X}$. It is worth noting that
+            \begin{equation*}
+                f_{\vec{X}}\left( x_1,\ldots,x_n \right) = \frac{\partial^n}{\px_1\cdots\px_n}F\left( x_1,\ldots,x_n \right) .
+            \end{equation*}
+    \end{enumerate}
+
+    \begin{prop}{}
+        Let $\vec{X} = \left( X_1,\ldots,X_n \right)$ be joinly continuous. Then for any injective $C^1$ $g:\R^n\to\R^n$ with nowhere vanishing Jacobian determinant,
+        \begin{equation*}
+            f_{g\left( \vec{X} \right) }\left( \vec{y} \right) = f_{\vec{X}}\left( g^{-1} \left( \vec{y} \right)  \right) \left| \jac_g\left( g^{-1} \left( \vec{y} \right)  \right)  \right|^{-1} \hspace{2cm}\forall \vec{y}\in g^{-1} \left( \R^n \right) .  
+        \end{equation*}
+    \end{prop}
+
+    \begin{definition}{Expectation}{of a Random Vector}
+        Let $\vec{X}$ be a random vector. Then we define the \emph{expectation} of $\vec{X}$, denoted as $\EE\left( \vec{X} \right)$, by
+        \begin{equation*}
+            \EE\left( \vec{X} \right) = \left( \EE\left( X_1 \right) , \ldots, \EE\left( X_n \right)  \right) .
+        \end{equation*}
+    \end{definition}
+
+    \begin{definition}{Covariance}{of Two Random Variables}
+        Let $X,Y$ be random variables. Then we define the \emph{covariance} of $X,Y$, denoted as $\cov\left( X,Y \right)$, by
+        \begin{equation*}
+            \cov\left( X,Y \right) = \EE\left( \left( X-\EE\left( X \right)  \right) \left( Y-\EE\left( Y \right)  \right)  \right) .
+        \end{equation*}
+    \end{definition}
+
+    \np[Covariance]Let $X,Y$ be random variables. Note that
+    \begin{equation*}
+        \cov\left( X,Y \right) = \EE\left( XY \right) -\EE\left( X \right) \EE\left( Y \right) .
+    \end{equation*}
+    In particular, $\cov\left( X,X \right) = \var\left( X \right)$.
+
+    \begin{theorem}{Multivariate LOTUS}
+        Let $\vec{X}$ be a random vector and let $g:\R^n\to\R$. Then
+        \begin{equation*}
+            \EE\left( g\left( \vec{X} \right)  \right) =
+            \begin{cases} 
+                \sum^{}_{\vec{x}\in\R^n:p_{\vec{X}}\left( \vec{x} \right) >0}g\left( \vec{x} \right)p_{\vec{X}} \left( \vec{x} \right) & \text{if $X$ is jointly discrete} \\
+                \int^{}_{\R^n}g\left( \vec{x} \right) f_{\vec{X}}\left( \vec{x} \right)\dif\vec{x} & \text{if $\vec{X}$ is jointly continuous} 
+            \end{cases}.
+        \end{equation*}
+    \end{theorem}
+
+    \begin{cor}{Linearity of Expectation}
+        Let $X_1,\ldots,X_n$ be random variables and let $a_1,\ldots,a_n\in\R$. Then
+        \begin{equation*}
+            \EE\left( \sum^{n}_{i=1} a_iX_i \right) = \sum^{n}_{i=1} a_i\EE\left( X_i \right).
+        \end{equation*}
+    \end{cor}	
+
+    \begin{cor}{}
+        Let $X_1,X_2$ be random variables and let $a_1,a_2\in\R$. Then
+        \begin{equation*}
+            \var\left( a_1X_1+a_2X_2 \right) = a_1^{2} \var\left( X_1 \right) + a_2^{2} \var\left( X_2 \right) + 2a_1a_2\cov\left( X_1,X_2 \right) .
+        \end{equation*}
+    \end{cor}	
+
+    \begin{definition}{Joint MGF}{of a Random Vector}
+        Let $\vec{X} = \left( X_1,\ldots,X_n \right) $ be a random vector. We define the \emph{joint mgf} of $\vec{X}$, denoted as $\varphi_{\vec{X}}$, by
+        \begin{equation*}
+            \varphi_{\vec{X}}\left( \vec{t} \right) = e^{\vec{t}^{T} \vec{X}} \hspace{2cm}\forall \vec{t}\in\R^n.
+        \end{equation*}
+    \end{definition}
+
+    \np[Joint Moment]Let $\vec{X}$ be a random vector. Then for every $i_1,\ldots,i_n\in\N\cup\left\lbrace 0 \right\rbrace$,
+    \begin{equation*}
+        \EE\left( X_1^{i_1}\cdots X_n^{i_n} \right) = \left.\frac{\partial^{\sum^{n}_{j=1} i_j}}{\px_1^{i_1}\cdots\px_n^{i_n}}\varphi_{\vec{X}}\left( \vec{x} \right) \right|_{\vec{x}=\vec{0}}.
+    \end{equation*}
+
+    \clearpage
+    \section{Independence}
+    \begin{definition}{Independent}{Random Variables}
+        Let $X_1,\ldots,X_n$ be random variables. We say $X_1,\ldots,X_n$ are \emph{independent} if
+        \begin{equation*}
+            F_{\left( X_1,\ldots,X_n \right) } \left( x_1,\ldots,x_n \right) = \prod^{n}_{i=1} F_{X_i}\left( x_i \right) 
+        \end{equation*}
+        for all $\left( x_1,\ldots,x_n \right) \in\R^n$.
+    \end{definition}
+
+    \np Let $X_1,\ldots,X_n$ be random variables and let $\vec{X}=\left( X_1,\ldots,X_n \right)$.
+    \begin{enumerate}
+        \item If $\vec{X}$ is jointly discrete, then Def'n 1.15 is equivalent to saying that $p_{\vec{X}}\left( x_1,\ldots,x_n \right) = \prod^{n}_{i=1} p_{X_i}\left( x_i \right) $ for every $\left( x_1,\ldots,x_n \right) \in\R^n$.
+        \item If $\vec{X}$ is jointly continuous, then Def'n 1.15 is equivalent to saying that $f_{\vec{X}}\left( x_1,\ldots,x_n \right) = \prod^{n}_{i=1} f_{X_i}\left( x_i \right)$ for every $\left( x_1,\ldots,x_n \right) \in\R^n$.
+        \item If $n=2$ and $X_1,X_2$ are independent, note that $\cov\left( X_1,X_2 \right) = 0$. However the converse does not hold in general.
+    \end{enumerate}
+
+    \begin{theorem}{MGF of the Sum of Independent Random Variables}
+        Let $X_1,\ldots,X_n$ be independent random variables. Then
+        \begin{equation*}
+            \varphi_{\sum^{n}_{i=1} X_i} = \prod^{n}_{i=1} \varphi_{X_i}.
+        \end{equation*}
+    \end{theorem}
+
+    \begin{cor}{}
+        Let $X_1,\ldots,X_n$ be iid random variables. Then
+        \begin{equation*}
+            \varphi_{\sum^{n}_{i=1} X_i} = \varphi_{X_1}^n.
+        \end{equation*}
+    \end{cor}	
+
+    \ex[Sum of Independent Binomial Random Variables]Let $X_1\sim\binomdis\left( n_1,p \right) , \ldots, X_m\sim\binomdis\left( n_m,p \right)$, where $n_1,\ldots,n_m\in\N, p\in\left( 0,1 \right]$. Find the distribution of $\sum^{m}_{i=1} X_i$.
+
+    \begin{subproof}[Answer]
+        Observe that, for every $t\in\R$,
+        \begin{equation*}
+            \varphi_{\sum^{m}_{i=1} X_i}\left( t \right) = \prod^{m}_{i=1} \varphi\left( t \right) = \prod^{m}_{i=1} \left( e^tp+1-p \right) ^{n_i} = \left( e^tp+1-p \right) ^{\sum^{m}_{i=1} n_i} = \varphi_Y\left( t \right) ,
+        \end{equation*}
+        where $Y\sim\binomdis\left( \sum^{m}_{i=1} n_i, p \right)$. It follows from (1.20) that $\sum^{m}_{i=1} X_i\sim\binomdis\left( \sum^{m}_{i=1} n_i, p \right)$.
+    \end{subproof}
+
+    \begin{definition}{Convergence}{of a Sequence of Random Variables}
+        Let $\left( X_{n} \right)^{\infty}_{n=1}$ be a sequence of random variables and let $X$ be a random variable.
+        \begin{enumerate}
+            \item We say $\left( X_{n} \right)^{\infty}_{n=1}$ \emph{converges} to $X$ \emph{in distribution} if
+                \begin{equation*}
+                    \lim_{n\to\infty} \PP\left\lbrace X_n\leq x \right\rbrace = \PP\left\lbrace X\leq x \right\rbrace 
+                \end{equation*}
+                for all $x\in\R$ at which $F_X$ is continuous.
+            \item We say $\left( X_{n} \right)^{\infty}_{n=1} $ \emph{converges} to $X$ \emph{in probability} if
+                \begin{equation*}
+                    \lim_{n\to\infty} \PP\left\lbrace \left| X_n-X \right| > \varep \right\rbrace = 0
+                \end{equation*}
+                for every $\varep>0$.
+            \item We say $\left( X_{n} \right)^{\infty}_{n=1}$ \emph{converges} to $X$ \emph{almost surely} (\emph{a.s.}) if
+                \begin{equation*}
+                    \PP\left\lbrace \lim_{n\to\infty} X_n=X \right\rbrace = 1.
+                \end{equation*}
+        \end{enumerate}
+    \end{definition}
+
+    \np Let $\left( X_{n} \right)^{\infty}_{n=1}$ be a sequence of random variables and let $X$ be a random variable. Then
+    \begin{flalign*}
+        && \left( X_{n} \right)^{\infty}_{n=1} \text{ converges to $X$ a.s.} & \implies \left( X_{n} \right)^{\infty}_{n=1} \text{ converges to $X$ in probability} && \\
+        && & \implies\left( X_{n} \right)^{\infty}_{n=1} \text{ converges to $X$ in distribution}.
+    \end{flalign*} 
+
+    \begin{theorem}{Strong Law of Large Numbers (SLLN)}
+        Let $\left( X_{n} \right)^{\infty}_{n=1} $ be a sequence of iid random variables with common expectation $\mu\in\R$. Then $\left( \overline{X}_n \right)^{\infty}_{n=1} $ converges to $\mu$ almost surely, where for every $n\in\N$,
+        \begin{equation*}
+            \overline{X}_n = \frac{\sum^{n}_{i=1} X_i}{n}. 
+        \end{equation*}
+    \end{theorem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
