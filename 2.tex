@@ -361,43 +361,213 @@
         \end{cases}
     \end{equation}
     for all random variable $Y$.
+
+    \ex Let $X,Y$ be independent continuous random variables. Show that
+        \begin{equation}
+            \PP\left( X<Y \right) = \int^{\infty}_{-\infty}F_X\left( y \right)f_Y\left( y \right)\dy.
+        \end{equation}
+
+    \begin{subproof}
+        Let $A$ be the event
+        \begin{equation*}
+            A = \left\lbrace X<Y \right\rbrace.
+        \end{equation*}
+        Then we have
+        \begin{flalign*}
+            && \PP\left( X<Y \right) & = \PP\left( A \right) = \int^{\infty}_{-\infty}\PP\left( A|Y=y \right)f_Y\left( y \right)\dy = \int^{\infty}_{-\infty}\PP\left( X<Y|Y=y \right)f_Y\left( y \right)\dy && \\ 
+            && & = \int^{\infty}_{-\infty}\PP\left( X<y|Y=y \right)f_Y\left( y \right)\dy = \int^{\infty}_{-\infty}\PP\left( X<y \right)f_Y\left( y \right)\dy = \int^{\infty}_{-\infty}\PP\left( X\leq y \right)f_Y\left( y \right)\dy && \\
+            && & = \int^{\infty}_{-\infty}F_X\left( y \right)f_Y\left( y \right)\dy. &&\fqqedsym
+        \end{flalign*} 
+    \end{subproof}
+
+    \ex Consider the setting of (EX 2.12) and further assume that $X,Y$ are identically distributed. Show that [2.4] simplifies to
+    \begin{equation}
+        \PP\left( X<Y \right)=\frac{1}{2}.
+    \end{equation}
+
+    \begin{subproof}
+        Observe that $f_X=f_Y$ since $X,Y$ are iid, so
+        \begin{equation*}
+            \PP\left( X<Y \right)=\int^{\infty}_{-\infty}F_X\left( y \right)f_Y\left( y \right)\dy = \int^{\infty}_{-\infty}F_X\left( y \right)f_X\left( y \right)\dy = \int^{1}_{0}u\du = \frac{1}{2}
+        \end{equation*}
+        by the change of variable $u = F_X\left( y \right)$.
+    \end{subproof}
+
+    \ex Suppose $X\sim\expdis\left( \lambda_1 \right),Y\sim\expdis\left( \lambda_2 \right)$ are independent. Show
+    \begin{equation}
+        \PP\left( X<Y \right)=\frac{\lambda_1}{\lambda_2}.
+    \end{equation}
+
+    \begin{subproof}
+        Since $X\sim\expdis\left( \lambda_1 \right), Y\sim\expdis\left( \lambda_2 \right)$, we have
+        \begin{equation*}
+            \begin{cases} 
+                f_y\left( y \right)&=\lambda_2e^{-\lambda_2y} \\
+                F_X\left( y \right)&=1-e^{-\lambda_1y}
+            \end{cases}
+        \end{equation*}
+        for all $y>0$. It follows from [2.4] that
+        \begin{flalign*}
+            && \PP\left( X<Y \right)&=\int^{\infty}_{-\infty}F_X\left( y \right)f_Y\left( y \right)\dy = \int^{\infty}_{0}\left( 1-e^{-\lambda_1y} \right) \lambda_2e^{-\lambda_2y}\dy = \lambda_2\int^{\infty}_{0}e^{-\lambda_2y}-e^{-\left( \lambda_1+\lambda_2 \right)y}\dy&& \\ 
+            && & = \lambda_2\left.\left( -\frac{1}{\lambda_2}e^{-\lambda_2y}+\frac{1}{\lambda_1+\lambda_2}e^{-\left( \lambda_1+\lambda_2 \right)y} \right)\right|^{\infty}_{y=0}=1-\frac{\lambda_2}{\lambda_1+\lambda_2}=\frac{\left( \lambda_1+\lambda_2 \right)-\lambda_2}{\lambda_1+\lambda_2}=\frac{\lambda_1}{\lambda_1+\lambda_2}. && \fqqedsym
+        \end{flalign*} 
+    \end{subproof}
+
+    \ex Suppose $W,X,Y$ are positive independent continuous random variables and let $Z=X|\left( X<Y \right)$. Show that
+    \begin{flalign*}
+        && U & = \left( W,X \right)|\left( W<X<Y \right) && \\
+        && V & = \left( W,Z \right)|\left( W<Z \right)
+    \end{flalign*} 
+    are identically distributed.
+
+    \begin{subproof}
+        Observe that
+        \begin{equation}
+            F_U\left( w,x \right)=\PP\left( W\leq w, X\leq x|W<X<Y \right)= \frac{\PP\left( W\leq w, X\leq x, W<X,X<Y \right)}{\PP\left( W<X,X<Y \right)}
+        \end{equation}
+        for every $w,x>0$. By conditioning on $X$,
+        \begin{flalign*}
+            && \PP\left( W<X,X<Y \right)&= \int^{\infty}_{0}\PP\left( W<X,X<Y|X=s \right)f_X\left( s \right)\ds && \\ 
+            && & = \int^{\infty}_{0}\PP\left( W<s,s<Y|X=s \right)f_X\left( s \right)\ds && \\
+            && & = \int^{\infty}_{0}\PP\left( W<s\right)\PP\left(s<Y \right)f_X\left( s \right)\ds, && \flnumber
+        \end{flalign*} 
+        where the last equality follows from the fact that $W,X,Y$ are independent. In a similar manner,
+        \begin{flalign*}
+            && \PP\left( W\leq w, X\leq x, W<X,X<Y \right)&=\int^{\infty}_{0}\PP\left( W\leq w, X\leq x, W<X,X<Y|X=s \right)f_X\left( s \right)\ds && \\ 
+            && & = \int^{\infty}_{0}\PP\left( W\leq w, s\leq x, W<s, s<Y|X=s \right)f_X\left( s \right)\ds && \\
+            && & = \int^{\infty}_{0}\PP\left( W\leq w \right)\PP\left( s\leq x \right)\PP\left( W<s \right)\PP\left( s<Y \right)f_X\left( s \right)\ds && \\
+            && & = \PP\left( W\leq w \right)\int^{x}_{0}\PP\left( W<s \right)\PP\left( s<Y \right)f_X\left( s \right)\ds. && \flnumber
+        \end{flalign*} 
+        Moreover, for every $z>0$,
+        \begin{flalign*}
+            && F_Z\left( z \right) & = \PP\left( Z\leq z \right)=\PP\left( X\leq z|X<Y \right)=\frac{\PP\left( X\leq z,X<Y \right)}{\PP\left( X<Y \right)} && \\
+            && & = \frac{\int^{\infty}_{0}\PP\left( X\leq z, X<Y|X=s \right)f_X\left( s \right)\ds}{\PP\left( X<Y \right)} = \frac{\int^{\infty}_{0}\PP\left( s\leq z, s<Y|X=s \right)f_X\left( s \right)\ds}{\PP\left( X<Y \right)} && \\
+            && & = \frac{\int^{z}_{0}\PP\left( s<Y \right)f_X\left( s \right)\ds}{\PP\left( X<Y \right)},
+        \end{flalign*} 
+        so by differentiating with respect to $z$, we obtain
+        \begin{equation}
+            f_Z\left( z \right)=\frac{\dif}{\dz}\frac{\int^{z}_{0}\PP\left( s<Y \right)f_X\left( s \right)\ds}{\PP\left( X<Y \right)} = \frac{\PP\left( z<Y \right)f_X\left( z \right)}{\PP\left( X<Y \right)}.
+        \end{equation}
+        Now note that the cdf of $V$ is given by
+        \begin{equation}
+            F_V\left( w,z \right)=\PP\left( W\leq w, Z\leq z|W<Z \right)=\frac{\PP\left( W\leq w, Z\leq z, W<Z \right)}{\PP\left( W<Z \right)}
+        \end{equation}
+        for every $w,z>0$. Since $W$ independent of $X,Y$, it is independent of $Z=X|\left( X<Y \right)$, so
+        \begin{flalign*}
+            && \PP\left( W<Z \right)&=\int^{\infty}_{0}\PP\left( W<Z|Z=s \right)f_Z\left( s \right)\dz = \int^{\infty}_{0}\PP\left( W<s|Z=s \right)f_Z\left( s \right)\ds  && \\ 
+            && & = \int^{\infty}_{0}\PP\left( W<s \right)f_Z\left( s \right)\ds = \int^{\infty}_{0}\PP\left( W<s \right) \frac{\PP\left( s<Y \right)f_X\left( s \right)}{\PP\left( X<Y \right)}\ds && \\
+            && & \overset{\text{[2.8]}}{=} \frac{\PP\left( W<X,X<Y \right)}{\PP\left( X<Y \right)}. && \flnumber
+        \end{flalign*} 
+        Furthermore,
+        \begin{flalign*}
+            && \PP\left( W\leq w, Z\leq z, W<Z \right)& = \int^{\infty}_{0}\PP\left( W\leq w, Z\leq z, W<Z|Z=s \right)f_Z\left( s \right)\ds && \\ 
+            && & = \int^{\infty}_{0}\PP\left( W\leq w, s\leq z, W<s|Z=s \right)f_Z\left( s \right)\ds && \\
+            && & = \PP\left( W\leq w \right)\int^{z}_{0}\PP\left( W<s \right)f_Z\left( s \right)\ds && \\
+            && & \overset{\text{[2.10]}}{=} \int^{z}_{0}\PP\left( W<s \right) \frac{\PP\left( Y>s \right)f_X\left( s \right)}{\PP\left( X<Y \right)}\ds &&\\
+            && & \overset{\text{[2.9]}}{=} \frac{\PP\left( W\leq w, X\leq x, W<X,X<Y \right)}{\PP\left( X<Y \right)} &&\flnumber
+        \end{flalign*} 
+        for every $w,z>0$. Thus
+        \begin{flalign*}
+            && F_V\left( w,z \right)& \overset{\text{[2.11]}}{=} \frac{\PP\left( W\leq w, Z\leq z, W<Z \right)}{\PP\left( W<Z \right)} = \frac{\frac{\PP\left( W\leq w, X\leq z, W<X,X<Y \right)}{\PP\left( X<Y \right)}}{\frac{\PP\left( W<X,X<Y \right)}{\PP\left( X<Y \right)}}&& \\ 
+            && & \overset{\substack{\text{[2.12]}\\\text{[2.13]}}}{=} \frac{\PP\left( W\leq w, X\leq z, W<X,X<Y \right)}{\PP\left( W<X,X<Y \right)} \overset{\text{[2.7]}}{=}F_U\left( w,z \right)&& \\ 
+        \end{flalign*} 
+        for every $w,z>0$, so $V\sim U$.
+    \end{subproof}
+
+    \clearpage
+    \ex Consider an experiment in which iid trials, each with success probability $p\in\left( 0,1 \right]$, are performed until $k\in\N$ consecutive successes are observed. Dtermine the expectation of the number of trials needed to achieve $k$ consecutive successes.
+
+    \begin{subproof}[Answer]
+        For each $l\in\N$, let $N_l$ denote the number of trials required to achieve $l$ consecutive successes, where we desire to find $\EE\left( N_k \right)$. 
+        First note that $N_1\sim\geodis\left( p \right)$, so
+        \begin{equation}
+            \EE\left( N_1 \right)=\frac{1}{p}.
+        \end{equation}
+        For the general case, the idea is to condition on $N_{l-1}$: fix $l\in\N, l\geq 2$ and observe that
+        \begin{equation*}
+            \EE\left( N_l \right)=\EE\left( \EE\left( N_l|N_{l-1} \right) \right)
+        \end{equation*}
+        from the law of total expectation. Define, for every $n\in\N$,
+        \begin{equation*}
+            Y|\left( N_{l-1}=n \right) = 
+            \begin{cases} 
+                0 & \text{if $n+1$th trial is a failure} \\
+                1 & \text{if $n+1$th trial is a success}
+            \end{cases}.
+        \end{equation*}
+        Then, for every $n\in\N$,
+        \begin{flalign*}
+            && \EE\left( N_l|N_{l-1} \right) & \overset{\text{[2.3]}}{=} \sum^{}_{y\in\left\lbrace 0,1 \right\rbrace}\EE\left( N_l|N_{l-1}=n, Y=y \right)\PP\left( Y=y|N_{l-1}=n \right)&& \\ 
+            && & = p\EE\left( N_l|N_{l-1}=n, Y=1 \right)+\left( 1-p \right)\EE\left( N_l|N_{l-1}=n, Y=0 \right) && \\
+            && & = p\left( n+1 \right)+\left( 1-p \right)\left( n+1+\EE\left( N_l \right) \right)&& \\
+            && & = n+1+\left( 1-p \right)\EE\left( N_l \right),
+        \end{flalign*} 
+        since
+        \begin{flalign*}
+            && N_l|\left( N_{l-1}=n, Y=0 \right)&\sim n+1+N_l, && \\ 
+            && N_l|\left( N_{l-1}=n, Y=1 \right)&\sim n+1.
+        \end{flalign*} 
+        This implies
+        \begin{equation*}
+            \EE\left( N_l \right) = \EE\left( \EE\left( N_l|N_{l-1} \right) \right) = \EE\left( N_{l-1} \right)+1+\left( 1-p \right)\EE\left( N_l \right),
+        \end{equation*}
+        so
+        \begin{equation}
+            \EE\left( N_l \right)= \frac{\EE\left( N_{l-1} \right)+1}{p}.
+        \end{equation}
+        Now the claim is that 
+        \begin{equation}
+            \EE\left( N_l \right)=\sum^{l}_{r=1}\frac{1}{p^r}.
+        \end{equation}
+        To verify this, note that the base case is provided by [2.14]. Moreover, for every $l\in\N, l\geq 2$,
+        \begin{equation*}
+            \EE\left( N_l \right) = \frac{\sum^{l-1}_{r=1} \frac{1}{p^r} + 1}{p} = \frac{1}{p} + \sum^{l-1}_{r=1} \frac{1}{p^{r+1}} = \sum^{l}_{r=1} \frac{1}{p^r}
+        \end{equation*}
+        by induction. Thus by [2.16],
+        \begin{equation*}
+            \EE\left( N_k \right)= \sum^{k}_{r=1} \frac{1}{p^r}. \eqqedsym
+        \end{equation*}
+    \end{subproof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
+    
+    
 
 
 \end{document}
