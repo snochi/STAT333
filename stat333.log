@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.3.9)  11 OCT 2021 19:14
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.3.9)  12 OCT 2021 02:37
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1197,17 +1197,210 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \TX@delta=\dimen179
 \TX@cols=\count289
 \TX@ftn=\toks28
-) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks29
+\pgfutil@tempdima=\dimen180
+\pgfutil@tempdimb=\dimen181
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box51
+ (/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+))
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+ (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks30
+\pgfkeys@temptoks=\toks31
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks32
+))
+\pgf@x=\dimen182
+\pgf@y=\dimen183
+\pgf@xa=\dimen184
+\pgf@ya=\dimen185
+\pgf@xb=\dimen186
+\pgf@yb=\dimen187
+\pgf@xc=\dimen188
+\pgf@yc=\dimen189
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count290
+\c@pgf@countb=\count291
+\c@pgf@countc=\count292
+\c@pgf@countd=\count293
+\t@pgf@toka=\toks33
+\t@pgf@tokb=\toks34
+\t@pgf@tokc=\toks35
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-xetex.def
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-xetex.def
+File: pgfsys-xetex.def 2014/07/09  (rcs-revision 1.11)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-dvipdfmx.def
+File: pgfsys-dvipdfmx.def 2014/07/09  (rcs-revision 1.14)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+)
+\pgfsys@objnum=\count294
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count295
+\pgfsyssoftpath@bigbuffer@items=\count296
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: xetex.def on input line 225.
+LaTeX Info: Redefining \color on input line 709.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen190
+\pgfmath@count=\count297
+\pgfmath@box=\box52
+\pgfmath@toks=\toks36
+\pgfmath@stack@operand=\toks37
+\pgfmath@stack@operation=\toks38
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count298
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen191
+\pgf@picmaxx=\dimen192
+\pgf@picminy=\dimen193
+\pgf@picmaxy=\dimen194
+\pgf@pathminx=\dimen195
+\pgf@pathmaxx=\dimen196
+\pgf@pathminy=\dimen197
+\pgf@pathmaxy=\dimen198
+\pgf@xx=\dimen199
+\pgf@xy=\dimen256
+\pgf@yx=\dimen257
+\pgf@yy=\dimen258
+\pgf@zx=\dimen259
+\pgf@zy=\dimen260
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen261
+\pgf@path@lasty=\dimen262
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen263
+\pgf@shorten@start@additional=\dimen264
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+\pgfpic=\box53
+\pgf@hbox=\box54
+\pgf@layerbox@main=\box55
+\pgf@picture@serial@count=\count299
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
+\pgflinewidth=\dimen265
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
+\pgf@pt@x=\dimen266
+\pgf@pt@y=\dimen267
+\pgf@pt@temp=\dimen268
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
+\pgfarrowsep=\dimen269
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen270
+\pgf@sys@shading@range@num=\count300
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+\pgfexternal@startupbox=\box56
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box57
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen271
+\pgf@nodesepend=\dimen272
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
+\pgffor@iter=\dimen273
+\pgffor@skip=\dimen274
+\pgffor@stack=\toks39
+\pgffor@toks=\toks40
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count301
+\pgfplotmarksize=\dimen275
+)
+\tikz@lastx=\dimen276
+\tikz@lasty=\dimen277
+\tikz@lastxsaved=\dimen278
+\tikz@lastysaved=\dimen279
+\tikzleveldistance=\dimen280
+\tikzsiblingdistance=\dimen281
+\tikz@figbox=\box58
+\tikz@figbox@bg=\box59
+\tikz@tempbox=\box60
+\tikz@tempbox@bg=\box61
+\tikztreelevel=\count302
+\tikznumberofchildren=\count303
+\tikznumberofcurrentchild=\count304
+\tikz@fig@count=\count305
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count306
+\pgfmatrixcurrentcolumn=\count307
+\pgf@matrix@numberofcolumns=\count308
+)
+\tikz@expandcount=\count309
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+))) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
-\ttl@box=\box51
+\ttl@box=\box62
 \beforetitleunit=\skip137
 \aftertitleunit=\skip138
-\ttl@plus=\dimen180
-\ttl@minus=\dimen181
-\ttl@toksa=\toks29
-\titlewidth=\dimen182
-\titlewidthlast=\dimen183
-\titlewidthfirst=\dimen184
+\ttl@plus=\dimen282
+\ttl@minus=\dimen283
+\ttl@toksa=\toks41
+\titlewidth=\dimen284
+\titlewidthlast=\dimen285
+\titlewidthfirst=\dimen286
 ) (/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
 Package tocloft Info: The document has chapter divisions on input line 51.
@@ -1240,29 +1433,15 @@ Package tocloft Info: The document has chapter divisions on input line 51.
 \cftbeforefigskip=\skip165
 \cftfigindent=\skip166
 \cftfignumwidth=\skip167
-\c@lofdepth=\count290
-\c@lotdepth=\count291
+\c@lofdepth=\count310
+\c@lotdepth=\count311
 \cftbeforelottitleskip=\skip168
 \cftafterlottitleskip=\skip169
 \cftbeforetabskip=\skip170
 \cfttabindent=\skip171
 \cfttabnumwidth=\skip172
-) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
- (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Driver file: xetex.def on input line 225.
-LaTeX Info: Redefining \color on input line 709.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
-) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
@@ -1271,58 +1450,58 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 Package: etoc 2018/02/23 v1.08n Completely customisable TOCs (JFB)
  (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
 Package: multicol 2017/04/11 v1.8q multicolumn formatting (FMi)
-\c@tracingmulticols=\count292
-\mult@box=\box52
-\multicol@leftmargin=\dimen185
-\c@unbalance=\count293
-\c@collectmore=\count294
-\doublecol@number=\count295
-\multicoltolerance=\count296
-\multicolpretolerance=\count297
-\full@width=\dimen186
-\page@free=\dimen187
-\premulticols=\dimen188
-\postmulticols=\dimen189
+\c@tracingmulticols=\count312
+\mult@box=\box63
+\multicol@leftmargin=\dimen287
+\c@unbalance=\count313
+\c@collectmore=\count314
+\doublecol@number=\count315
+\multicoltolerance=\count316
+\multicolpretolerance=\count317
+\full@width=\dimen288
+\page@free=\dimen289
+\premulticols=\dimen290
+\postmulticols=\dimen291
 \multicolsep=\skip173
 \multicolbaselineskip=\skip174
-\partial@page=\box53
-\last@line=\box54
-\maxbalancingoverflow=\dimen190
-\mult@rightbox=\box55
-\mult@grightbox=\box56
-\mult@gfirstbox=\box57
-\mult@firstbox=\box58
-\@tempa=\box59
-\@tempa=\box60
-\@tempa=\box61
-\@tempa=\box62
-\@tempa=\box63
-\@tempa=\box64
-\@tempa=\box65
-\@tempa=\box66
-\@tempa=\box67
-\@tempa=\box68
-\@tempa=\box69
+\partial@page=\box64
+\last@line=\box65
+\maxbalancingoverflow=\dimen292
+\mult@rightbox=\box66
+\mult@grightbox=\box67
+\mult@gfirstbox=\box68
+\mult@firstbox=\box69
 \@tempa=\box70
 \@tempa=\box71
 \@tempa=\box72
 \@tempa=\box73
 \@tempa=\box74
 \@tempa=\box75
-\c@columnbadness=\count298
-\c@finalcolumnbadness=\count299
-\last@try=\dimen191
-\multicolovershoot=\dimen192
-\multicolundershoot=\dimen193
-\mult@nat@firstbox=\box76
-\colbreak@box=\box77
-\mc@col@check@num=\count300
+\@tempa=\box76
+\@tempa=\box77
+\@tempa=\box78
+\@tempa=\box79
+\@tempa=\box80
+\@tempa=\box81
+\@tempa=\box82
+\@tempa=\box83
+\@tempa=\box84
+\@tempa=\box85
+\@tempa=\box86
+\c@columnbadness=\count318
+\c@finalcolumnbadness=\count319
+\last@try=\dimen293
+\multicolovershoot=\dimen294
+\multicolundershoot=\dimen295
+\mult@nat@firstbox=\box87
+\colbreak@box=\box88
+\mc@col@check@num=\count320
 )
-\Etoc@toctoks=\toks30
-\c@etoc@tocid=\count301
-\c@etoc@tocdepth=\count302
-\etoc@framed@titlebox=\box78
-\etoc@framed@contentsbox=\box79
+\Etoc@toctoks=\toks42
+\c@etoc@tocid=\count321
+\c@etoc@tocdepth=\count322
+\etoc@framed@titlebox=\box89
+\etoc@framed@contentsbox=\box90
 ) (/usr/share/texlive/texmf-dist/tex/latex/tools/bm.sty
 Package: bm 2017/01/16 v1.2c Bold Symbol Support (DPC/FMi)
 LaTeX Info: Redefining \bm on input line 207.
@@ -1331,39 +1510,39 @@ Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
  (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen194
-\captionmargin@=\dimen195
-\captionwidth=\dimen196
-\caption@tempdima=\dimen197
-\caption@indent=\dimen198
-\caption@parindent=\dimen199
-\caption@hangindent=\dimen256
+\captionmargin=\dimen296
+\captionmargin@=\dimen297
+\captionwidth=\dimen298
+\caption@tempdima=\dimen299
+\caption@indent=\dimen300
+\caption@parindent=\dimen301
+\caption@hangindent=\dimen302
 )
-\c@ContinuedFloat=\count303
+\c@ContinuedFloat=\count323
 Package caption Info: hyperref package is loaded.
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count304
-\lst@gtempboxa=\box80
-\lst@token=\toks31
-\lst@length=\count305
-\lst@currlwidth=\dimen257
-\lst@column=\count306
-\lst@pos=\count307
-\lst@lostspace=\dimen258
-\lst@width=\dimen259
-\lst@newlines=\count308
-\lst@lineno=\count309
-\lst@maxwidth=\dimen260
+\lst@mode=\count324
+\lst@gtempboxa=\box91
+\lst@token=\toks43
+\lst@length=\count325
+\lst@currlwidth=\dimen303
+\lst@column=\count326
+\lst@pos=\count327
+\lst@lostspace=\dimen304
+\lst@width=\dimen305
+\lst@newlines=\count328
+\lst@lineno=\count329
+\lst@maxwidth=\dimen306
  (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count310
-\lst@skipnumbers=\count311
-\lst@framebox=\box81
+\c@lstnumber=\count330
+\lst@skipnumbers=\count331
+\lst@framebox=\box92
 ) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2015/06/04 1.6 listings configuration
 ))
 Package: listings 2015/06/04 1.6 (Carsten Heinz)
-\g__fontspec_family_SerifaStd_int=\count312
+\g__fontspec_family_SerifaStd_int=\count332
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -1384,7 +1563,7 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 . Std/BI/OT:script=latn;language=DFLT;"
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
-\g__fontspec_family_UbuntuMono_int=\count313
+\g__fontspec_family_UbuntuMono_int=\count333
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -1405,7 +1584,7 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 . Mono/BI/OT:script=latn;language=DFLT;"
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
-\g__fontspec_family_ITCKabelStd_int=\count314
+\g__fontspec_family_ITCKabelStd_int=\count334
 .................................................
 . fontspec info: "no-font-shape"
 . 
@@ -1429,7 +1608,7 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 . Std/BI/OT:script=latn;language=DFLT;"
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
-\g__fontspec_family_ITCKabelStdBold_int=\count315
+\g__fontspec_family_ITCKabelStdBold_int=\count335
 .................................................
 . fontspec info: "no-font-shape"
 . 
@@ -1453,7 +1632,7 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 . Bold/BI/OT:script=latn;language=DFLT;"
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
-\g__fontspec_family_ITCAvantGardeGothicStd_int=\count316
+\g__fontspec_family_ITCAvantGardeGothicStd_int=\count336
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -1512,12 +1691,12 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 . \fontdimen 4\font =0\fontdimen 4\font \fontdimen 7\font =0\fontdimen 2\font
 . \tex_hyphenchar:D \font =-1\scan_stop: 
 .................................................
-LaTeX Info: Redefining \ttfamily on input line 103.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 103.
+LaTeX Info: Redefining \ttfamily on input line 104.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 104.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
-\g__fontspec_family_MinionPro_int=\count317
+\g__fontspec_family_MinionPro_int=\count337
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -1544,24 +1723,24 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: <->"Minion Pro Bold
 . Italic/OT:script=latn;language=DFLT;+smcp;mapping=tex-text;"
 .................................................
-LaTeX Info: Redefining \rmfamily on input line 104.
-\c@defncounter=\count318
-\c@parcounter=\count319
-LaTeX Info: Redefining \emph on input line 277.
+LaTeX Info: Redefining \rmfamily on input line 105.
+\c@defncounter=\count338
+\c@parcounter=\count339
+LaTeX Info: Redefining \emph on input line 278.
 \symXcmex=\mathgroup11
-\c@stcounter=\count320
-\c@corcounter=\count321
-\c@axcounter=\count322
-\c@algocounter=\count323
-\c@indentdepth=\count324
-\c@linenumber=\count325
+\c@stcounter=\count340
+\c@corcounter=\count341
+\c@axcounter=\count342
+\c@algocounter=\count343
+\c@indentdepth=\count344
+\c@linenumber=\count345
 ) (/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.sty
 Package: subfiles 2012/05/23 Federico Garcia
  (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks32
-\verbatim@line=\toks33
-\verbatim@in@stream=\read2
+\every@verbatim=\toks44
+\verbatim@line=\toks45
+\verbatim@in@stream=\read3
 )) (./stat333.aux)
 \openout1 = `stat333.aux'.
 
@@ -1630,30 +1809,31 @@ LaTeX Font Info:    ... okay on input line 30.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box82
+\AtBeginShipoutBox=\box93
 Package hyperref Info: Link coloring OFF on input line 30.
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count326
+\c@section@level=\count346
 )
 LaTeX Info: Redefining \ref on input line 30.
 LaTeX Info: Redefining \pageref on input line 30.
 LaTeX Info: Redefining \nameref on input line 30.
  (./stat333.out) (./stat333.out)
-\@outlinefile=\write3
-\openout3 = `stat333.out'.
+\@outlinefile=\write4
+\openout4 = `stat333.out'.
 
 Package marginnote Info: \pdfoutput not 0 or unimportant and
 (marginnote)             \pdflastxpos or \lastxpos available.
 (marginnote)             Extended position detection mode activated.
-\Etoc@tf=\read3
+ ABD: EveryShipout initializing macros
+\Etoc@tf=\read4
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count327
+\c@lstlisting=\count347
  (./0.tex
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: xetex
@@ -1728,8 +1908,8 @@ File: se-ascii-print.def 2016/05/16 v1.11 stringenc: Printable ASCII characters
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\tf@toc=\write4
-\openout4 = `stat333.toc'.
+\tf@toc=\write5
+\openout5 = `stat333.toc'.
 
 LaTeX Font Info:    Try loading font information for OT1+ztmcm on input line 19.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
@@ -2543,9 +2723,7 @@ Package marginnote Info: Margin note 27.1 is on absolute page 27
 Package marginnote Info: right page because not two side mode on input line 478.
 Package marginnote Info: xpos seems to be 128.0374pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 478.
-)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 38.
-
+) (./3.tex
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -2555,19 +2733,241 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 [23
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 38.
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: xetex
+* paper: <default>
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(56.9055pt, 500.484pt, 56.9055pt)
+* v-part:(T,H,B)=(56.9055pt, 681.15898pt, 56.9055pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=500.484pt
+* \textheight=681.15898pt
+* \oddsidemargin=-15.36449pt
+* \evensidemargin=-15.36449pt
+* \topmargin=-47.23828pt
+* \headheight=12.0pt
+* \headsep=19.8738pt
+* \topskip=11.0pt
+* \footskip=27.46295pt
+* \marginparwidth=93.89418pt
+* \marginparsep=5.69046pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+ [24
+
+
+]
+Chapter 3.
+[25]
+Package marginnote Info: Margin note 30.1 is on absolute page 30
+(marginnote)              on input line 10.
+Package marginnote Info: right page because not two side mode on input line 10.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 10.
+Package marginnote Info: Margin note 30.2 is on absolute page 30
+(marginnote)              on input line 13.
+Package marginnote Info: right page because not two side mode on input line 13.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 13.
+Package marginnote Info: Margin note 30.3 is on absolute page 30
+(marginnote)              on input line 16.
+Package marginnote Info: right page because not two side mode on input line 16.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 16.
+Package marginnote Info: Margin note 30.4 is on absolute page 30
+(marginnote)              on input line 19.
+Package marginnote Info: right page because not two side mode on input line 19.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 19.
+Package marginnote Info: Margin note 30.5 is on absolute page 30
+(marginnote)              on input line 27.
+Package marginnote Info: right page because not two side mode on input line 27.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 27.
+Package marginnote Info: Margin note 30.6 is on absolute page 30
+(marginnote)              on input line 37.
+Package marginnote Info: right page because not two side mode on input line 37.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 37.
+Package marginnote Info: Margin note 30.7 is on absolute page 30
+(marginnote)              on input line 43.
+Package marginnote Info: right page because not two side mode on input line 43.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 43.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[26
+
+
+]
+Package marginnote Info: Margin note 31.1 is on absolute page 31
+(marginnote)              on input line 59.
+Package marginnote Info: right page because not two side mode on input line 59.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 59.
+Package marginnote Info: Margin note 31.2 is on absolute page 31
+(marginnote)              on input line 67.
+Package marginnote Info: right page because not two side mode on input line 67.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 67.
+Package marginnote Info: Margin note 31.3 is on absolute page 31
+(marginnote)              on input line 74.
+Package marginnote Info: right page because not two side mode on input line 74.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 74.
+Package marginnote Info: Margin note 31.4 is on absolute page 31
+(marginnote)              on input line 101.
+Package marginnote Info: right page because not two side mode on input line 101.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 101.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[27
+
+]
+Package marginnote Info: Margin note 32.1 is on absolute page 32
+(marginnote)              on input line 113.
+Package marginnote Info: right page because not two side mode on input line 113.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 113.
+Package marginnote Info: Margin note 32.2 is on absolute page 32
+(marginnote)              on input line 123.
+Package marginnote Info: right page because not two side mode on input line 123.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 123.
+Package marginnote Info: Margin note 32.3 is on absolute page 32
+(marginnote)              on input line 157.
+Package marginnote Info: right page because not two side mode on input line 157.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 157.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[28
+
+]
+Package marginnote Info: Margin note 33.1 is on absolute page 33
+(marginnote)              on input line 187.
+Package marginnote Info: right page because not two side mode on input line 187.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 187.
+Package marginnote Info: Margin note 33.2 is on absolute page 33
+(marginnote)              on input line 202.
+Package marginnote Info: right page because not two side mode on input line 202.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 202.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[29]
+Package marginnote Info: Margin note 34.1 is on absolute page 35
+(marginnote)              on input line 302.
+Package marginnote Info: right page because not two side mode on input line 302.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 302.
+Package marginnote Info: Margin note 34.2 is on absolute page 35
+(marginnote)              on input line 305.
+Package marginnote Info: right page because not two side mode on input line 305.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 305.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[30]
+Package marginnote Info: Margin note 35.1 is on absolute page 35
+(marginnote)              on input line 312.
+Package marginnote Info: right page because not two side mode on input line 312.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 312.
+Package marginnote Info: Margin note 35.2 is on absolute page 35
+(marginnote)              on input line 319.
+Package marginnote Info: right page because not two side mode on input line 319.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 319.
+Package marginnote Info: Margin note 35.3 is on absolute page 35
+(marginnote)              on input line 337.
+Package marginnote Info: right page because not two side mode on input line 337.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 337.
+Package marginnote Info: Margin note 35.4 is on absolute page 35
+(marginnote)              on input line 344.
+Package marginnote Info: right page because not two side mode on input line 344.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 344.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[31]
+Package marginnote Info: Margin note 36.1 is on absolute page 36
+(marginnote)              on input line 374.
+Package marginnote Info: right page because not two side mode on input line 374.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 374.
+Package marginnote Info: Margin note 36.2 is on absolute page 36
+(marginnote)              on input line 390.
+Package marginnote Info: right page because not two side mode on input line 390.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 390.
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[32]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 39.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 39.
  (./stat333.aux)
-Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 38.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 38.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 38.
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 39.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 39.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 39.
  ) 
 Here is how much of TeX's memory you used:
- 27251 strings out of 494945
- 488396 string characters out of 6177498
- 626309 words of memory out of 5000000
- 30710 multiletter control sequences out of 15000+600000
- 571678 words of font info for 185 fonts, out of 8000000 for 9000
+ 36773 strings out of 494945
+ 696406 string characters out of 6177498
+ 803599 words of memory out of 5000000
+ 40022 multiletter control sequences out of 15000+600000
+ 571694 words of font info for 187 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 46i,18n,67p,10523b,798s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,18n,67p,10523b,798s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on stat333.pdf (27 pages).
+Output written on stat333.pdf (36 pages).
