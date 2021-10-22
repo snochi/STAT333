@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.3.9)  14 OCT 2021 14:55
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.3.9)  22 OCT 2021 02:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1584,7 +1584,29 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 . Mono/BI/OT:script=latn;language=DFLT;"
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
-\g__fontspec_family_ITCKabelStd_int=\count334
+\g__fontspec_family_UbuntuMonoItalic_int=\count334
+.................................................
+. fontspec info: "defining-font"
+. 
+. Font family 'UbuntuMonoItalic(0)' created for font 'Ubuntu Mono Italic' with
+. options [].
+.  
+.  This font family consists of the following NFSS series/shapes:
+.  
+. - 'normal' (m/n) with NFSS spec.: <->"Ubuntu Mono
+. Italic/OT:script=latn;language=DFLT;"
+. - 'small caps'  (m/sc) with NFSS spec.: 
+. - 'bold' (bx/n) with NFSS spec.: <->"Ubuntu Mono
+. Italic/B/OT:script=latn;language=DFLT;"
+. - 'bold small caps'  (bx/sc) with NFSS spec.: 
+. - 'italic' (m/it) with NFSS spec.: <->"Ubuntu Mono
+. Italic/I/OT:script=latn;language=DFLT;"
+. - 'italic small caps'  (m/itsc) with NFSS spec.: 
+. - 'bold italic' (bx/it) with NFSS spec.: <->"Ubuntu Mono
+. Italic/BI/OT:script=latn;language=DFLT;"
+. - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
+.................................................
+\g__fontspec_family_ITCKabelStd_int=\count335
 .................................................
 . fontspec info: "no-font-shape"
 . 
@@ -1608,7 +1630,7 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 . Std/BI/OT:script=latn;language=DFLT;"
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
-\g__fontspec_family_ITCKabelStdBold_int=\count335
+\g__fontspec_family_ITCKabelStdBold_int=\count336
 .................................................
 . fontspec info: "no-font-shape"
 . 
@@ -1632,7 +1654,7 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 . Bold/BI/OT:script=latn;language=DFLT;"
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: 
 .................................................
-\g__fontspec_family_ITCAvantGardeGothicStd_int=\count336
+\g__fontspec_family_ITCAvantGardeGothicStd_int=\count337
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -1691,12 +1713,12 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 . \fontdimen 4\font =0\fontdimen 4\font \fontdimen 7\font =0\fontdimen 2\font
 . \tex_hyphenchar:D \font =-1\scan_stop: 
 .................................................
-LaTeX Info: Redefining \ttfamily on input line 104.
-LaTeX Font Info:    Try loading font information for T1+ptm on input line 104.
+LaTeX Info: Redefining \ttfamily on input line 105.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 105.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 )
-\g__fontspec_family_MinionPro_int=\count337
+\g__fontspec_family_MinionPro_int=\count338
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -1723,17 +1745,17 @@ File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 . - 'bold italic small caps'  (bx/itsc) with NFSS spec.: <->"Minion Pro Bold
 . Italic/OT:script=latn;language=DFLT;+smcp;mapping=tex-text;"
 .................................................
-LaTeX Info: Redefining \rmfamily on input line 105.
-\c@defncounter=\count338
-\c@parcounter=\count339
-LaTeX Info: Redefining \emph on input line 278.
+LaTeX Info: Redefining \rmfamily on input line 106.
+\c@defncounter=\count339
+\c@parcounter=\count340
+LaTeX Info: Redefining \emph on input line 279.
 \symXcmex=\mathgroup11
-\c@stcounter=\count340
-\c@corcounter=\count341
-\c@axcounter=\count342
-\c@algocounter=\count343
-\c@indentdepth=\count344
-\c@linenumber=\count345
+\c@stcounter=\count341
+\c@corcounter=\count342
+\c@axcounter=\count343
+\c@algocounter=\count344
+\c@indentdepth=\count345
+\c@linenumber=\count346
 ) (/usr/share/texlive/texmf-dist/tex/latex/subfiles/subfiles.sty
 Package: subfiles 2012/05/23 Federico Garcia
  (/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
@@ -1816,7 +1838,7 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count346
+\c@section@level=\count347
 )
 LaTeX Info: Redefining \ref on input line 30.
 LaTeX Info: Redefining \pageref on input line 30.
@@ -1833,7 +1855,7 @@ Package marginnote Info: \pdfoutput not 0 or unimportant and
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count347
+\c@lstlisting=\count348
  (./0.tex
 *geometry* verbose mode - [ newgeometry ] result:
 * driver: xetex
@@ -3169,7 +3191,23 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[42])
+[42]
+Package marginnote Info: Margin note 47.1 is on absolute page 47
+(marginnote)              on input line 1036.
+Package marginnote Info: right page because not two side mode on input line 1036.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1036.
+Package marginnote Info: Margin note 47.2 is on absolute page 47
+(marginnote)              on input line 1038.
+Package marginnote Info: right page because not two side mode on input line 1038.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1038.
+Package marginnote Info: Margin note 47.3 is on absolute page 47
+(marginnote)              on input line 1040.
+Package marginnote Info: right page because not two side mode on input line 1040.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1040.
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -3177,6 +3215,94 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [43]
+Package marginnote Info: Margin note 48.1 is on absolute page 48
+(marginnote)              on input line 1076.
+Package marginnote Info: right page because not two side mode on input line 1076.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1076.
+Package marginnote Info: Margin note 48.2 is on absolute page 48
+(marginnote)              on input line 1091.
+Package marginnote Info: right page because not two side mode on input line 1091.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1091.
+Package marginnote Info: Margin note 48.3 is on absolute page 48
+(marginnote)              on input line 1110.
+Package marginnote Info: right page because not two side mode on input line 1110.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1110.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[44]
+Package marginnote Info: Margin note 49.1 is on absolute page 49
+(marginnote)              on input line 1120.
+Package marginnote Info: right page because not two side mode on input line 1120.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1120.
+Package marginnote Info: Margin note 49.2 is on absolute page 49
+(marginnote)              on input line 1124.
+Package marginnote Info: right page because not two side mode on input line 1124.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1124.
+Package marginnote Info: Margin note 49.3 is on absolute page 49
+(marginnote)              on input line 1129.
+Package marginnote Info: right page because not two side mode on input line 1129.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1129.
+Package marginnote Info: Margin note 49.4 is on absolute page 49
+(marginnote)              on input line 1133.
+Package marginnote Info: right page because not two side mode on input line 1133.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1133.
+Package marginnote Info: Margin note 49.5 is on absolute page 49
+(marginnote)              on input line 1140.
+Package marginnote Info: right page because not two side mode on input line 1140.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1140.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[45
+
+]
+Package marginnote Info: Margin note 50.1 is on absolute page 50
+(marginnote)              on input line 1170.
+Package marginnote Info: right page because not two side mode on input line 1170.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1170.
+Package marginnote Info: Margin note 50.2 is on absolute page 50
+(marginnote)              on input line 1174.
+Package marginnote Info: right page because not two side mode on input line 1174.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1174.
+Package marginnote Info: Margin note 50.3 is on absolute page 50
+(marginnote)              on input line 1182.
+Package marginnote Info: right page because not two side mode on input line 1182.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1182.
+Package marginnote Info: Margin note 50.4 is on absolute page 50
+(marginnote)              on input line 1184.
+Package marginnote Info: right page because not two side mode on input line 1184.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1184.
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[46
+
+]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 39.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 39.
  (./stat333.aux)
@@ -3185,12 +3311,12 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 39.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 39.
  ) 
 Here is how much of TeX's memory you used:
- 36844 strings out of 494945
- 697298 string characters out of 6177498
- 804149 words of memory out of 5000000
- 40091 multiletter control sequences out of 15000+600000
- 571710 words of font info for 189 fonts, out of 8000000 for 9000
+ 36901 strings out of 494945
+ 698448 string characters out of 6177498
+ 805831 words of memory out of 5000000
+ 40139 multiletter control sequences out of 15000+600000
+ 571726 words of font info for 191 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  62i,18n,67p,10523b,798s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on stat333.pdf (47 pages).
+Output written on stat333.pdf (50 pages).

@@ -1033,6 +1033,184 @@
         \end{equation}
     \end{eqbox} 
 
+    \section{Limiting Behaviors of DTMCs}
+
+    \np[Motivation]The concepts of periodicity and recurrence play an important role in characterizing the limiting behavior of a DTMC. That is, we desire to determine the behavior of the DTMC $\left( X_{n} \right)^{\infty}_{n=1}$ as $n\to\infty$.
+
+    \begin{prop}{}
+        For any state $i,j$ of a DTMC, if $j$ is transient, then
+        \begin{equation*}
+            \lim_{n\to\infty} P^{\left( n \right)}_{i,j} = 0.
+        \end{equation*}
+    \end{prop}
+
+    \begin{proof}
+        Recall that
+        \begin{equation*}
+            f_{i,j}^{\left( n \right)} = \PP\left( X_n=j, \forall m\in\left\lbrace n-1,\ldots,1 \right\rbrace\left[ X_m\neq j \right]|X_0=i \right)
+        \end{equation*}
+        and that
+        \begin{equation*}
+            f_{i,j} = \PP\left( \exists n\in\N \left[ X_n = j \right] | X_0=i \right).
+        \end{equation*}
+        These quantities are related by
+        \begin{equation*}
+            f_{i,j} = \sum^{\infty}_{n=1} f^{\left( n \right)}_{i,j}.
+        \end{equation*}
+        Moreover, 
+        \begin{equation*}
+            P^{\left( n \right)}_{i,j} = \sum^{n}_{k=1} f^{\left( k \right)}_{i,j}P^{\left( n-k \right)}_{j,j}.
+        \end{equation*}
+        This means
+        \begin{flalign*}
+            && \sum^{\infty}_{n=1} P^{\left( n \right)}_{i,j} & = \sum^{\infty}_{n=1} \sum^{n}_{k=1} f^{\left( k \right)}_{i,j}P^{\left( n-k \right)}_{j,j} = \sum^{\infty}_{k=1} \sum^{\infty}_{n=k} f^{\left( k \right)}_{i,j} P^{\left( n-k \right)}_{j,j} && \\
+            && & = \sum^{\infty}_{k=1} f^{\left( k \right)}_{i,j} \sum^{\infty}_{n=k} P^{\left( n-k \right)}_{j,j} = \sum^{\infty}_{k=1} f^{\left( k \right)}_{i,j} \sum^{\infty}_{l=0} P^{\left( l \right)}_{j,j} && \\
+            && & = f_{i,j} \left( 1 + \sum^{\infty}_{l=1} P^{\left( l \right)}_{j,j} \right) .
+        \end{flalign*} 
+        But note that $\sum^{\infty}_{l=1} P^{\left( l \right)}_{j,j}$ is convergent, as $j$ is transient. It follows that $\sum^{\infty}_{n=1} P^{\left( n \right)}_{i,j}$ is also convergent, which implies
+        \begin{equation*}
+            \lim_{n\to\infty} P^{\left( n \right)}_{i,j} = 0. \eqedsym
+        \end{equation*}
+    \end{proof}
+
+    \np[Mean Recurrent Time]It is worthwhile to determine a set of conditions which ensure the \textit{nice} limiting behavior. To ascertain when such conditions exist, we need to distinguish between two kinds of recurrences. Suppose that we are given a DTMC $\left( X_{n} \right)^{\infty}_{n=1}$ and let
+    \begin{equation*}
+        N_i = \min\left\lbrace n\in\N: X_n=i \right\rbrace
+    \end{equation*}
+    for all recurrent state $i$. Clearly the conditional random variable $N_i|\left( X_0=i \right)$ takes on values in $\N$. Moreover, the conditional pmf is given by
+    \begin{equation*}
+        p_{N_i|X_0}\left( n|i \right) = \PP\left( N_i=n|X_0=i \right) = f^{\left( n \right)}_{i,i}
+    \end{equation*}
+    for all $n\in\N$. We observe that this indeed is a pmf since
+    \begin{equation*}
+        \sum^{\infty}_{n=1} f^{\left( n \right)}_{i,i} = f_{i,i} = 1,
+    \end{equation*}
+    as $i$ is recurrent. This leads to the introduction of the following important quantity.
+
+    \begin{definition}{Mean Recurrent Time}{of a Recurrent State}
+        Consider the setting of (3.28). We define the \emph{mean recurrent time} of $i$, denoted as $m_i$, by
+        \begin{equation*}
+            m_i = \EE\left( N_i|X_0=i \right).
+        \end{equation*}
+    \end{definition}
+
+    \noindent It is immediate from the construction that the following equation holds:
+    \begin{eqbox}[Formula for $m_i$]
+        \begin{equation}
+            m_i = \sum^{\infty}_{n=1} nf^{\left( n \right)}_{i,i}.
+        \end{equation}
+    \end{eqbox} 
+    \begin{enumerate}
+        \item Note that we may have $m_i=\infty$, in case the right-hand-side of [3.11] diverges to infinity. 
+        \item In words, $m_i$ represents the \textit{average time} it takes the DTMC to make successive visits to state $i$. 
+    \end{enumerate}
+    Two notions of recurrence can now be defined based on the value of $m_i$.
+
+    \begin{definition}{Positive, Null}{Recurrence}
+        Let $i$ be a recurrent state of a DTMC. We say $i$ is
+        \begin{enumerate}
+            \item \emph{positive} recurrent if $m_i<\infty$; and
+            \item \emph{null} recurrent if $m_i=\infty$.
+        \end{enumerate}
+    \end{definition}
+
+    \noindent We shall admit the following facts about positive and null recurrences without any proof, as their proof is lengthy and beyond the scope of this note.
+
+    \clearpage
+    \begin{fact}{}
+        Positive recurrence is a class property. That is, given states $i,j$ that communicate, $i$ is positive recurrent if and only if $j$ is.
+    \end{fact}
+
+    \begin{fact}{}
+        Every recurrent state in a finite-state DTMC is positive recurrent.
+    \end{fact}
+
+    \begin{definition}{Ergodic}{State}
+        A state of a DTMC is called \emph{ergodic} if positive recurrent and aperiodic.
+    \end{definition}
+
+    \begin{definition}{Stationary Distribution}{of a DTMC}
+        Let $p:\N\cup\left\lbrace 0 \right\rbrace\to\left[ 0,1 \right]$ be a pmf. We say $p$ is a \emph{stationary distribution} (or \emph{invariant distribution}, \emph{steady-state distribution}) of a DTMC if
+        \begin{equation*}
+            p\left( j \right) = \sum^{\infty}_{i=0} p\left( i \right)P_{i,j}
+        \end{equation*}
+        for all $j\in\N\cup\left\lbrace 0 \right\rbrace$.\footnote{We usually denote $p$ as a sequence: $p=\left( p_{i} \right)^{\infty}_{i=0}$.}
+    \end{definition}
+
+    \np[Stationary Distribution]Suppose that $p$ is a stationary distribution of a DTMC.
+    \begin{enumerate}
+        \item If we use the notation
+            \begin{equation*}
+                p = \left( p_{i} \right)^{\infty}_{i=0},
+            \end{equation*}
+            then Def'n 3.16 can be represented in matrix form as
+            \begin{flalign*}
+                && p^{T}e & = 1 && \\ 
+                && p^{T} & = p^{T}P,
+            \end{flalign*}
+            where $e=\left( 1 \right)^\infty_{i=0}$ denotes the sequence whose terms are all $1$.\footnote{We shall use column notation for vectors. That is, whenever we are using sequences as vectors, we are using them as \textit{column} vectors.}
+        \item Suppose that the initial conditions of the DTMC $\left( X_{n} \right)^{\infty}_{n=0}$ are given by
+            \begin{equation*}
+                \alpha_0 = p.
+            \end{equation*}
+            As a result, we have that
+            \begin{equation*}
+                \alpha_{0,j} = \PP\left( X_0=j \right) = p_j
+            \end{equation*}
+            for all $j\in\N\cup\left\lbrace 0 \right\rbrace$. Now, for any $j\in\N\cup\left\lbrace 0 \right\rbrace$, note that
+            \begin{equation*}
+                \alpha_{1,j} = \PP\left( X_1=j \right) = \sum^{\infty}_{i=0}\alpha_{0,i} P_{i,j} = \sum^{\infty}_{i=0}p_iP_{i,j} = p_j = \alpha_{0,j}.
+            \end{equation*}
+            This indicates $X_1\sim X_0$, when the initial conditions are set by a stationary distribution. It follows inductively that each $X_i$, $i\in\N$, is identically distributed to $X_0$. In words, if a DTMC is started according to a stationary distribution, then the probability of being in a given state remains unchanged (i.e. stationary) over time. This explains the nomenclature \textit{stationary}.
+        \item Stationary distribution is not necessarily unique. This happens when a DTMC has more than one positive recurrent communication class. In particular, some examples have an \textit{infinite} number of stationary distributions.
+    \end{enumerate}
+    We are also going to accept the following known facts without any formal justification.
+
+    \clearpage
+    \begin{fact}{}
+        If a DTMC does not have a positive recurrent state, then there is no stationary distribution.
+    \end{fact}
+
+    \begin{fact}{}
+        Given any irreducible DTMC, the following are equivalent.
+        \begin{enumerate}
+            \item The DTMC is positive recurrent.
+            \item There exists a stationary distribution of the DTMC.
+        \end{enumerate}
+    \end{fact}
+
+    \np[Basic Limit Theorem]We are now in position to state the fundamental limiting theorem for DTMCs, generally referred to as the \textit{basic limit theorem}.
+
+    \begin{theorem}{Basic Limit Theorem (BLT)}
+        Let $\left( X_{n} \right)^{\infty}_{n=0}$ be a DTMC. If $\left( X_{n} \right)^{\infty}_{n=0}$ is irreducible, recurrent, and aperiodic, then
+        \begin{equation*}
+            \lim_{n\to\infty} P^{\left( n \right)}_{i,j} = \frac{1}{m_j}
+        \end{equation*}
+        for all $i,j\in\N\cup\left\lbrace 0 \right\rbrace$. Furthermore, if the recurrence is positive, then $\left( \pi_{j} \right)^{\infty}_{j=0} = \left( \frac{1}{m_j} \right)^{\infty}_{j=0}$ is the unique positive solution to the system of linear equations defined by\footnote{For the definition of $m_j$, the mean recurrent time, see Def'n 3.13.}
+        \begin{flalign*}
+            && \pi_j & = \sum^{\infty}_{i=0}\pi_i P_{i,j} \hspace{2cm}\forall j\in\N\cup\left\lbrace 0 \right\rbrace && \\ 
+            && \sum^{\infty}_{j=0} \pi_j & = 1,
+        \end{flalign*}
+    \end{theorem}
+
+    \noindent A formal proof of the BLT is beyond the scope of this note. But here are some remarks.
+    \begin{enumerate}
+        \item If we denote $\pi=\left( \pi_{j} \right)^{\infty}_{j=0}$, then the system of linear inequalities in the BLT can be succintly written as
+            \begin{flalign*}
+                && \pi^{T} & = \pi^{T} P && \\ 
+                && \pi^{T}e & = 1. 
+            \end{flalign*}
+            In particular, if a DTMC is irreducible and ergodic, then the BLT states that the limiting probability distribution is the unique stationary distribution.
+        \item When a DTMC has a finite number of states, say $N+1\in\N$ states, the system
+            \begin{flalign*}
+                && \pi^{T} & = \pi^{T} P && \\ 
+                && \pi^{T}e & = 1
+            \end{flalign*}
+            has $N+2$ equations but $N+1$ indeterminates, of which a unique solution must exist. In fact, the first $N+1$ equations (i.e. $\pi^{T}=\pi^{T}P$) are linearly dependent, so we can \textit{drop any one} of the equations and solve the remaining system to obtain the unique solution.
+        \item If the conditions of the BLT are satisfied and state $j$ is null recurrent, then $\pi_j = 0$, interestingly similar to the limiting behavior of a transient state.
+    \end{enumerate}
+
+    
 
 
 
@@ -1061,8 +1239,10 @@
 
 
 
-
-
+    
+    
+    
+    
     
     
     

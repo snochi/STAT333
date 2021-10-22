@@ -18,3 +18,4 @@
 \contentsline {section}{\numberline {3.3}Periodicity}{33}{section.3.3}
 \contentsline {section}{\numberline {3.4}Transience and Recurrence}{36}{section.3.4}
 \contentsline {section}{\numberline {3.5}Random Walk}{40}{section.3.5}
+\contentsline {section}{\numberline {3.6}Limiting Behaviors of DTMCs}{43}{section.3.6}
