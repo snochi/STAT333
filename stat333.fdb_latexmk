@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1634885598 "stat333.tex" "stat333.pdf" "stat333" 1634885599
+["pdflatex"] 1635051197 "stat333.tex" "stat333.pdf" "stat333" 1635051199
   "/etc/texmf/web2c/texmf.cnf" 1568822486 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/nanachi/texmf/tex/latex/commonstuff/minimal.sty" 1634864226 19629 f44e1ce8c31f5b773effd56a13dda917 ""
   "/home/nanachi/texmf/tex/latex/commonstuff/solmathsym.sty" 1634801003 9211 3c310201935873a27ef9a304f1a2e5d3 ""
@@ -197,14 +197,14 @@
   "0.tex" 1632777233 404 3cb6626b6d97098ce6cf6f8f514caa16 ""
   "1.tex" 1632593506 31279 e539e197de5550cc52b2b752103906d2 ""
   "2.tex" 1633994085 31108 1ef8ca57bd3372a8d19893204eb03ef5 ""
-  "3.tex" 1634885596 65577 b2bfce697d1cbafc25c02e5cfbf8db44 ""
-  "stat333.aux" 1634885599 11590 b45883f5b5dc9c0ba1545d4e09a067a9 ""
-  "stat333.out" 1634885599 1126 03c257f1d67b2b7bb8105034b6b8bdea ""
+  "3.tex" 1635051196 72503 4b7cb3b266eda3977b262102dc1d64a8 ""
+  "stat333.aux" 1635051199 11949 128b1e5fa98e0f7b7cbdf6660d86dc0b ""
+  "stat333.out" 1635051199 1126 03c257f1d67b2b7bb8105034b6b8bdea ""
   "stat333.tex" 1634001124 852 74e632e0bf732a850cbe7efc49a8bce5 ""
-  "stat333.toc" 1634885599 1544 4f9bc30e47f610857536e2271ca47fc4 ""
+  "stat333.toc" 1635051199 1544 4f9bc30e47f610857536e2271ca47fc4 ""
   (generated)
+  "stat333.log"
   "stat333.aux"
   "stat333.out"
-  "stat333.log"
   "stat333.toc"
   "stat333.pdf"

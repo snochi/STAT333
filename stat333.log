@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.3.9)  22 OCT 2021 02:53
+This is XeTeX, Version 3.14159265-2.6-0.99998 (TeX Live 2017/Debian) (preloaded format=xelatex 2021.3.9)  24 OCT 2021 00:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -3293,7 +3293,7 @@ Package marginnote Info: Margin note 50.4 is on absolute page 50
 Package marginnote Info: right page because not two side mode on input line 1184.
 Package marginnote Info: xpos seems to be 128.0374pt,
 (marginnote)             \marginnoteleftadjust ignored on input line 1184.
-)
+
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
  Make it at least 13.59999pt.
@@ -3301,6 +3301,59 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  This may cause the page layout to be inconsistent, however.
 
 [46
+
+]
+Package marginnote Info: Margin note 51.1 is on absolute page 51
+(marginnote)              on input line 1214.
+Package marginnote Info: right page because not two side mode on input line 1214.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1214.
+Package marginnote Info: Margin note 51.2 is on absolute page 51
+(marginnote)              on input line 1245.
+Package marginnote Info: right page because not two side mode on input line 1245.
+Package marginnote Info: xpos seems to be 142.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1245.
+Package marginnote Info: Margin note 51.3 is on absolute page 51
+(marginnote)              on input line 1248.
+Package marginnote Info: right page because not two side mode on input line 1248.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1248.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[47
+
+]
+Package marginnote Info: Margin note 52.1 is on absolute page 52
+(marginnote)              on input line 1277.
+Package marginnote Info: right page because not two side mode on input line 1277.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1277.
+
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[48]
+Package marginnote Info: Margin note 53.1 is on absolute page 53
+(marginnote)              on input line 1311.
+Package marginnote Info: right page because not two side mode on input line 1311.
+Package marginnote Info: xpos seems to be 128.0374pt,
+(marginnote)             \marginnoteleftadjust ignored on input line 1311.
+)
+
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 13.59999pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[49
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 39.
@@ -3311,12 +3364,12 @@ Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 39.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 39.
  ) 
 Here is how much of TeX's memory you used:
- 36901 strings out of 494945
- 698448 string characters out of 6177498
- 805831 words of memory out of 5000000
- 40139 multiletter control sequences out of 15000+600000
+ 36912 strings out of 494945
+ 698544 string characters out of 6177498
+ 805940 words of memory out of 5000000
+ 40150 multiletter control sequences out of 15000+600000
  571726 words of font info for 191 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
  62i,18n,67p,10523b,798s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on stat333.pdf (50 pages).
+Output written on stat333.pdf (53 pages).
