@@ -19,3 +19,10 @@
 \contentsline {section}{\numberline {3.4}Transience and Recurrence}{36}{section.3.4}
 \contentsline {section}{\numberline {3.5}Random Walk}{40}{section.3.5}
 \contentsline {section}{\numberline {3.6}Limiting Behaviors of DTMCs}{43}{section.3.6}
+\contentsline {section}{\numberline {3.7}Galton-Watson Branching Process}{49}{section.3.7}
+\contentsline {section}{\numberline {3.8}Gambler's Ruin}{52}{section.3.8}
+\contentsline {chapter}{\numberline {4}Poisson Processes}{55}{chapter.4}
+\etoc@startlocaltoc {5}
+\contentsline {section}{\numberline {4.1}Exponential Distribution}{56}{section.4.1}
+\contentsline {section}{\numberline {4.2}Poisson Processes}{64}{section.4.2}
+\contentsline {section}{\numberline {4.3}Generalizations of Poisson Processes}{77}{section.4.3}

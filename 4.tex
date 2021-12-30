@@ -1,0 +1,1069 @@
+\documentclass[stat333]{subfiles}
+
+%% ========================================================
+%% document
+
+\begin{document}
+
+    \chap{Poisson Processes}
+
+    \section{Exponential Distribution}
+    
+    \np If a random variable $X$ has an exponential distribution with parameter $\lambda>0$ (i.e. $X\sim\expdis\left( \lambda \right)$, where $\lambda$ is often referred to as the \textit{rate}), then we have the following basic distributional results in place:
+    \begin{equation*}
+        \begin{aligned}
+            \text{pdf:} && f_X\left( x \right) & = \lambda e^{-\lambda x} && \forall x>0 \\
+            \text{cdf:} && F_X\left( x \right) & = 1-e^{-\lambda x} && \forall x\geq 0 \\
+            \text{mgf:} && \varphi_X\left( t \right) & = \frac{\lambda}{\lambda-t} && \forall t<\lambda \\
+            \text{mean:} && \EE\left( X \right) & = \frac{1}{\lambda} && \\
+            \text{variance:} && \var\left( X \right) & = \frac{1}{\lambda^{2}}
+        \end{aligned} .
+    \end{equation*}
+
+    \np[Minimum of Independent Exponentials]Let $\left( X_{i} \right)^{n}_{i=1}$ be a finite sequence of independent random variables with
+    \begin{equation*}
+        X_i\sim\expdis\left( \lambda_i \right)
+    \end{equation*}
+    for all $i\in\left\lbrace 1,\ldots,n \right\rbrace$. Let
+    \begin{equation*}
+        Y = \min\left( X_1,\ldots,X_n \right),
+    \end{equation*}
+    the \textit{smallest order statistic} of $\left( X_{i} \right)^{n}_{i=1}$. Clearly, $Y$ takes on possible values in the state space $\mS = \left( 0,\infty \right)$. To determine the distribution of $Y$, consider the tpf of $Y$: for all $y\geq 0$,
+    \begin{flalign*}
+        && \overline{F}_Y\left( y \right) & = \PP\left( Y>y \right) && \\ 
+        && & = \PP\left( \min\left( X_1,\ldots,X_n \right)>y \right) && \\
+        && & = \PP\left( X_1>y,\ldots,X_n>y \right) && \\
+        && & = \prod^{n}_{i=1}\PP\left( X_i>y \right) && \text{by independence} \\
+        && & = \prod^{n}_{i=1} e^{-\lambda_i y} && \\
+        && & = e^{-\sum^{n}_{i=1}\lambda_n y}.
+    \end{flalign*}
+    That is, the tpf of $Y$ is the tpf of an $\expdis\left( \sum^{n}_{i=1}\lambda_i \right)$ random variable. Thus,
+    \begin{equation*}
+        Y \sim \expdis\left( \sum^{n}_{i=1}\lambda_i \right).
+    \end{equation*}
+    When $X_1,\ldots,X_n$ are iid with the common rate $\lambda>0$, then this simplifies to
+    \begin{equation*}
+        Y \sim \expdis\left( n\lambda \right).
+    \end{equation*}
+
+    \ex Let $\left( X_{i} \right)^{n}_{i=1}$ be a sequence of independent random variables, where
+    \begin{equation*}
+        X_i \sim\expdis\left( \lambda_i \right)
+    \end{equation*}
+    for all $i\in\left\lbrace 1,\ldots,n \right\rbrace$.
+
+    \begin{enumerate}
+        \item For each $j\in\left\lbrace 1,\ldots,n \right\rbrace$, determine $\PP\left( X_j=\min\left( X_1,\ldots,X_n \right) \right)$.
+
+            \begin{subproof}[Answer]
+                Note that
+                \begin{flalign*}
+                    && \PP\left( X_j = \min\left( X_1,\ldots,X_n \right) \right) & = \PP\left( \forall i\in\left\lbrace 1,\ldots,n \right\rbrace\setminus \left\lbrace j \right\rbrace\left[ X_j<X_i \right] \right) && \\ 
+                    && & = \int^{\infty}_{0}\PP\left( \forall i\in\left\lbrace 1,\ldots,n \right\rbrace\setminus \left\lbrace j \right\rbrace\left[ X_i>x \right] | X_j=x \right)\lambda_j e^{-\lambda_j x}\dx && \\
+                    && & = \int^{\infty}_{0} \PP\left( \forall i\in\left\lbrace 1,\ldots,n \right\rbrace\setminus \left\lbrace j \right\rbrace\left[ X_i>x \right] \right)\lambda_je^{-\lambda_jx}\dx && \\
+                    && & = \int^{\infty}_{0} \prod^{n}_{i=1,i\neq j}\PP\left( X_i>x \right)\lambda_je^{-\lambda_jx} \dx && \\
+                    && & = \int^{\infty}_{0} \prod^{n}_{i=1,i\neq j} e^{-\lambda_i x}\lambda_j e^{-\lambda_jx}\dx && \\
+                    && & = \frac{\lambda_j}{\sum^{n}_{i=1}\lambda_i}\int^{\infty}_{0} \sum^{n}_{i=1}\lambda_i e^{-\sum^{n}_{i=1}\lambda_ix}\dx && \\ 
+                    && & = \frac{\lambda_j}{\sum^{n}_{i=1}\lambda_i} \int^{\infty}_{0} p_Y\left( x \right)\dx && \\
+                    && & = \frac{\lambda_j}{\sum^{n}_{i=1}\lambda_i}
+                \end{flalign*}
+                where the third equality is obtained by conditioning on $X_j$, fourth equality is obtained by the fact that $X_j$ is independent of $\left( X_{i} \right)^{n}_{i=1,i\neq j}$, and the second last equality is by defining $Y\sim\expdis\left( \sum^{n}_{i=1}\lambda_i \right)$.
+                
+                Thus we conclude
+                \begin{equation*}
+                    \PP\left( X_j=\min\left( X_1,\ldots,X_n \right) \right) = \frac{\lambda_j}{\sum^{n}_{i=1}\lambda_i}. \eqqedsym
+                \end{equation*}
+            \end{subproof}
+
+        \item Show that the conditional random variable $X_1|\left( X_1<\cdots<X_n \right)$ is identically distributed to the random variable $\min\left( X_1,\ldots,X_n \right)$.
+
+            \begin{subproof}
+                Let
+                \begin{equation*}
+                    Y = X_1|\left( X_1<\cdots<X_n \right)
+                \end{equation*}
+                for convenience. Then for all $y\geq 0$,
+                \begin{flalign*}
+                    && \overline{F}_Y\left( y \right) & = \PP\left( X_1>y|X_1<\cdots<X_n \right) && \\ 
+                    && & = \frac{\PP\left( y<X_1<\cdots<X_n \right)}{\PP\left( X_1<\cdots<X_n \right)}.
+                \end{flalign*}
+                Note that
+                \begin{flalign*}
+                    && \PP\left( y<X_1<\cdots<X_n \right) & = \int^{\infty}_{y} \int^{\infty}_{X_1} \cdots \int^{\infty}_{X_{n-1}} \prod^{n}_{i=1}\lambda_ie^{-\lambda_ix_i}\dx_n\cdots\dx_1 && \\ 
+                    && & = \prod^{n-1}_{i=1}\lambda_i \int^{\infty}_{y} e^{-\lambda_1x_1} \int^{\infty}_{X_1} e^{-\lambda_2x_2} \cdots \int^{\infty}_{X_{n-1}} \lambda_n e^{-\lambda_nx_n} \dx_n\cdots\dx_1 && \\
+                    && & = \cdots && \\
+                    && & = \frac{\prod^{n-1}_{i=1}\lambda_i}{\prod^{n-1}_{i=1}\sum^{n}_{j=1}\lambda_j}e^{-\sum^{n}_{i=1}\lambda_iy}.
+                \end{flalign*}
+                But by letting $y=0$, we obtain $\PP\left( X_1<\cdots<X_n \right)$; that is,
+                \begin{equation*}
+                    \PP\left( X_1<\cdots<X_n \right) = \frac{\prod^{n-1}_{i=1}\lambda_i}{\prod^{n-1}_{i=1}\sum^{n}_{j=1}\lambda_j}.
+                \end{equation*}
+                Thus
+                \begin{equation*}
+                    \overline{F}_Y\left( y \right) = e^{-\sum^{n}_{i=1}\lambda_iy}
+                \end{equation*}
+                for all $y\geq 0$, which is the tpf of an $\expdis\left( \sum^{n}_{i=1}X_i \right)$ random variable. Since 
+                \begin{equation*}
+                    \min\left( X_1,\ldots,X_n \right)\sim\expdis\left( \sum^{n}_{i=1}X_i \right)
+                \end{equation*}
+                from (4.2), it follows that
+                \begin{equation*}
+                    X_1|\left( X_1<\cdots<X_n \right) = Y \sim \min\left( X_1,\ldots,X_n \right). \eqqedsym
+                \end{equation*}
+            \end{subproof}
+    \end{enumerate}
+
+    \noindent In case when $n=2$, note that the result from part (a) simplifies to become
+    \begin{equation*}
+        \PP\left( X_1=\min\left( X_1,X_2 \right) \right) = \PP\left( X_1<X_2 \right) = \frac{\lambda_1}{\lambda_1+\lambda_2}.
+    \end{equation*}
+    Interestingly, looking at the derivation in part (b), we see that
+    \begin{equation*}
+        \PP\left( X_1<\cdots<X_n \right) = \prod^{n-1}_{i=1} \frac{\lambda_1}{\sum^{n}_{j=i}\lambda_j} = \prod^{n-1}_{i=1}\PP\left( X_i=\min\left( X_i,\ldots,X_n \right) \right).
+    \end{equation*}
+
+    \begin{definition}{Memoryless}{Random Variable}
+        Let $X$ be a random variable. If
+        \begin{equation*}
+            \PP\left( X>y+z|X>y \right) = \PP\left( X>z \right)
+        \end{equation*}
+        for all $y,z\geq 0$, then we say $X$ is \emph{memoryless}.
+    \end{definition}
+
+    \np[Memoryless Property]Note that if we express $\PP\left( X>y+z|X>y \right)$ as $\PP\left( X-y>z|X>y \right)$ and think of $X$ as being the lifetime of some component, then the memoryless property states that the \textit{distribution of the remaining lifetime is independent of the time the component has already lasted}. In other words, such a probability distribution is independent of its history.
+
+    \begin{prop}{Characterization of Memoryless Property}
+        Let $X$ be a random variable. Then $X$ is memoryless if and only if
+        \begin{equation*}
+            \PP\left( X>y+z \right) = \PP\left( X>y \right)\PP\left( X>z \right)
+        \end{equation*}
+        for all $y,z\geq 0$.
+    \end{prop}
+
+    \begin{proof}
+        Note
+        \begin{flalign*}
+            && \PP\left( X>y+z|X>y \right) & = \frac{\PP\left( X>y+z, X>y \right)}{\PP\left( X>y \right)} && \\
+            && & = \frac{\PP\left( X>y+z \right)}{\PP\left( X>y \right)}.
+        \end{flalign*}
+        Hence
+        \begin{equation*}
+            \PP\left( X>y+z|X>y \right) = \PP\left( X>z \right)
+        \end{equation*}
+        if and only if
+        \begin{equation*}
+            \PP\left( X>z \right) = \frac{\PP\left( X>y+z \right)}{\PP\left( X>y \right)}
+        \end{equation*}
+        if and only if
+        \begin{equation*}
+            \PP\left( X>y+z \right) = \PP\left( X>y \right)\PP\left( X>z \right). \eqedsym
+        \end{equation*}
+    \end{proof}
+
+    \begin{prop}{Exponential Distribution Is Memoryless}
+        Let $X\sim\expdis\left( \lambda \right)$. Then $X$ is memoryless.
+    \end{prop}
+
+    \begin{proof}
+        For all $y,z\geq 0$, we have
+        \begin{equation*}
+            \PP\left( X>y+z \right) = e^{-\lambda\left( y+z \right)} = e^{-\lambda y}e^{-\lambda z} = \PP\left( X>y \right)\PP\left( X>z \right).
+        \end{equation*}
+        Thus by Proposition 4.1, $X$ is memoryless.
+    \end{proof}
+
+    \ex Suppose that a computer has $3$ switches which govern the transfer of electronic impulses. These switches operate simulatneously and independently of one another, with lifetimes that are exponentially distributed with mean lifetimes of $10,5,4$ years, respectively.
+
+    \begin{enumerate}
+        \item What is the probability that the time until the very first switch breakdown exceed $6$ years?
+
+            \begin{subproof}[Answer]
+                Let $X_i$ represent the lifetime of switch $i$, where $i\in\left\lbrace 1,2,3 \right\rbrace$. We know that $X_i\sim\expdis\left( \lambda_i \right)$, where $\lambda_1=\frac{1}{10}, \lambda_2=\frac{1}{5}, \lambda_3=\frac{1}{4}$. The time until the first breakdown is defined by the random variable
+                \begin{equation*}
+                    Y = \min\left( X_1,X_2,X_3 \right).
+                \end{equation*}
+                Since the lifetimes are independent of each other, 
+                \begin{equation*}
+                    Y\sim\expdis\left( \lambda \right),
+                \end{equation*}
+                where $\lambda=\frac{1}{10}+\frac{1}{5}+\frac{1}{4} = \frac{11}{20}$ by (4.2). Thus it follows that
+                \begin{equation*}
+                    \PP\left( Y>6 \right) = e^{-\frac{11}{20} 6} = e^{-3.3} \approx 0.0369. \eqqedsym
+                \end{equation*}
+            \end{subproof}
+
+        \item What is the probability that switch $2$ outlives switch $1$?
+
+            \begin{subproof}[Answer]
+                Note that
+                \begin{equation*}
+                    \PP\left( X_1<X_2 \right) = \frac{\frac{1}{10}}{\frac{1}{10}+\frac{1}{5}} = \frac{1}{3}. \eqqedsym
+                \end{equation*}
+            \end{subproof}
+
+        \item What is the probability that switch $1$ has the longest lifetime, followed next by switch $3$ and then switch $2$?
+
+            \begin{subproof}[Answer]
+                Note that
+                \begin{flalign*}
+                    && \PP\left( X_2<X_3<X_1 \right) & = \frac{\lambda_2\lambda_3}{\left( \lambda_2+\lambda_3+\lambda_1 \right)\left( \lambda_3+\lambda_1 \right)} && \\ 
+                    && & = \frac{\left( \frac{1}{5} \right)\left( \frac{1}{4} \right)}{\left( \frac{1}{5}+\frac{1}{4}+\frac{1}{10} \right)\left( \frac{1}{4}+\frac{1}{10} \right)} = \frac{\frac{1}{20}}{\frac{11}{20} \frac{7}{20}} = \frac{20}{77} \approx 0.26. && \fqqedsym
+                \end{flalign*}
+            \end{subproof}
+
+        \item If switch $3$ is known to have lasted $2$ years, what is the probability it will last at most $3$ more years?
+
+            \begin{subproof}[Answer]
+                Note that
+                \begin{flalign*}
+                    && \PP\left( X_3\leq 5|X_3>2 \right) & = 1-\PP\left( X_3>5|X_3>2 \right) = 1-\PP\left( X_3>2+3|X_3>2 \right) && \\
+                    && & = 1-\PP\left( X_3>3 \right) = 1-e^{-\left( \frac{1}{4} \right)3} \approx 0.528
+                \end{flalign*}
+                due to the memoryless property of exponential distributions.
+            \end{subproof}
+
+        \item Considering only switches $1,2$, what is the expected amount of time until they have both suffered a breakdown?
+
+            \begin{subproof}[Answer]
+                We desire to determine
+                \begin{equation*}
+                    \EE\left( \max\left( X_1,X_2 \right) \right).
+                \end{equation*}
+                We note the following useful identity:
+                \begin{equation*}
+                    \min\left( X_1,X_2 \right) + \max\left( X_1,X_2 \right) = X_1+X_2.
+                \end{equation*}
+                Thus
+                \begin{flalign*}
+                    && \EE\left( \max\left( X_1,X_2 \right) \right) & = \EE\left( X_1 \right) + \EE\left( X_2 \right) - \EE\left( \min\left( X_1,X_2 \right) \right) && \\
+                    && & = 10+5-\frac{1}{\frac{1}{10}+\frac{1}{5}} = 15-\frac{10}{3} = \frac{35}{3} \approx 11.667. && \fqqedsym
+                \end{flalign*}
+            \end{subproof}
+    \end{enumerate}
+
+    \np
+    \begin{enumerate}
+        \item The exponential distribution is the \textit{unique} continuous distribution possessing the memoryless property (incidentally, the geometric distribution is the unique discrete distribution which is memoryless). 
+
+            \begin{subproof}
+                Suppose $X$ is a continuous random variable satisfying the memoryless property. Then by Proposition 4.2,
+                \begin{equation*}
+                    \overline{F}_X\left( y+z \right) = \overline{F}\left( y \right)\overline{F}\left( z \right)
+                \end{equation*}
+                for all $y,z\geq 0$. It follows immediately that
+                \begin{equation*}
+                    \overline{F}\left( \frac{m}{n} \right) = \left( \overline{F}\left( \frac{1}{n} \right)\right)^m
+                \end{equation*}
+                for all $m,n\in\N$. In particular,
+                \begin{equation*}
+                    \overline{F}\left( 1 \right) = \left( \overline{F}\left( \frac{1}{n} \right) \right)^n.
+                \end{equation*}
+                This implies
+                \begin{equation*}
+                    \overline{F}\left( x \right) = \left( \overline{F}\left( 1 \right) \right)^x
+                \end{equation*}
+                for all $x\in\Q, x\geq 0$, and by the continuity of $\overline{F}$, the above equality holds for irrational $x\geq 0$ as well. This implies
+                \begin{equation*}
+                    \overline{F}\left( x \right) = e^{-\lambda x}
+                \end{equation*}
+                for all $x\geq 0$, where $\lambda = -\ln\left( \overline{F}\left( 1 \right) \right)$. Thus $X$ is exponentially distributed.
+            \end{subproof}
+
+        \item The memoryless property of the exponential distribution even holds in a borader setting. Specifically, if $X\sim\expdis\left( \lambda \right)$, then
+            \begin{equation}
+                \PP\left( X>Y+Z|X>Y \right)=\PP\left( X>Z \right)
+            \end{equation}
+            for any independently distributed nonnegative random variables $Y,Z$ that are independent of $X$. We call [4.1] the \textit{generalized memoryless property}.
+
+            \begin{subproof}
+                Note that
+                \begin{equation*}
+                    \PP\left( X>Y+Z|X>Y \right) = \frac{\PP\left( X>Y+Z, X>Y \right)}{\PP\left( X>Y \right)}.
+                \end{equation*}
+                Without loss of generality, assume $Y,Z$ are continuous. This means
+                \begin{flalign*}
+                    && \PP\left( X>Y+Z, X>Y \right) & = \int^{\infty}_{0}\PP\left( X>Y+Z,X>Y|Y=y \right)f_Y\left( y \right)\dy && \\ 
+                    && & = \int^{\infty}_{0} \PP\left( X>y+Z,X>y \right)f_Y\left( y \right)\dy && \\
+                    && & = \int^{\infty}_{0} \PP\left( X>y+Z \right)f_Y\left( y \right)\dy && \\
+                    && & = \int^{\infty}_{0}\int^{\infty}_{0}\PP\left( X>y+Z|Z=z \right)f_Z\left( z \right)\dz f_Y\left( y \right)\dy && \\
+                    && & = \int^{\infty}_{0}\int^{\infty}_{0}\PP\left( X>y+z \right)f_Z\left( z \right)\dz f_Y\left( y \right)\dy && \\
+                    && & = \int^{\infty}_{0}\int^{\infty}_{0} e^{-\lambda\left( y+z \right)}f_Z\left( z \right)\dz f_Y\left( y \right)\dy && \\
+                    && & = \int^{\infty}_{0} \PP\left( X>Z \right)e^{-\lambda y}f_Y\left( y \right)\dy && \\
+                    && & = \PP\left( X>Z \right)\int^{\infty}_{0}e^{-\lambda y}f_Y\left( y \right)\dy && \\
+                    && & = \PP\left( X>Z \right)\PP\left( X>Y \right)
+                \end{flalign*}
+                by conditioning on $Y,Z$ and using the fact that $X,Y,Z$ are independent. Thus
+                \begin{equation*}
+                    \PP\left( X>Y+Z|X>Y \right) = \PP\left( X>Z \right),
+                \end{equation*}
+                as required.
+            \end{subproof}
+
+        \item The generalized memoryless property implies that $\left( X-Y \right)|\left( X>Y \right)\sim\expdis\left( \lambda \right)$ regardless of the distribution of $Y$. To see this, let $Z$ be a random variable with a degenerate distribution at $z$. In this case, (4.5) becomes
+            \begin{equation*}
+                \PP\left( X>Y+z|X>Y \right) = \PP\left( X>z \right) = e^{-\lambda z},
+            \end{equation*}
+            since $X\sim\expdis\left( \lambda \right)$. Thus $\PP\left( X-Y>z|X>Y \right)=e^{-\lambda z}$, and so $\left( X-Y \right)|\left( X>Y \right)\sim\expdis\left( \lambda \right)$.
+    \end{enumerate}
+
+    \ex Let $X_1,X_2$ be independent random variables with $X_i\sim\expdis\left( \lambda_i \right)$ for all $i\in\left\lbrace 1,2 \right\rbrace$. Given $X_1<X_2$, show that $X_1, X_2-X_1$ are conditionally independent random variables.
+
+    \begin{subproof}
+        Consider the following conditional joint cdf. For all $x,y\geq 0$,
+        \begin{flalign*}
+            && \PP\left( X_1\leq x, X_2-X_1\leq y|X_1<X_2 \right) & = \frac{\PP\left( X_1\leq x, X_2-X_1\leq y, X_1<X_2 \right)}{\PP\left( X_1<X_2 \right)} && \\ 
+            && & = \frac{\PP\left( X_1\leq x, X_2-y\leq X_1, X_1< X_2 \right)}{\frac{\lambda_1}{\lambda_1+\lambda_2}} && \\
+            && & \frac{\lambda_1+\lambda_2}{\lambda_1}\PP\left( X_2-y\leq X_1\leq\min\left( x,X_2 \right) \right).
+        \end{flalign*}
+        We break down into two cases.
+        \begin{itemize}
+            \item \textit{Case 1. Suppose that $x\leq y$.} It follows that
+                \begin{flalign*}
+                    && & \PP\left( X_2-y\leq X_1\leq \min\left( x,X_2 \right) \right) &&\\
+                    && & = \int^{\infty}_{0}\PP\left( X_2-y\leq X_1\leq\min\left( x,X_2 \right)|X_2=w \right)f_{X_2}\left( w \right)\dw && \\ 
+                    && & = \int^{\infty}_{0} \PP\left( w-y\leq X_1\leq\min\left( x,w \right) \right)f_{X_2}\left( w \right)\dw && \\
+                    && & = \int^{x}_{0}\PP\left( w-y\leq X_1\leq \min\left( x,w \right) \right)f_{X_2}\left( w \right)\dw + \int^{y}_{x} \PP\left( w-y\leq X_1\leq\min\left( x,w \right) \right)f_{X_2}\left( w \right)\dw  && \\
+                    && & + \int^{y+x}_{y}\PP\left( w-y\leq X_1\leq \min\left( x,w \right) \right)f_{X_2}\left( w \right)\dw + \int^{\infty}_{y+x}\PP\left( w-y\leq X_1\leq\min\left( x,w \right) \right)f_{X_2}\left( w \right)\dw && \\
+                    && & = \int^{x}_{0} \PP\left( X_1\leq w \right)\lambda_2e^{-\lambda_2w}\dw + \PP\left( X_1\leq x \right)\int^{y}_{x}\lambda_2e^{-\lambda_2w}\dw && \\
+                    && & + \int^{y+x}_{y} \left( \PP\left( X_1>w-y \right)-\PP\left( X_1>x \right) \right)\lambda_2e^{-\lambda_2w}\dw && \\
+                    && & = \int^{x}_{0} \left( 1-e^{-\lambda_1w} \right)\lambda_2e^{-\lambda_2w}\dw + \left( 1-e^{-\lambda_1x} \right)\left( e^{-\lambda_2x}-e^{-\lambda_2y} \right) && \\
+                    && & + \int^{y+x}_{y} \left( e^{-\lambda_1\left( w-y \right)}-e^{-\lambda_1x} \right)\lambda_2e^{-\lambda_2}w\dw && \\
+                    && & = \cdots && \\
+                    && & = \frac{\lambda_1}{\lambda_1+\lambda_2}\left( 1-e^{-\lambda_2y}-e^{-\left( \lambda_1+\lambda_2 \right)x}+e^{-\lambda_2y}e^{-\left( \lambda_1+\lambda_2 \right)x} \right).
+                \end{flalign*}
+
+            \item \textit{Case 2. Suppose $x>y$.} In a similar fashion to Case 1, it can be shown that
+                \begin{equation*}
+                    \PP\left( X_2-y\leq X_1\leq \min\left( x,X_2 \right) \right) = \frac{\lambda_1}{\lambda_1+\lambda_2}\left( 1-e^{-\lambda_2y}-e^{-\left( \lambda_1+\lambda_2 \right)x}+e^{-\lambda_2y}e^{-\left( \lambda_1+\lambda_2 \right)x} \right)
+                \end{equation*}
+                as well. 
+        \end{itemize} 
+        Therefore, in general, we have
+        \begin{flalign*}
+            && \PP\left( X_1\leq x, X_2-X_1\leq y| X_1<X_2 \right) & = \frac{\lambda_1+\lambda_2}{\lambda_1} \frac{\lambda_1}{\lambda_1+\lambda_2} \left( 1-e^{-\lambda_2y}-e^{-\left( \lambda_1+\lambda_2 \right)x}+e^{-\lambda_2y}e^{-\left( \lambda_1+\lambda_2 \right)x} \right) && \\
+            && & = \left( 1-e^{-\lambda_2y}-e^{-\left( \lambda_1+\lambda_2 \right)x}+e^{-\lambda_2y}e^{-\left( \lambda_1+\lambda_2 \right)x} \right) && \\
+            && & = \left( 1-e^{-\left( \lambda_1+\lambda_2 \right)x} \right)\left( 1-e^{-\lambda_2y} \right) && \\
+            && & = \PP\left( X_1\leq x|X_1<X_2 \right)\PP\left( X_2-X_1\leq y|X_1<X_2 \right)
+        \end{flalign*}
+        for all $x,y\geq 0$, where the last equality follows from (b) of (EX 4.3) and the generlized memoryless property. Thus, by the definition of independence, $X_1, X_2-X_1$ are conditionally (i.e. given $X_1<X_2$) independent. 
+    \end{subproof}
+
+    \np[Erlang Distribution]Recall that if $X\sim\erdis\left( n,\lambda \right)$ where $n\in\N,\lambda>0$, then its pdf is of the form
+    \begin{equation*}
+        f_X\left( x \right) = \frac{\lambda^nx^{n-1}e^{-\lambda x}}{\left( n-1 \right)!}
+    \end{equation*}
+    for all $x>0$. Letting $n=1$, the above pdf simplifies to become $f_X\left( x \right)=\lambda e^{-\lambda x}$ for all $x>0$, which is the pdf of the $\expdis\left( \lambda \right)$. To obtain the corresponding cdf of an $\erdis\left( n,\lambda \right)$ random variable, we consider the following. For every $x\geq 0$,
+    \begin{equation*}
+        F_X\left( x \right) = \PP\left( X\leq x \right) = \int^{x}_{0} \frac{\lambda^ny^{n-1}e^{-\lambda y}}{\left( n-1 \right)!}\dy = \frac{\lambda^n}{\left( n-1 \right)!}\int^{x}_{0}y^{n-1}e^{-\lambda y}\dy.
+    \end{equation*}
+    By using the integration by parts $\int u\dv = uv-\int v\du$ with
+    \begin{equation*}
+        u = y^{n-1}, \dv = e^{-\lambda y}\dy,
+    \end{equation*}
+    we obtain that
+    \begin{flalign*}
+        && \int^{x}_{0}y^{n-1}e^{-\lambda y}\dy & = \left.-\frac{1}{\lambda}y^{n-1}e^{-\lambda y}\right|^{y=x}_{y=0} + \frac{n-1}{\lambda} \int^{x}_{0}y^{n-2}e^{-\lambda y}\dy && \\ 
+        && & = -\frac{1}{\lambda}x^{n-1}e^{-\lambda x} + \frac{n-1}{\lambda} \int^{x}_{0}y^{n-2}e^{-\lambda y}\dy.
+    \end{flalign*}
+    So by induction, we obtain that
+    \begin{equation*}
+        F_X\left( x \right) = 1-e^{-\lambda x}\sum^{n-1}_{j=0} \frac{\left( \lambda x \right)^j}{j!}
+    \end{equation*}
+    for all $x\geq 0$. In particular, by substituting $n=1$, we immediately obtain
+    \begin{equation*}
+        F_X\left( x \right) = 1-e^{-\lambda x}
+    \end{equation*}
+    for all $x\geq 0$, the cdf of an $\expdis\left( \lambda \right)$ random variable.
+
+    \np To determine the mgf of $X$, we consider the following: for all $t<\lambda$,
+    \begin{flalign*}
+        && \varphi_X\left( t \right) & = \int^{\infty}_{0} e^{tx}\frac{\lambda^nx^{n-1}e^{-\lambda x}}{\left( n-1 \right)!}\dx && \\ 
+        && & = \frac{\lambda^n}{\left( n-1 \right)!} \int^{\infty}_{0} x^{n-1}e^{-\tilde{\lambda}x} \dx  && \\
+        && & = \frac{\lambda^n}{\tilde{\lambda}^n} \int^{\infty}_{0} \underbrace{\frac{\tilde{\lambda}^nx^{n-1}e^{-\tilde{\lambda}x}}{\left( n-1 \right)!}}_{\substack{\text{the pdf of}\\\text{$\erdis\left( n,\tilde{\lambda} \right)$}}}\dx && \\
+        && & = \left( \frac{\lambda}{\lambda-t} \right)^n.
+    \end{flalign*}
+    However, note that
+    \begin{equation*}
+        \varphi_X\left( t \right) = \left( \frac{\lambda}{\lambda-t} \right)^n = \prod^{n}_{i=1} \left( \frac{\lambda}{\lambda-t} \right)
+    \end{equation*}
+    is the product of $n$ terms, where each term is the mgf of an $\expdis\left( \lambda \right)$ random variable.
+
+    Now suppose that $\left( Y_{i} \right)^{n}_{i=1}$ is an iid sequence of $\expdis\left( \lambda \right)$ random variables. This means $\varphi_{Y_i}\left( t \right) = \frac{\lambda}{\lambda-t}$ for all $t<\lambda,i\in\left\lbrace 1,\ldots,n \right\rbrace$. Since $\varphi_X = \prod^{n}_{i=1}\varphi_{Y_i}$, it follows that an Erlang distribution can be viewed as the distribution of a \textit{sum of iid exponential random variables}. As a result, the mean and variance of an $\erdis\left( n,\lambda \right)$ random variable $X$ are simply obtained as
+    \begin{equation*}
+        \EE\left( X \right) = \frac{n}{\lambda}, \var\left( X \right) = \frac{n}{\lambda^{2}}.
+    \end{equation*}
+
+    \clearpage
+    \section{Poisson Processes}
+
+    \begin{definition}{Counting Process}{}
+        A \emph{counting process} $\left( N\left( t \right) \right)^{}_{t\geq 0}$ is a stochastic process in which $N\left( t \right)$ represents the number of events that happen by time $t$, where the index $t$ measures time over a continuous range.
+    \end{definition}
+    
+    \np[Basic Properties of Counting Processes]Let $\left( N\left( t \right) \right)^{}_{t\geq 0}$ be a counting process.
+    \begin{enumerate}
+        \item $N\left( 0 \right)=0$.
+        \item $N\left( t \right)\in\N\cup\left\lbrace 0 \right\rbrace$ for all $t\geq 0$.
+        \item If $0\leq s<t$, then $N\left( s \right)\leq N\left( t \right)$.
+        \item If $0\leq s<t$, then $N\left( t \right)-N\left( s \right)$ counts \textit{the number of events to occur in the time interval $\left( s,t \right]$ for $s<t$.}
+    \end{enumerate}
+    
+    \begin{definition}{Independent Increments, Stationary Increments}{of a Counting Process}
+        We say a counting process $\left( N\left( t \right) \right)^{}_{t\geq 0}$ has
+        \begin{enumerate}
+            \item \emph{independent increments} if for every $s_1,s_2,t_1,t_2$ with 
+                \begin{equation*}
+                    \left( s_1,t_1 \right]\cap\left( s_2,t_2 \right]=\emptyset,
+                \end{equation*}
+                $N\left( t_1 \right)-N\left( s_1 \right)$ is independent of $N\left( t_2 \right)-N\left( s_2 \right)$; and
+            \item \emph{stationary increments} if for every $s,t\geq 0$, the distribution of the number of events in $\left( s,s+t \right]$ depends only on $t$, the length of the time interval; that is, 
+                \begin{equation*}
+                    N\left( s+t \right)-N\left( s \right)\sim N\left( 0+t \right)-N\left( 0 \right) = N\left( t \right)
+                \end{equation*}
+                for all $s,t\geq 0$.
+        \end{enumerate}
+    \end{definition}
+
+    \np The \textit{assumption of stationary and independent increments} is essentially equivalent to stating that, at any point in time, \textit{the process $\left( N\left( t \right) \right)^{}_{t\geq 0}$ probabilistically restarts itself.} 
+
+    \begin{recall}{$o\left( h \right)$}{}
+        We say a function $f:\R\to\R$ is said to be $o\left( h \right)$ if
+        \begin{equation*}
+            \lim_{h\to 0} \frac{f\left( h \right)}{h} = 0.
+        \end{equation*}
+    \end{recall}
+
+    \begin{definition}{Poisson Process}{}
+        A counting process $\left( N\left( t \right) \right)^{}_{t\geq 0}$ is said to be a \emph{Poisson process} at rate $\lambda$ if the following conditions hold.
+        \begin{enumerate}
+            \item $\left( N\left( t \right) \right)^{}_{t\geq 0}$ has both independent and stationary increments.
+            \item For all $h>0$,
+                \begin{flalign}
+                    && \PP\left( N\left( h \right)=1 \right) & = \lambda h+o\left( h \right) && \\
+                    && \PP\left( N\left( h \right)\geq 2 \right) & = o\left( h \right).
+                \end{flalign}
+        \end{enumerate}
+    \end{definition}
+
+    \np Let $\left( N\left( t \right) \right)^{}_{t\geq 0}$ be a Poisson process at rate $\lambda$.
+    \begin{enumerate}
+        \item{}[4.2] implies that in a \textit{small} interval of time, the probability of a sinlge event occuring is essentially proportional to the length of the interval.
+        \item{}[4.3] implies that two or more events occuring in a \textit{small} interval of time is rare.
+        \item{}[4.2], [4.3] yield
+            \begin{flalign*}
+                && \PP\left( N\left( h \right)=0 \right) & = 1-\PP\left( N\left( h \right)>0 \right) = 1-\PP\left( N\left( h \right)=1 \right) - \PP\left( N\left( h \right)\geq 2 \right) && \\ 
+                && & = 1-\left( \lambda h+o\left( h \right) \right)-o\left( h \right) = 1-\lambda h+o\left( h \right).
+            \end{flalign*}
+    \end{enumerate}
+    Ultimately, we would like to know the distribution of $N\left( s+t \right)-N\left( s \right)$, representing the number of events occuring in the interval $\left( s,s+t \right]$ for all $s,t\geq 0$. Since a Poisson process has stationary increments this $N\left( s+t \right)-N\left( s \right)\sim N\left( t \right)$. The following proposition specifies the distribution of $N\left( t \right)$.
+
+    \begin{prop}{}
+        Let $\left( N\left( t \right) \right)^{}_{t\geq 0}$ be a Poisson process at rate $\lambda$. Then for any $t\geq 0$,
+        \begin{equation*}
+            N\left( t \right)\sim\poidis\left( \lambda t \right).
+        \end{equation*}
+    \end{prop}
+
+    \begin{proof}
+        For all $t\geq 0$, let $\varphi_t$ denote $\varphi_{N\left( t \right)}$ for convenience. For all $t,h\geq 0$, note that
+        \begin{flalign*}
+            && \varphi_{t+h}\left( u \right) & = \EE\left( e^{uN\left( t+h \right)} \right) = \EE\left( e^{u\left( N\left( t+h \right)-N\left( t \right)+N\left( t \right) \right)} \right) && \\
+            && & = \EE\left( e^{u\left( N\left( t+h \right)-N\left( t \right) \right)}e^{uN\left( t \right)} \right) = \EE\left( e^{u\left(N\left( t+h \right)-N\left( t \right)\right)} \right)\EE\left( e^{uN\left( t \right)} \right) && \\
+            && & = \EE\left( e^{uN\left( h \right)} \right)\EE\left( e^{uN\left( t \right)} \right) = \varphi_h\left( u \right)\varphi_t\left( u \right).
+        \end{flalign*}
+        by using stationary and independent increments of $\left( N\left( t \right) \right)^{}_{t\geq 0}$. Note that, for all $h>0, j\geq 2$,
+        \begin{equation*}
+            0\leq \PP\left( N\left( h \right)=j \right) \leq \PP\left( N\left( h \right)\geq 2 \right)
+        \end{equation*}
+        so
+        \begin{equation*}
+            0\leq \frac{\PP\left( N\left( h \right)=j \right)}{h} \leq \frac{\PP\left( N\left( h \right)\geq 2 \right)}{h}.
+        \end{equation*}
+        But $\lim_{h\to 0} \frac{\PP\left( N\left( h \right)\geq 2 \right)}{h}=0$ by Def'n 4.5. Hence by the squeeze theorem,
+        \begin{equation*}
+            \lim_{h\to\infty} \frac{\PP\left( N\left( h \right)=j \right)}{h} = 0,
+        \end{equation*}
+        so $\PP\left( N\left( h \right)=j \right)=o\left( h \right)$. Using this result, we obtain
+        \begin{flalign*}
+            && \varphi_h\left( u \right) & = \EE\left( e^{uN\left( h \right)} \right) = \sum^{\infty}_{j=0}e^{uj}\PP\left( N\left( h \right)=j \right) && \\ 
+            && & = e^0\PP\left( N\left( h \right)=0 \right) + e^u\PP\left( N\left( h \right)=1 \right) + \sum^{\infty}_{j=2} e^{uj}\PP\left( N\left( h \right)=j \right) && \\
+            && & = \left( 1-\lambda h+o\left( h \right) \right) + e^u\left( \lambda h+o\left( h \right) \right) + \sum^{\infty}_{j=2} e^{uj}o\left( h \right) && \\
+            && & = 1-\lambda h + e^u\lambda h + o\left( h \right).
+        \end{flalign*}
+        Hence we now have
+        \begin{equation*}
+            \varphi_{t+h}\left( u \right) = \varphi_t\left( u \right)\left( 1-\lambda h+e^u\lambda h+o\left( h \right) \right) = \varphi_t\left( u \right)-\lambda h\varphi_t\left( u \right) + e^u\lambda h\varphi_t\left( u \right)+o\left( h \right)
+        \end{equation*}
+        so
+        \begin{equation*}
+            \varphi_{t+h}\left( u \right)-\varphi_t\left( u \right) = \lambda h\varphi_t\left( u \right)\left( e^u-1 \right)+o\left( h \right).
+        \end{equation*}
+        This means
+        \begin{equation*}
+            \frac{\dif}{\dt}\varphi_t\left( u \right) = \lim_{h\to 0} \frac{\varphi_{t+h}\left( u \right)-\varphi_t\left( u \right)}{h} = \lim_{h\to 0} \frac{\lambda h\varphi_t\left( u \right)\left( e^u-1 \right)+o\left( h \right)}{h} = \lambda\varphi_t\left( u \right)\left( e^u-1 \right).
+        \end{equation*}
+        This is a differential equation, solving which gives
+        \begin{equation*}
+            \varphi_t\left( u \right) = e^{\lambda t\left( e^u-1 \right)}
+        \end{equation*}
+        for all $u\in\R$, the mgf of a $\poidis\left( \lambda t \right)$ random variable.
+    \end{proof}
+
+    \begin{cor}{}
+        Let $\left( N\left( t \right) \right)^{}_{t\geq 0}$ be a Poisson process. Then for all $s,t\geq 0, k\in\N\cup\left\lbrace 0 \right\rbrace$, we have
+        \begin{equation*}
+            \PP\left( N\left( s+t \right)-N\left( s \right)=k \right) = \frac{e^{-\lambda t}\left( \lambda t \right)^k}{k!}.
+        \end{equation*}
+    \end{cor}	
+
+    \begin{definition}{Interarrival Time Sequence}{of a Counting Process}
+        Let $\left( N\left( t \right) \right)^{}_{t\geq 0}$ be a counting process. Let
+        \begin{equation*}
+            T_i = \text{elapsed time between the occurrences of the $i-1$th event and the $i$th event}
+        \end{equation*}
+        for all $i\in\N$. Then we say $\left( T_{i} \right)^{}_{i\in\N}$ is the \emph{interarrival time sequence} of $\left( N\left( t \right) \right)^{}_{t\geq 0}$.
+    \end{definition}
+
+    \begin{prop}{}
+        Let $\left( N\left( t \right) \right)^{}_{t\geq 0}$ be a Poisson process at rate $\lambda>0$. Then $\left( T_{i} \right)^{\infty}_{i=1}$ is an iid $\expdis\left( \lambda \right)$ sequence.
+    \end{prop}
+
+    \begin{proof}
+        We begin by considering $T_1$. For all $t\geq 0$, note that
+        \begin{flalign*}
+            && \PP\left( T_1>t \right) & = \PP\left( \text{no events occur before time $t$} \right) && \\ 
+            && & = \PP\left( N\left( t \right)=0 \right) = \frac{e^{-\lambda t}\left( \lambda t \right)^0}{0!} = e^{-\lambda t},
+        \end{flalign*}
+        which is the tpf of an $\expdis\left( \lambda \right)$ random variable. Immediately, $T_1\sim\expdis\left( \lambda \right)$.
+
+        Next, for all $s>0, t\geq 0$, 
+        \begin{flalign*}
+            && \PP\left( T_2>t|T_1=s \right) & = \PP\left( \text{no events occur in $\left( s,s+t \right]$}|\forall w\in\left[ 0,s \right)\left[ N\left( w \right)=0 \right], N\left( s \right)=1 \right) && \\ 
+            && & = \PP\left( \text{no events occur in $\left( s,s+t \right]$} \right) && \\
+            && & = \PP\left( N\left( s+t \right)-N\left( s \right)=0 \right) && \\
+            && & = \PP\left( N\left( t \right)=0 \right) = e^{-\lambda t},
+        \end{flalign*}
+        where the second equality follows from the fact that $\left[ 0,s \right), \left( s,s+t \right]$ are disjoint. But note that 
+        \begin{equation*}
+            \PP\left( T_2>t|T_1=s \right)=e^{-\lambda t}
+        \end{equation*}
+        is independent of $s$, so $T_1,T_2$ are independent. Moreover, by independence, we have
+        \begin{equation*}
+            \PP\left( T_2>t \right) = \PP\left( T_2>t|T_1=s \right)=e^{-\lambda t},
+        \end{equation*}
+        implying that $T_2\sim\expdis\left( \lambda \right)$ as well.
+
+        We remark that the general result can be obtained by using induction on $i$.
+    \end{proof}
+
+    \begin{definition}{Waiting Time}{}
+        Let $\left( N\left( t \right) \right)^{}_{t\geq 0}$ be a counting process. For all $n\in\N$, let $S_n$ be the total elapsed time until the $n$th event occurs, which is called the \emph{waiting time} until the $n$th event occurs.
+    \end{definition}
+
+    \np[Waiting Time]By definition, it is clear that
+    \begin{equation*}
+        S_n = \sum^{n}_{i=1}T_i.
+    \end{equation*}
+    Moreover, if $\left( N\left( t \right) \right)^{}_{t\geq 0}$ is a Poisson process at rate $\lambda$, then $\left( T_{i} \right)^{\infty}_{i=1}$ is an iid $\expdis\left( \lambda \right)$ sequence, so by Proposition 4.4, we have
+    \begin{equation*}
+        S_n = \sum^{n}_{i=1}T_i\sim\erdis\left( n,\lambda \right).
+    \end{equation*}
+    From our earlier results on the Erlang distribution, we have
+    \begin{flalign*}
+        && \EE\left( S_n \right) & = \frac{n}{\lambda} && \\ 
+        && \var\left( S_n \right) & = \frac{n}{\lambda^{2}} && \\
+        && \PP\left( S_n>t \right) & = e^{-\lambda t} \sum^{n-1}_{j=0} \frac{\left( \lambda t \right)^j}{j!}.
+    \end{flalign*}
+    In fact, the tpf of $S_N$ could have been obtained without reference to the Erlang distribution. That is,
+    \begin{flalign*}
+        && \PP\left( S_n>t \right) & = \PP\left( \text{arrival time of the $n$th event occurs after time $t$} \right) && \\ 
+        && & = \PP\left( \text{at most $n-1$ events occur by time $t$} \right) && \\
+        && & = \PP\left( N\left( t \right)\leq n-1 \right) && \\
+        && & = \sum^{n-1}_{j=0} \frac{e^{-\lambda t}\left( \lambda t \right)^j}{j!} && \\
+        && & = e^{-\lambda t} \sum^{n-1}_{j=0} \frac{\left( \lambda t \right)^j}{j!},
+    \end{flalign*}
+    where the second last equality follows from the fact that $N\left( t \right)\sim\poidis\left( \lambda t \right)$.
+
+    \np If $\left( X_{i} \right)^{\infty}_{i=1}$ represents an iid $\expdis\left( \lambda \right)$ sequence and one constructs a counting process $\left( N\left( t \right) \right)^{}_{t\geq 0}$ defined by
+    \begin{equation*}
+        N\left( t \right) = \max\left\lbrace n\in\N: \sum^{n}_{i=1}X_i\leq t \right\rbrace,
+    \end{equation*}
+    then $\left( N\left( t \right) \right)^{}_{t\geq 0}$ is actually a Poisson process at rate $\lambda$. In particular, we have
+    \begin{equation*}
+        \PP\left( N\left( t \right)\leq k \right) = \PP\left( \sum^{k+1}_{i=1}X_i>t \right) = e^{-\lambda t} \sum^{k}_{j=0} \frac{\left( \lambda t \right)^j}{j!}
+    \end{equation*}
+    since $\sum^{k+1}_{i=1}X_i\sim\erdis\left( k+1,\lambda \right)$. This implies
+    \begin{flalign*}
+        && \PP\left( N\left( t \right)=k \right) & = \PP\left( N\left( t \right)\leq k \right)-\PP\left( N\left( t \right)\leq k-1 \right) && \\ 
+        && & = e^{-\lambda t}\sum^{k}_{j=0} \frac{\left( \lambda t \right)^j}{j!} - e^{-\lambda t} \sum^{k-1}_{j=0} \frac{\left( \lambda t \right)^j}{j!} = \frac{e^{-\lambda t\left( \lambda t \right)^k}}{k!}
+    \end{flalign*}
+    for all $k\in\N\cup\left\lbrace 0 \right\rbrace$.
+
+    \ex At a local insurance company, suppose that fire damage claims come into the company according to a Poisson process at rate $3.8$ expected claims per eyar.
+    \begin{enumerate}
+        \item What is the probability that exactly $5$ claims occur in the time interval $\left( 3.2,5 \right]$ measured in years?
+
+            \begin{subproof}[Answer]
+                Let $N\left( t \right)$ be the number of claims arriving to the company in the interval $\left[ 0,t \right]$. Since $\left( N\left( t \right) \right)^{}_{t\geq 0}$ is a Poisson process at rate $\lambda=3.8$, we have
+                \begin{equation*}
+                    \PP\left( N\left( 5 \right)-N\left( 3.2 \right) = 5 \right) = \PP\left( N\left( 1.8 \right)=5 \right) = \frac{e^{-3.8\left( 1.8 \right)}\left( 3.8\left( 1.8 \right) \right)^5}{5!} \approx 0.134. \eqqedsym
+                \end{equation*}
+            \end{subproof}
+
+        \item What is the probability that the time between the $2$nd and $4$th claims is between $2$ and $5$ months?
+
+            \begin{subproof}[Answer]
+                Let $T$ be the time between the $2$nd and $4$th claims. Then
+                \begin{equation*}
+                    T = T_3+T_4
+                \end{equation*}
+                where $\left( T_{i} \right)^{\infty}_{i=1}$ is the interval time sequence of $\left( N\left( t \right) \right)^{}_{t\geq 0}$. This means
+                \begin{equation*}
+                    T_3,T_4\sim\expdis\left( 3.8 \right)
+                \end{equation*}
+                and are independent. This means
+                \begin{equation*}
+                    T\sim\erdis\left( 2,3.8 \right),
+                \end{equation*}
+                so
+                \begin{equation*}
+                    \PP\left( T>t \right) = e^{-3.8t}\sum^{2-1}_{j=0}\frac{\left( 3.8t \right)^j}{j!} = e^{-3.8t}\left( 1+3.8t \right)
+                \end{equation*}
+                for all $t\geq 0$. Thus
+                \begin{flalign*}
+                    && \PP\left( \frac{1}{6}\leq T\leq \frac{1}{3} \right) & = \PP\left( T>\frac{1}{6} \right) - \PP\left( T>\frac{1}{3} \right) && \\ 
+                    && & = e^{-3.8\left( \frac{1}{6} \right)}\left( 1+3.8\left( \frac{1}{6} \right) \right) - e^{-3.8\left( \frac{1}{3} \right)}\left( 1+3.8\left( \frac{1}{3} \right) \right) \approx 0.337. && \fqqedsym
+                \end{flalign*}
+            \end{subproof}
+    \end{enumerate}
+
+    \begin{prop}{}
+        Let $\left( N\left( t \right) \right)^{}_{t\geq 0}$ be a Poisson process. Then for all $t>s\geq 0$,
+        \begin{equation*}
+            N\left( s \right)|\left( N\left( t \right)=n \right)\sim\binomdis\left( n,\frac{s}{t} \right).
+        \end{equation*}
+    \end{prop}
+
+    \begin{proof}
+        We desire to determine the conditional distribution of $N\left( s \right)|\left( N\left( t \right)=n \right)$. Clearly, $N\left( s \right)|\left( N\left( t \right)=n \right)$ takes on values in $\left\lbrace 0,\ldots,n \right\rbrace$. Therefore, for each $m\in\left\lbrace 0,\ldots,n \right\rbrace$, note that
+        \begin{flalign*}
+            && \PP\left( N\left( s \right)=m|N\left( t \right)=n \right) & = \frac{\PP\left( N\left( s \right)=m,N\left( t \right)=n \right)}{\PP\left( N\left( t \right)=n \right)} && \\ 
+            && & = \frac{\PP\left( N\left( s \right)=m, N\left( t \right)-N\left( s \right)=n-m \right)}{\PP\left( N\left( t \right)=n \right)} && \\
+            && & = \frac{\PP\left( N\left( s \right)=m \right)\PP\left( N\left( t-s \right)=n-m \right)}{\PP\left( N\left( t \right)=n \right)} && \substack{\text{independent and}\\\text{stationary increments}} \\
+            && & = \frac{\frac{e^{-\lambda s}\left( \lambda s \right)^m}{m!} \frac{e^{-\lambda\left( t-s \right)}\left( \lambda\left( t-s \right) \right)^{n-m}}{\left( n-m \right)!}}{\frac{e^{-\lambda t}\left( \lambda t \right)}{n!}} && \\
+            && & = \binom{n}{m} \left( \frac{s}{t} \right)^m\left( 1-\frac{s}{t} \right)^{n-m},
+        \end{flalign*}
+        which is the pmf of a $\binomdis\left( n,\frac{s}{t} \right)$.
+    \end{proof}
+
+    \clearpage
+    \np Suppose now that $\left( N_{1}\left( t \right) \right)^{}_{t\geq 0}, \left( N_{2}\left( t \right) \right)^{}_{t\geq 0}$ are independent Poisson processes at rates $\lambda_1,\lambda_2$, respectively. Let $S_n^{\left( 1 \right)},S_n^{\left( 2 \right)}$ be the arrival times of the $n$th event for $\left( N_1\left( t \right) \right)^{}_{t\geq 0}, \left( N_2\left( t \right) \right)^{}_{t\geq 0}$, respectively. Based on our knowledge of arrival times, we know that, for each $k\in\left\lbrace 1,2 \right\rbrace$,
+    \begin{equation*}
+        S_m^{\left( k \right)} = \sum^{m}_{i=1} T_i^{\left( k \right)}
+    \end{equation*}
+    where $\left( T_i^{\left( k \right)} \right)^{\infty}_{i=1}$ is an iid sequence $\expdis\left( \lambda_k \right)$. Moreover, the sequences $\left( T^{\left( 1 \right)}_{i} \right)^{\infty}_{i=1}, \left( T^{\left( 2 \right)}_{i} \right)^{\infty}_{i=1}$ are independent.
+
+    We are interested in the probability that the $m$th event from the first process happens before the $n$th event of the second process, or, equivalently,
+    \begin{equation*}
+        \PP\left( S_m^{\left( 1 \right)}<S_n^{\left( 2 \right)} \right).
+    \end{equation*}
+    Before looking at the general case. let us first examine a couple of special cases.
+    \begin{itemize}
+        \item \textit{Case 1. $m=n=1$.} Note that
+            \begin{equation*}
+                \PP\left( S_1^{\left( 1 \right)}<S_1^{\left( 2 \right)} \right) = \PP\left( T_1^{\left( 1 \right)}<T_1^{\left( 2 \right)} \right) = \frac{\lambda_1}{\lambda_1+\lambda_2}.
+            \end{equation*}
+
+        \item \textit{Case 2. $m=2, n=1$.} Note that
+            \begin{flalign*}
+                && \PP\left( S_2^{\left( 1 \right)}<S_1^{\left( 2 \right)} \right) & = \PP\left( T_1^{\left( 1 \right)}<T_1^{\left( 2 \right)} \right)\PP\left( S_2^{\left( 1 \right)}<S_1^{\left( 2 \right)}|T_1^{\left( 1 \right)}<T_1^{\left( 2 \right)} \right) && \\
+                && & + \PP\left( T_1^{\left( 1 \right)}>T_1^{\left( 2 \right)} \right)\PP\left( S_2^{\left( 1 \right)}<S_1^{\left( 2 \right)}|T_1^{\left( 1 \right)}>T_1^{\left( 2 \right)} \right)&& \\ 
+                && & = \PP\left( T_1^{\left( 1 \right)}<T_1^{\left( 2 \right)} \right)\PP\left( T_1^{\left( 1 \right)}+T_2^{\left( 1 \right)}<T_1^{\left( 2 \right)}|T_1^{\left( 1 \right)}<T_1^{\left( 2 \right)} \right) && \\
+                && & = \PP\left( T_1^{\left( 1 \right)}<T_1^{\left( 2 \right)} \right)\PP\left( T_1^{\left( 2 \right)}-T_1^{\left( 1 \right)}>T_2^{\left( 1 \right)}|T_1^{\left( 2 \right)}<T_1^{\left( 1 \right)} \right) && \\
+                && & = \PP\left( T_1^{\left( 1 \right)}<T_1^{\left( 2 \right)} \right)\PP\left( T_1^{\left( 2 \right)}>T_2^{\left( 1 \right)} \right) && \\
+                && & = \frac{\lambda_1}{\lambda_1+\lambda_2} \frac{\lambda_1}{\lambda_1+\lambda_2} && \\
+                && & = \left( \frac{\lambda_1}{\lambda_1+\lambda_2} \right)^{2},
+            \end{flalign*}
+            where the second last equality holds by the generalized memoryless property.
+    \end{itemize} 
+    In the general case, we realize, through the continued application of the generalized memoryless property, that $\PP\left( S_m^{\left( 1 \right)}<S_n^{\left( 2 \right)} \right)$ is equivalent to the probability of observing $m$ \textit{successes} with success probability $\frac{\lambda_1}{\lambda_1+\lambda_2}$ occur before $n$ \textit{failures} with failure probability $\frac{\lambda_2}{\lambda_1+\lambda_2}$ in a sequence of independent Bernoulli trials.
+    
+    Specifically, in a sequence of $m+j$ Bermoulli trials (where $m$ is the number of successes and $j$ is the number of failures), the $m+j$th trial must always be a success, and the number of failures must be no larger than $n-1$, which ultimately leads to
+    \begin{equation*}
+        \PP\left( S_m^{\left( 1 \right)}<S_n^{\left( 2 \right)} \right) = \sum^{n-1}_{j=0} \binom{m+j-1}{m-1} \left( \frac{\lambda_1}{\lambda_1+\lambda_2} \right)^m\left( \frac{\lambda_2}{\lambda_1+\lambda_2} \right)^j.
+    \end{equation*}
+
+    \ex Consider the setting of (EX 4.15).
+    \begin{enumerate}
+        \item If exactly $12$ claims have occurred within the first $5$ years, how many claims, on average, occurred within the first $3.5$ years? How would this change if no claim history of the first $5$ years was given?
+            \begin{subproof}[Answer]
+                We desire to calculate
+                \begin{equation*}
+                    \EE\left( N\left( 3.5 \right)|N\left( 5 \right)=12 \right).
+                \end{equation*}
+                Using the binomial result of Proposition 4.5 with $s=3.5, t=5, n=12$, we obtain
+                \begin{equation*}
+                    \EE\left( N\left( 3.5 \right)|N\left( 5 \right)=12 \right) = 12\left( \frac{3.5}{5} \right) = \frac{42}{5} = 8.4.
+                \end{equation*}
+                On the other hand,
+                \begin{equation*}
+                    \EE\left( N\left( 3.5 \right) \right) = \left( 3.8 \right)\left( 3.5 \right) = 13.3 > 8.4,
+                \end{equation*}
+                implying that conditioning on knowledge of $N\left( 5 \right)$ does affect the mean of $N\left( 3.5 \right)$.
+            \end{subproof}
+
+        \item At another competing insurance company, suppose that fire damage claims arrive to the company according to a Poisson process with rate $2.9$ expected claims per year. What is the probability that $3$ claims arrive to this company before $2$ claims arrive to the other (i.e. first) company? Assume that the insurance companies operate independently of each other.
+
+            \begin{subproof}[Answer]
+                Let $N_1\left( t \right),N_2\left( t \right)$ denote the number of claims arriving to the first and second company by time $t\geq 0$, respectively. We are assuming here that $\left( N_1\left( t \right) \right)^{}_{t\geq 0}, \left( N_2\left( t \right) \right)^{}_{t\geq 0}$ are independent Poisson processes, with rate $\lambda_1=3.8, \lambda_2=2.9$, respectively. Then we have
+                \begin{flalign*}
+                    && & \PP\left( \text{3 claims to arrive to company 2 before 2 claims arrive to company 1} \right) && \\
+                    && & = \PP\left( S_3^{\left( 2 \right)}<S_2^{\left( 1 \right)} \right) && \\ 
+                    && & = 1 - \PP\left( S_2^{\left( 1 \right)}<S_3^{\left( 2 \right)} \right) && \\
+                    && & = \sum^{3-1}_{j=0} \binom{2+j-1}{2-1} \left( \frac{3.8}{3.8+2.9} \right)^2\left( \frac{2.9}{3.8+2.9} \right)^j && \\
+                    && & \approx 0.219. && \fqqedsym
+                \end{flalign*}
+            \end{subproof}
+    \end{enumerate}
+
+    \np The next property we examine concerns the classification (i.e. splitting) of events from a Poisson process into (potentially) several different types.
+
+    For a Poisson process $\left( N\left( t \right) \right)^{}_{t\geq 0}$ at rate $\lambda$, suppose that events can be independently classified as being one of $k$ possible types, with probability $p_i\in\left[ 0,1 \right]$ of being of type $i$, where $i\in\left\lbrace 1,\ldots,k \right\rbrace$, with $\sum^{k}_{i=1}p_i=1$.
+
+    Let $\left( N_i\left( t \right) \right)^{}_{t\geq 0}$ be the associated counting process for type-$i$ events, where $i\in\left\lbrace 1,\ldots,k \right\rbrace$. Clearly, by construction,
+    \begin{equation*}
+        \sum^{k}_{i=1}N_i\left( t \right)=N\left( t \right).
+    \end{equation*}
+    We now show that each $\left( N_{i}\left( t \right) \right)^{}_{t\geq 0}$ is a Poisson process.
+
+    \begin{subproof}
+        Let $s,t\geq 0, k\in\left\lbrace 1,\ldots,k \right\rbrace$. Then
+        \begin{flalign*}
+            && \PP\left( N_i\left( s+t \right)-N_i\left( s \right)=m_i \right) & = \sum^{\infty}_{n=m_i} \PP\left( N_i\left( s+t \right)-N_i\left( s \right)=m_i|N\left( s+t \right)-N\left( s \right)=n \right)\PP\left( N\left( s+t \right)-N\left( s \right)=n \right) && \\ 
+            && & = \sum^{\infty}_{n=m_i} \binom{n}{m_i}p_i^{m_i}\left( 1-p_i \right)^{n-m_i} \PP\left( N\left( t \right)=n \right) && \\
+            && & = \sum^{\infty}_{n=1} \PP\left( N_i\left( t \right)=m_i|N\left( t \right)=n \right)\PP\left( N\left( t \right)=n \right) && \\
+            && & = \PP\left( N_i\left( t \right)=m_i \right),
+        \end{flalign*}
+        showing that $\left( N_i\left( t \right) \right)^{}_{t\geq 0}$ has stationary increments.
+
+        Next, suppose that $\left( s_1,t_1 \right], \left( s_2,t_2 \right]$ are disjoint time intervals. For each $i\in\left\lbrace 1,\ldots,k \right\rbrace$, note that by the independent increments property of $\left( N\left( t \right) \right)^{}_{t\geq 0}$, the number of events in each of these intervals, $N\left( t_1 \right)-N\left( s_1 \right), N\left( t_2 \right)-N\left( s_2 \right)$ are independent. Therefore, in combination with the fact that the classification of each event is an independent process, it must hold that the number of type-$i$ events to occur in these intervals, $N_i\left( t_1 \right)-N_i\left( s_1 \right),N_i\left( t_2 \right)-N_i\left( s_2 \right)$, are also independent, implying that $\left( N_i\left( t \right) \right)^{}_{t\geq 0}$ possesses the independent increments property.
+
+        Finally, 
+        \begin{flalign*}
+            && & \PP\left( N_1\left( t \right)=m_1, \ldots, N_k\left( t \right)=m_k \right) && \\
+            && & = \sum^{\infty}_{n=0} \PP\left( N_1\left( t \right),\ldots,N_k\left( t \right)=m_k|N\left( t \right)=n \right)\PP\left( N\left( t \right)=n \right) && \\ 
+            && & = \PP\left( N_1\left( t \right)=m_1,\ldots,N_k\left( t \right)=m_k|N\left( t \right)=\sum^{k}_{j=1}m_j \right)\PP\left( N\left( t \right)=\sum^{k}_{j=1}m_j \right) && \\
+            && & = \frac{\left( \sum^{k}_{i=1}m_i \right)!}{\prod^{k}_{i=1}m_i!}\prod^{k}_{i=1}p_i^{m_i} \frac{e^{-\lambda t}\left( \lambda t \right)^{\sum^{k}_{i=1}m_i}}{\left( \sum^{k}_{i=1}m_k \right)!} && \\
+            && & = \prod^{k}_{i=1} \frac{e^{-\lambda p_it}\left( \lambda p_i t \right)^{m_i}}{m_i!} && \\
+            && & = \prod^{k}_{i=1} \PP\left( N_i\left( t \right)=m_i \right).
+        \end{flalign*}
+        Thus $N_1\left( t \right),\ldots,N_k\left( t \right)$ are independent Poisson random variables.
+
+        As a result, for each $i\in\left\lbrace 1,\ldots,k \right\rbrace$, we have
+        \begin{equation*}
+            \PP\left( N_i\left( t \right) \right) = \cdots = \lambda p_it+o\left( t \right)
+        \end{equation*}
+        and
+        \begin{equation*}
+            \PP\left( N_i\left( t \right)\geq 2 \right) = \cdots = o\left( t \right).
+        \end{equation*}
+        Thus $\left( N_{1}\left( t \right) \right)^{}_{t\geq 0},\ldots,\left( N_{k}\left( t \right) \right)^{}_{t\geq 0}$ are independent Poisson processes with rates $\lambda p_1,\ldots,\lambda p_k$, respectively.
+    \end{subproof}
+
+    \ex Consider the setting of (EX 4.15).
+    \begin{enumerate}
+        \item Suppose that fire damage claims can be categorized as being comercial, business, or residual. At the first insurance company, past history suggests that $15\%$ of the claims are commercial, $25\%$ of them are business, and the remaining $60\%$ are residental. Over the course of the next $4$ years, what is the probability that the company experiences fewer than $5$ claims in each of the $3$ categories?
+
+            \begin{subproof}[Answer]
+                Let $N_c\left( t \right), N_b\left( t \right), N_r\left( t \right)$ denote the number of commercial, business, and residental claims by time $t\geq 0$, r espectively. It follows that
+                \begin{flalign*}
+                    && N_c\left( 4 \right) & \sim\poidis\left( 3.8\cdot 0.15\cdot 4 \right) = \poidis\left( 2.28 \right) && \\ 
+                    && N_b\left( 4 \right) & \sim\poidis\left( 3.8\cdot 0.25\cdot 4 \right) = \poidis\left( 3.8 \right) && \\ 
+                    && N_r\left( 4 \right) & \sim\poidis\left( 3.8\cdot 0.6\cdot 4 \right) = \poidis\left( 9.12 \right).
+                \end{flalign*}
+                Hence
+                \begin{flalign*}
+                    && \PP\left( N_c\left( 4 \right)<5,N_b\left( 4 \right)<5,N_r\left( 4 \right)<5 \right) & = \PP\left( N_c\left( 4 \right)=5 \right)\PP\left( N_b\left( 4 \right)=5 \right)\PP\left( N_r\left( 4 \right)=5 \right) && \\ 
+                    && & = \sum^{4}_{i=0} \frac{e^{-2.28} 2.28^i}{i!} \sum^{4}_{i=0} \frac{e^{-3.8} 3.8^i}{i!} \sum^{4}_{i=0} \frac{e^{-9.12} 9.12^i}{i!} && \\
+                    && & \approx 0.91857\cdot 0.66784\cdot 0.05105 && \\
+                    && & \approx 0.0313,
+                \end{flalign*}
+                where the first equality is from the fact that $N_c\left( t \right),N_b\left( t \right),N_r\left( t \right)$ are independent for all $t\geq 0$.
+            \end{subproof}
+    \end{enumerate}
+
+    \np We also remark that it is also possible to \textit{merge independent Poisson process together.} In particular, if $\left( N_1\left( t \right) \right)^{}_{t\geq 0},\ldots,\left( N_{m}\left( t \right) \right)^{}_{t\geq 0}$ are $m$ independent Poisson processes at respective rates $\lambda_1,\ldots,\lambda_m$, then $\left( N\left( t \right) \right)^{}_{t\geq 0}$ with
+    \begin{equation*}
+        N\left( t \right)=\sum^{m}_{i=1}N_i\left( t \right)
+    \end{equation*}
+    for all $t\geq 0$ is a Poisson process at rate $\sum^{m}_{i=1}\lambda_i$.
+
+    \np Proposition 4.5 indicated that the conditional distribution of $N\left( s \right)|\left( N\left( t \right)=n \right)$, where $s<t$, is binomial with $n$ trials and success probability $\frac{s}{t}$. In other words, it is possible to view each event that occurred within $\left[ 0,t \right]$ as being independent of the others, and the probability of any one event landing within the interval $\left[ 0,s \right]$ as being governed by the cdf of a $U\left( 0,t \right)$ random variable evaluated at $s$. The idea that we can view $\frac{s}{t}$ as a \textit{uniform probability} is no coincidence. In fact, the following result confirms this notion.
+
+    \begin{prop}{}
+        Suppose that $\left( N\left( t \right) \right)^{}_{t\geq 0}$ is a Poisson process at rate $\lambda$. Given $N\left( t \right)=1$, the conditional distribution of the first arrival time is uniformly distributed on $\left( 0,t \right)$. That is,
+        \begin{equation*}
+            S_1|\left( N\left( t \right)=1 \right)\sim\unidis\left( 0,t \right).
+        \end{equation*}
+    \end{prop}
+
+    \begin{proof}
+        In order to identify the distribution of $S_1|\left( N\left( t \right)=1 \right)$, consider its cdf: for every $s\in\left[ 0,t \right]$,
+        \begin{flalign*}
+            && F_{S_1|\left( N\left( t \right)=1 \right)}\left( s \right) & = \PP\left( S_1\leq s|N\left( t \right)=1 \right) && \\ 
+            && & = \frac{\PP\left( S_1\leq s, N\left( t \right)=1 \right)}{\PP\left( N\left( t \right)=1 \right)} && \\
+            && & = \frac{\PP\left( \text{$1$ event in $\left[ 0,s \right]$ and $0$ events in $\left( s,t \right]$} \right)}{\PP\left( N\left( t \right)=1 \right)} && \\
+            && & = \frac{\PP\left( N\left( s \right)=1, N\left( t \right)-N\left( s \right)=0 \right)}{\PP\left( N\left( t \right)=1 \right)} && \\
+            && & = \frac{\PP\left( N\left( s \right) \right)\PP\left( N\left( t-s \right)=0 \right)}{\PP\left( N\left( t \right)=1 \right)} && \substack{\text{independent and}\\\text{stationary increments}} && \\
+            && & = \frac{\frac{e^{-\lambda s}\left( \lambda s \right)^1}{1!}\frac{e^{-\lambda\left( t-s \right)}\left( \lambda\left( t-s \right) \right)^0}{0!}}{\frac{e^{-\lambda t}\left( \lambda t \right)!}{1!}} && \\
+            && & = \frac{s}{t},
+        \end{flalign*}
+        which is the cdf of a $\unidis\left( 0,t \right)$ random variable. This concludes the proof.
+    \end{proof}
+
+    \np[Order Statistics]Proposition 4.6 specifies how $S_1$ behaves \textit{distributionally} when $N\left( t \right)=1$. A natural question to ask is, \textit{how are the $n$ arrival times $S_1,\ldots,S_n$ distributed if it is known that exactly $n$ arrivals have occured by time $t$ (i.e. $N\left( t \right)=n$)?} Before we can address this more general question, we must familiarize ourselves with some distributional results about \textit{order statistics}.
+
+    In what follows, let $\left( Y_{i} \right)^{n}_{i=1}$ be an iid sequence of random variables having a common \textit{continuous} distribution on $\left( 0,\infty \right)$ with cdf $F:\left[ 0,\infty \right)\to\left[ 0,1 \right]$ and pdf $f:\left( 0,\infty \right)\to\left[ 0,1 \right]$.
+
+    \begin{recall}{Order Statistic}{of a Sequence of Random Variables}
+        For each $i\in\left\lbrace 1,\ldots,n \right\rbrace$, let $\left( Y_{\left( i \right)} \right)^{n}_{i=1}$ be defined as
+        \begin{equation*}
+            Y_{\left( i \right)} = \text{$i$th smallest among $Y_1,\ldots,Y_n$}.
+        \end{equation*}
+        We call $Y_{\left( i \right)}$ the \emph{$i$th order statistic} of $\left( Y_{i} \right)^{n}_{i=1}$ and the sequence $\left( Y_{\left( i \right)} \right)^{n}_{i=1}$ the \emph{order statistics} of $\left( Y_{i} \right)^{n}_{i=1}$.
+    \end{recall}
+
+    \noindent By definition, we observe that
+    \begin{equation*}
+        Y_{\left( 1 \right)}\leq \cdots\leq Y_{\left( n \right)}.
+    \end{equation*}
+    Let the joint cdf of $\left( Y_{\left( i \right)} \right)^{n}_{i=1}$ be denoted by
+    \begin{equation*}
+        G\left( y_1,\ldots,y_n \right) = \PP\left( Y_{\left( 1 \right)}\leq y_1,\ldots,Y_{\left( n \right)}\leq y_n \right)
+    \end{equation*}
+    and also define
+    \begin{equation*}
+        g\left( y_1,\ldots,y_n \right) = \frac{\partial^n G\left( y_1,\ldots,y_n \right)}{\py_1\cdots\py_n}
+    \end{equation*}
+    to be the corresponding joint pdf. We desire to determine an expression for $g$.
+
+    \begin{subproof}[Answer]
+        To begin, consider the case when $n=2$ and assume $0<y_1<y_2$. Note that
+        \begin{flalign*}
+            && \PP\left( Y_{\left( 1 \right)}\leq y_1, y_1<Y_{\left( 2 \right)}\leq y_2 \right) & = \PP\left( Y_{\left( 1 \right)}\leq y_1, Y_{\left( 2 \right)}\leq y_2 \right) - \PP\left( Y_{\left( 1 \right)}\leq y_1, Y_{\left( 2 \right)}\leq y_1 \right) && \\ 
+            && & = G\left( y_1,y_2 \right)-G\left( y_1,y_1 \right),
+        \end{flalign*}
+        which means
+        \begin{equation*}
+            G\left( y_1,y_2 \right) = \PP\left( Y_{\left( 1 \right)}\leq y_1, y_1<Y_{\left( 2 \right)}\leq y_2 \right)+G\left( y_1,y_1 \right).
+        \end{equation*}
+        This means
+        \begin{flalign*}
+            && g\left( y_1,y_2 \right) & = \frac{\partial^{2}G\left( y_1,y_2 \right)}{\py_1\py_2} && \\ 
+            && & = \frac{\partial^{2}\PP\left( Y_{\left( 1 \right)}\leq y_1, y_1<Y_{\left( 2 \right)}\leq y_2 \right)}{\py_1\py_2} + \frac{\partial^{2}G\left( y_1,y_1 \right)}{\py_1\py_2} && \\
+            && & = \frac{\partial^{2}\PP\left( Y_{\left( 1 \right)}\leq y_1, y_1<Y_{\left( 2 \right)}\leq y_2 \right)}{\py_1\py_2} .
+        \end{flalign*}
+        This fact is true for all $n\in\N$, so that
+        \begin{equation*}
+            g\left( y_1,\ldots,y_n \right) = \frac{\partial^n\PP\left( Y_{\left( 1 \right)}\leq y_1, y_1<Y_{\left( 2 \right)}\leq y_2, \ldots, y_{n-1}<Y_{\left( n \right)}\leq y_n \right)}{\partial y_1\partial y_2\cdots\partial y_n}
+        \end{equation*}
+        for all $y_1,\ldots,y_n\in\left( 0,\infty \right)$ with $y_1<\cdots<y_n$.
+
+        If we now examine the case when $n=2$ again with $0<y_1<y_2$, we see that
+        \begin{flalign*}
+            && & \PP\left( Y_{\left( 1 \right)}\leq y_1, y_1<Y_{\left( 2 \right)}\leq y_2 \right) && \\
+            && & = \PP\left( Y_{\left( 1 \right)}\leq y_1, y_1<Y_{\left( 2 \right)}\leq y_2, \left\lbrace Y_1<Y_2 \right\rbrace\cup\left\lbrace Y_1>Y_2 \right\rbrace \right) && \\ 
+            && & = \PP\left( Y_{\left( 1 \right)}\leq y_1, y_1<Y_{\left( 2 \right)}\leq y_2, Y_1<Y_2 \right) + \PP\left( Y_{\left( 1 \right)}\leq y_1, y_1<Y_{\left( 2 \right)}\leq y_2, Y_1>Y_2 \right) && \\ 
+            && & = \PP\left( Y_1\leq y_1, y_1<Y_2\leq y_2, Y_1<Y_2 \right) + \PP\left( Y_2\leq y_1, y_1<Y_1\leq y_2, Y_1>Y_2 \right) && \\
+            && & = \PP\left( Y1\leq y_1, y_1<Y_2\leq y_2 \right) + \PP\left( Y_2\leq y_1, y_1<Y_1\leq y_2 \right) && \\
+            && & = 2\PP\left( Y_1\leq y_1\right)\PP\left(y_1<Y_2\leq y_2 \right) && \text{since $Y_1,Y_2$ are iid} \\
+            && & = 2F\left( y_1 \right)\left( F\left( y_2 \right)-F\left( y_1 \right) \right).
+        \end{flalign*}
+        As a result,
+        \begin{equation*}
+            g\left( y_1,y_2 \right) = \frac{\partial^{2}}{\py_1\py_2} 2F\left( y_1 \right)\left( F\left( y_2 \right)-F\left( y_1 \right) \right) = 2f\left( y_1 \right)f\left( y_2 \right).
+        \end{equation*}
+        It can be shown that
+        \begin{equation*}
+            g\left( y_1,\ldots,y_n \right) = n!\prod^{n}_{i=1}f\left( y_i \right)
+        \end{equation*}
+        for all $n\in\N$ with $y_1,\ldots,y_n\in\left( 0,\infty \right)$ where $0<y_1<\cdots<y_n$.
+
+        We can also find the marginal cdf and pdf of $Y_{\left( i \right)}$ as follows:
+        \begin{equation*}
+            G_i\left( y_i \right) = 1-\sum^{i-1}_{j=0}\binom{n}{j}F\left( y_i \right)^j\left( 1-F\left( y_i \right) \right)^{n-j}
+        \end{equation*}
+        and
+        \begin{equation*}
+            g_i\left( y_i \right) = \frac{n!}{\left( n-i \right)!\left( i-1 \right)!}F\left( y_i \right)^{i-1}f\left( y_i \right)\left( 1-F\left( y_i \right) \right)^{n-1}
+        \end{equation*}
+        for all $y_i\in\left( 0,\infty \right)$.
+
+        In particular, when $Y_i\sim\unidis\left( 0,t \right)$ for each $i\in\left\lbrace 1,\ldots,n \right\rbrace$, then
+        \begin{equation*}
+            g\left( y_1,\ldots,y_n \right) = \frac{n!}{t^n}
+        \end{equation*}
+        for all $y_1,\ldots,y_n\in\left( 0,t \right)$ with $0<y_1<\cdots<y_n<t$ and
+        \begin{equation*}
+            g_i\left( y_i \right) = \frac{n!y_i^{i-1}\left( t-y_i \right)^{n-i}}{\left( n-i \right)!\left( i-1 \right)!t^n}
+        \end{equation*}
+        for all $y_i\in\left( 0,t \right)$.
+    \end{subproof}
+
+    \noindent With these results in place, we are now in position to state another important result concerning the Poisson process.
+
+    \begin{prop}{}
+        Let $\left( N\left( t \right) \right)^{}_{t\geq 0}$ be a Poisson process at rate $\lambda$. Given $N\left( t \right)=n$, the conditional joint distribution of the $n$ arrival times is identical to the joint distribution of the $n$ order statistics from the $U\left( 0,t \right)$ distribution. In other words,
+        \begin{equation*}
+            \left( S_1,\ldots,S_n \right)|\left( N\left( t \right)=n \right)\sim\left( Y_{\left( 1 \right)},\ldots,Y_{\left( n \right)} \right),
+        \end{equation*}
+        where $\left( Y_{i} \right)^{n}_{i=1}$ is an iid $U\left( 0,t \right)$ sequence.
+    \end{prop}
+
+    \begin{proof}
+        Let $s_1,\ldots,s_n\in\left( 0,t \right)$ with $s_1<\cdots<s_n$. Then
+        \begin{flalign*}
+            && & \PP\left( S_1\leq s_1,s_1<S_2\leq s_2,\ldots,s_{n-1}<S_n\leq s_n|N\left( t \right)=n \right) && \\
+            && & = \frac{\PP\left( S_1\leq s_1,s_1<S_2\leq s_2,\ldots,s_{n-1}<S_n\leq s_n,N\left( t \right)=n \right)}{\PP\left( N\left( t \right)=n \right)} && \\ 
+            && & = \frac{\PP\left( N\left( s_1 \right)=1, N\left( s_2 \right)-N\left( s_1 \right)=1, \ldots, N\left( s_n \right)-N\left( s_{n-1} \right)=1,N\left( t \right)-N\left( s_n \right)=0 \right)}{\PP\left( N\left( t \right)=n \right)} && \\
+            && & = \frac{\PP\left( N\left( s_1 \right)=1 \right)\PP\left( N\left( s_2-s_1 \right)=1 \right)\cdots\PP\left( N\left( s_n-s_{n-1} \right)=1 \right)\PP\left( N\left( t-s_n \right)=0 \right)}{\PP\left( N\left( t \right)=n \right)} && \substack{\text{independent and}\\\text{stationary increments}}\\
+            && & = \frac{\left( e^{-\lambda s_1}\lambda s_1 \right)\left( e^{-\lambda\left( s_2-s_1 \right)}\lambda\left( s_2-s_1 \right) \right)\cdots\left( e^{-\lambda\left( s_n-s_{n-1} \right)}\lambda\left( s_n-s_{n-1} \right) \right)\left( e^{-\lambda\left( t-s \right)} \right)}{\frac{e^{-\lambda t}\left( \lambda t \right)}{n!}} && \\
+            && & = \frac{n!s_1\left( s_2-s_1 \right)\cdots\left( s_n-s_{n-1} \right)}{t^n}.
+        \end{flalign*}
+        Therefore, the joint pdf of $\left( S_{i} \right)^{n}_{i=1}|\left( N\left( t \right)=n \right)$ can be obtained via partial differentiation:
+        \begin{equation*}
+            \frac{\partial^n\PP\left( S_1\leq s_1, s_1<S_2\leq s_2,\ldots,s_{n-1}<S_n\leq s_n|N\left( t \right)=n \right)}{\ps_1\ps_2\cdots\ps_n} = \frac{n!}{t^n},
+        \end{equation*}
+        which is the joint pdf of an order statistics of iid $\unidis\left( 0,t \right)$ random variables.
+    \end{proof}
+
+    \np What this result essentially implies is that under the condition that $n$ events have occured by time $t$ in a Poisson process, the $n$ times at which those events occur are distributed \textit{independently} and \textit{uniformly} over the interval $\left[ 0,1 \right]$.
+
+    \ex Cars arrive to a toll bridge according to a Poisson process at rate $\lambda$, where each car pays a toll of $\$1$ upon arrival. Caclulate the mean and variance of the total amount collected by time $t$, \textit{discounted} back to time $0$ where $\alpha>0$ is the discount rate per unit time.
+
+    \begin{subproof}[Answer]
+        Let $N\left( t \right)$ count the number of cars arriving to the toll bridge by time $t\geq 0$, where $\left( N\left( t \right) \right)^{}_{t\geq 0}$ is a Poisson process at rate $\lambda$ and $N\left( t \right)\sim\poidis\left( \lambda t \right)$ for all $t\geq 0$. Let $S_i$ denote the arrival time of the $i$th car to the toll bridge, where $i\in\N$. Then the discounted value (i.e. back to time $0$) of $\$1$ paid by the $i$th arrival is given by
+        \begin{equation*}
+            1\cdot e^{-\alpha S_i} = e^{-\alpha S_i}. 
+        \end{equation*}
+        Let $T$ represent the (discounted) total amount collected by time $t$, so that
+        \begin{equation*}
+            T = \sum^{N\left( t \right)}_{i=1} e^{-\alpha S_i}.
+        \end{equation*}
+        We desire to find $\EE\left( T \right), \var\left( T \right)$.
+
+        To find $\EE\left( T \right)$, note that
+        \begin{flalign*}
+            && \EE\left( T \right) & = \EE\left( \sum^{N\left( t \right)}_{i=1}e^{-\alpha S_i} \right) && \\ 
+            && & = \sum^{\infty}_{n=1}\EE\left( \sum^{N\left( t \right)}_{i=1}e^{-\alpha S_i}|N\left( t \right)=n \right)\PP\left( N\left( t \right)=n \right) && \\
+            && & = \sum^{\infty}_{n=1} \EE\left( \sum^{n}_{i=1}e^{-\alpha S_i}|N\left( t \right)=n \right)\PP\left( N\left( t \right)=n \right) && \\
+            && & = \sum^{\infty}_{n=1} \EE\left( \sum^{n}_{i=1}e^{-\alpha Y_{\left( i \right)}} \right)\PP\left( N\left( t \right)=n \right)&& \substack{\text{let $\left( Y_{\left( i \right)} \right)^{n}_{i=1}$ be the order statistics}\\\text{from $\unidis\left( 0,t \right)$ and use Proposition 4.7}} \\
+            && & = \sum^{\infty}_{n=1} \EE\left( \sum^{n}_{i=1}e^{-\alpha Y_i} \right)\PP\left( N\left( t \right)=n \right) && \substack{\text{since we are summing}\\\text{each $e^{-\alpha Y_i}$ once anyways}} \\
+            && & = \sum^{\infty}_{n=1} n\EE\left( e^{-\alpha Y_1} \right) \PP\left( N\left( t \right) = n \right) && \text{$Y_1,\ldots,Y_n$ are iid}\\
+            && & = \sum^{\infty}_{n=1} n\int^{t}_{0}e^{-\alpha y} \frac{1}{t}\dy \PP\left( N\left( t \right)=n \right) && \\
+            && & = \sum^{\infty}_{n=1} n \frac{1-e^{-\alpha t}}{\alpha t} \PP\left( N\left( t \right)=n \right) && \\
+            && & = \frac{1-e^{-\alpha t}}{\alpha t} \EE\left( N\left( t \right) \right) && \\
+            && & = \frac{1-e^{-\alpha t}}{\alpha t}\lambda t && \\
+            && & = \frac{\lambda}{\alpha}\left( 1-e^{-\alpha t} \right).
+        \end{flalign*}
+
+        To determine $\var\left( T \right)$, we once again apply Proposition 4.7. That is, for all $n\in\N$,
+        \begin{flalign*}
+            && \var\left( T|N\left( t \right)=n \right) & = \var\left( \sum^{n}_{i=1}e^{-\alpha Y_{\left( i \right)}} \right) && \\ 
+            && & = \var\left( \sum^{n}_{i=1}e^{-\alpha Y_i} \right) && \\
+            && & = n\var\left( e^{-\alpha Y_1} \right) && \text{$Y_1,\ldots,Y_n$ are iid}\\
+            && & = n\left(\EE\left( \left( e^{-\alpha Y_1} \right)^{2} \right) - \EE\left( e^{-\alpha Y_1} \right)^{2}\right) &&\\
+            && & = n\left( \EE\left( e^{-2\alpha Y_1} \right) - \left( \frac{1-e^{-\alpha t}}{\alpha t} \right)^{2} \right) && \\
+            && & = n\left( \frac{1-e^{-2\alpha t}}{2\alpha t} - \frac{\left( 1-e^{-\alpha t} \right)}{\alpha^{2}t^{2}} \right)
+        \end{flalign*}
+        and so
+        \begin{flalign*}
+            && \var\left( T|N\left( t \right) \right) & = \var\left( T|N\left( t \right)=n \right)|_{n=N\left( t \right)} && \\ 
+            && & = N\left( t \right)\left( \frac{1-e^{-2\alpha t}}{2\alpha t} - \frac{\left( 1-e^{-\alpha t} \right)}{\alpha^{2}t^{2}} \right).
+        \end{flalign*}
+        Finally, applying the conditional variance formula, we get
+        \begin{flalign*}
+            && \var\left( T \right) & = \var\left( \EE\left( T|N\left( t \right) \right) \right) + \EE\left( \var\left( T|N\left( t \right) \right) \right) && \\ 
+            && & = \var\left( N\left( t \right) \frac{1-e^{-\alpha t}}{\alpha t} \right) + \EE\left( N\left( t \right) \left( \frac{1-e^{-2\alpha t}}{2\alpha t} - \frac{\left( 1-e^{-\alpha t} \right)^{2}}{\alpha^{2}t^{2}} \right) \right) && \\
+            && & = \frac{\left( 1-e^{-\alpha t} \right)^{2}}{\alpha^{2}t^{2}}\var\left( N\left( t \right) \right) + \left( \frac{1-e^{-2\alpha t}}{2\alpha t} - \frac{\left( 1-e^{-\alpha t} \right)^{2}}{\alpha^{2}t^{2}} \right)\EE\left( N\left( t \right) \right) && \\
+            && & = \frac{\lambda\left( 1-e^{-2\alpha t} \right)}{2\alpha}. && \fqqedsym
+        \end{flalign*}
+    \end{subproof}
+
+    \ex Sattlites are launched at times according to a Poisson process at rate $3$ per year. During the past year, it was observed that only two satellites were launched. What is the joint probability that the first of these two satellites was launched in the first $5$ months of the year and the second satellite was launched prior to the last $2$ months of the year?
+
+    \begin{subproof}[Answer]
+        Let $\left( N\left( t \right) \right)^{}_{t\geq 0}$ be the Poisson process at rate $\lambda=3$ governing satellite launches. We are interested in calculating
+        \begin{equation*}
+            \PP\left( S_1\leq \frac{5}{12},S_2\leq \frac{5}{6}|N\left( 1 \right)=2 \right).
+        \end{equation*}
+        To do so, we use (4.22) to obtain the joint conditional pdf $g$ of $\left( S_1,S_2 \right)|N\left( 1 \right)=2$ as follows: for every $s_1,s_2\in\left( 0,1 \right)$, with $s_1<s_2$,
+        \begin{equation*}
+            g\left( s_1,s_2 \right) = \frac{2!}{1^{2}} = 2.
+        \end{equation*}
+        Thus,
+        \begin{flalign*}
+            && \PP\left( S_1\leq \frac{5}{12}, S_2\leq \frac{5}{6}|N\left( 1 \right)=2 \right) & = \int^{\frac{5}{12}}_{0}\int^{\frac{5}{6}}_{s_1}g\left( s_1,s_2 \right)\ds_1\ds_2 && \\ 
+            && & = \int^{\frac{5}{12}}_{0}\int^{\frac{5}{6}}_{s_1} 2\ds_1\ds_2 && \\
+            && & = 2\int^{\frac{5}{12}}_{0} \frac{5}{6}-s_1\ds_1 && \\
+            && & = 2\left( \frac{5}{6}\cdot \frac{5}{12} - \frac{\left( \frac{5}{12} \right)^{2}}{2} \right) && \\
+            && & = \frac{25}{48} \approx 0.521. && \fqqedsym
+        \end{flalign*}
+    \end{subproof}
+
+    \section{Generalizations of Poisson Processes}
+    
+    \np Oftentimes, we find the Poisson process difficult to apply in applications of real-life phenomena, largely due to the fact that the Poisson process assumes a \textit{constant} arrival rate of $\lambda$ for all time. In what follows, we consider a more general type of process in which the arrival rate is allowed to \textit{vary} as a function of time.
+
+    \begin{definition}{Non-homogeneous (Non-stationary)}{Poisson Process}
+        The counting process $\left( N\left( t \right) \right)^{}_{t\geq_0}$ is a \emph{non-homogeneous} (or \emph{non-stationary}) Poisson process with rate function $\lambda:\left[ 0,\infty \right)\to\R$ if the following three conditions hold: for all $t,h\geq 0$,
+        \begin{enumerate}
+            \item $\left( N\left( t \right) \right)^{}_{t\geq 0}$ has independent increments;
+            \item $\PP\left( N\left( t+h \right)-N\left( t \right)=1 \right) = h\lambda\left( t \right)+o\left( h \right)$; and
+            \item $\PP\left( N\left( t+h \right)-N\left( t \right)\geq 2 \right)=o\left( h \right)$.
+        \end{enumerate}
+    \end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

@@ -1316,7 +1316,297 @@
     \begin{equation*}
         \pi_j = \lim_{n\to\infty} \frac{n}{\sum^{n}_{i=1}N_j^{\left( i \right)}} = \lim_{n\to\infty} \frac{1}{\frac{1}{n}\sum^{n}_{i=1}N_j^{\left( i \right)}} = \frac{1}{m_j},
     \end{equation*}
-   where the last equality follows from the SLLN.
+    where the last equality follows from the SLLN.
+
+    \section{Galton-Watson Branching Process}
+
+    \np We assume that a population of individuals (e.g. people, organisms, free particles, \ldots) evolves in discrete time. Specifically, we define
+    \begin{equation*}
+        X_n = \text{population of the $n$th generation}
+    \end{equation*}
+    for all $n\in\N\cup\left\lbrace 0 \right\rbrace$, where $X_0$ is the population of the $0$th (i.e. original) generation.
+
+    We assume that each individual in a generation produces a random number (possibly $0$) of individuals, called \textit{offspring}, which go on and become part of the very next generation. In other words, it is always the offspring of a current generation which go on to form the next generation.
+
+    We further assume that individuals produce offspring independently of all others according to the same probability distribution.
+    \begin{notation}{$\alpha_m$}{}
+        For all $m\in\N\cup\left\lbrace 0 \right\rbrace$, let
+        \begin{equation*}
+            \alpha_m = \PP\left( \text{an individual produces $m$ offspring} \right)
+        \end{equation*}
+    \end{notation}
+    In addition, we make two additional assumptions: $\alpha_0\in\left( 0,1 \right)$ and $\alpha_0+\alpha_1<1$.
+
+    \begin{notation}{$Z_i^{\left( j \right)}$}{}
+        For each $j\in\N\cup\left\lbrace 0 \right\rbrace$, we write $Z_i^{\left( j \right)}$ to denote the number of offspring produced from individual $i$ in the $j$th generation.
+    \end{notation}
+
+    \noindent Due to the independence assumptions, $\left( Z^{\left( j \right)}_{i} \right)^{\infty}_{i=1}$ is an iid sequence of random variables with
+    \begin{equation*}
+        \alpha_m = \PP\left( Z^{\left( j \right)}_i = m \right)
+    \end{equation*}
+    for all $j\in\N\cup\left\lbrace 0 \right\rbrace$. Hence we may define the following.
+
+    \begin{notation}{$\mu,\sigma$}{}
+        Let $\mu = \EE\left( Z_i^{\left( j \right)} \right), \sigma^{2}=\var\left( Z_i^{\left( j \right)} \right)$ represent to the common mean and variance, respectively, of the number of offspring produced by a single individual.
+    \end{notation}
+
+    \noindent Based on the above assumptions, any Galton-Watson process $\left( X_{n} \right)^{}_{n\in\N\cup\left\lbrace 0 \right\rbrace}$ is a stationary DTMC taking values in the state space $\N\cup\left\lbrace 0 \right\rbrace$, since it follows that
+    \begin{equation}
+        X_n = \sum^{X_{n-1}}_{i=1} Z_i^{\left( n-1 \right)},
+    \end{equation}
+    implying that the Markov property and stationary assumption are both satisfied. 
+
+    \np[Mean and Variance of a Galton-Watson Process]Since [3.13] infers that $X_n$ is expressible as a \textit{random sum}, we can apply the results of (EX 2.10) to obtain
+    \begin{equation*}
+        \EE\left( X_n \right) = \mu\EE\left( X_n \right)
+    \end{equation*}
+    and
+    \begin{equation*}
+        \var\left( X_n \right)=\sigma^{2}\EE\left( X_{n-1} \right)+\mu^{2}\var\left( X_{n-1} \right)
+    \end{equation*}
+    for all $n\in\N$. Note that the above equations are not explicit, but recursive. Let us henceforth assume that $X_0=1$ almost surely. As it is understood that $X_0=1$, we will suppress writing the condition $X_0=1$ in all expectations and probabilites will follow. This means
+    \begin{equation*}
+        \EE\left( X_n \right) = \mu^n
+    \end{equation*}
+    and 
+    \begin{equation*}
+        \var\left( X_n \right) = \sigma^{2}\mu^{n-1} \sum^{n-1}_{i=0}\mu^i =
+        \begin{cases} 
+            n\sigma^{2} & \text{if $\mu=1$}\\
+            \sigma^{2}\mu^{n-1} \left( \frac{1-\mu^n}{1-\mu} \right) & \text{if $\mu\neq 1$}
+        \end{cases}
+    \end{equation*}
+    for all $n\in\N\cup\left\lbrace 0 \right\rbrace$.
+
+    \np[Limiting Probability]In a Galton-Watson branching process, we remakr that $P_{0,0}=1$, since state $0$ is obviously an absorbing state (i.e. no individuals from which offsprings can be born). If we consider state $i\in\N$, then we can easily show that $i$ is transient as follows.
+
+    \begin{subproof}
+        Note that $0\nlra i$. But $P_{i,0} = \alpha_0^i > 0$, since $\alpha_0>0$. Thus by (the constrapositive) of Proposition 3.6 that $i$ is transient.
+    \end{subproof}
+
+    \noindent Thus, since state 0 is recurrent and states $1,2,\ldots$ are transient, exactly one of the following happens.
+    \begin{enumerate}
+        \item The population will die out eventually.
+        \item The population will grow indefinitely.
+    \end{enumerate}
+
+    \begin{notation}{$\pi_0$}{}
+        Let $\pi_0$ denote the limiting probability dies out:
+        \begin{equation*}
+            \pi_0 = \lim_{n\to\infty} \PP\left( X_n=0 \right).
+        \end{equation*}
+    \end{notation}
+
+    \noindent The limiting behaviors can be characterized in terms of $\mu$.
+    \begin{itemize}
+        \item \textit{Case 1. Suppose $\mu<1$.} This is referred to as the \textit{subcritical case}. Clearly, as $n$ grows to infinity, both
+            \begin{equation*}
+                \EE\left( X_n \right) = \mu^n, \var\left( X_n \right) = \sigma^{2}\mu^{n-1}\left( \frac{1-\mu^n}{1-\mu} \right)
+            \end{equation*}
+            converge to $0$. Therefore, we expect that $\pi_0=1$. To show this formally, note that
+            \begin{equation*}
+                \mu^n = \EE\left( X_n \right) = \sum^{\infty}_{j=1}j\PP\left( X_n=j \right) \geq \sum^{\infty}_{j=1}\PP\left( X_n=j \right) = \PP\left( X_n\geq 1 \right) = 1-\PP\left( X_n=0 \right).
+            \end{equation*}
+            This implies that $1-\mu^n\leq\PP\left( X_n=0 \right)\leq 1$. Taking the limit leads to
+            \begin{equation*}
+                1 = \lim_{n\to\infty} \left( 1-\mu^n \right) \leq \lim_{n\to\infty} \PP\left( X_n=0 \right) = \pi_0 \leq 1,
+            \end{equation*}
+            so $\pi_0=1$.
+
+        \item \textit{Case 2. Suppose $\mu\geq 1$.} By conditioning on the number of offspring produced by the single individual present in the population at time $0$, we obtain
+            \begin{equation*}
+                \pi_0 = \PP\left( \text{population dies out} \right) = \sum^{\infty}_{j=0} \PP\left( \text{population dies out}|X_1=j \right)\alpha_j.
+            \end{equation*}
+            However, with $X_1=j$, the population will eventaully die out if and only if each of the $j$ families started by the members of the first generation eventaully dies out. As each family is assumed to act independently, and since the probability that any particular family dies out is simply $\pi_0$, it follows that
+            \begin{equation*}
+                \PP\left( \text{population dies out}|X_1=j \right) = \pi_0^j,
+            \end{equation*}
+            which means
+            \begin{equation}
+                \pi_0 = \sum^{\infty}_{j=0}\pi_0^j\alpha_j.
+            \end{equation}
+            Clearly $\pi_0=0$ is not a solution and $\pi_0=1$ is a solution to [3.14]. 
+
+            Now, it can be shown that, by defining $\alpha:\left[ 0,1 \right]\to\R$ by
+            \begin{equation*}
+                \alpha\left( z \right) = \sum^{\infty}_{j=0}z^j\alpha_j,
+            \end{equation*}
+            then $\alpha$ admits another root in $\left( 0,1 \right)$ besides $1$, say $z_0$, when $\mu>1$ (when $\mu=1$, $1$ is the unique root of $\alpha$). Therefore, we have to determine if $\pi_0=z_0$ or $\pi_0=1$ when $\mu>1$.
+
+            To determine this, let $z^{*}\in\left\lbrace z_0,1 \right\rbrace$. Then by induction, we can show that
+            \begin{equation*}
+                z^{*}\geq\PP\left( X_n=0 \right)
+            \end{equation*}
+            for all $n\in\N\cup\left\lbrace 0 \right\rbrace$. As a result, it follows that
+            \begin{equation*}
+                z^{*} = \lim_{n\to\infty}z^{*}\geq \lim_{n\to\infty}\PP\left( X_n=0 \right) = \pi_0.
+            \end{equation*}
+            Thus $\pi_0$ is equal to the smallest element of $\left\lbrace z_0,1 \right\rbrace$, namely $z_0$.
+
+            It is only when $\mu>1$ (referred to as \textit{supercritical case}), $\pi_0\in\left( 0,1 \right)$.
+    \end{itemize} 
+
+    \ex Given the following offspring probabilities, what is the probability that the population dies out in the long run assuming that $X_0=1$?
+
+    \begin{enumerate}
+        \item $\alpha_0=\frac{3}{4},\alpha_1=\frac{1}{8},\alpha_2=\frac{1}{8}$.
+           
+            \begin{subproof}[Answer]
+                First, we calculate
+                \begin{equation*}
+                    \mu = 0\cdot \frac{3}{4} + 1\cdot \frac{1}{8} + 2\cdot \frac{1}{8} = \frac{3}{8}.
+                \end{equation*}
+                Since $\mu<1$, we are in a critical case, so $\pi_0=1$. Thus the population will die out almost surely.
+            \end{subproof}
+
+        \item 
+
+            \begin{subproof}[Answer]
+                Note that
+                \begin{equation*}
+                    \mu = 0\cdot \frac{1}{5} + 1\cdot \frac{1}{10} + 2\cdot \frac{7}{10} = \frac{3}{2}.
+                \end{equation*}
+                Since $\mu>1$, we are in a supercritical ccase, so $\pi_0\in\left( 0,1 \right)$. To find $\pi_0$, we solve [3.14]:
+                \begin{equation}
+                    z = \sum^{\infty}_{j=0} z^j\alpha_j = \frac{1}{5} + \frac{1}{10}z + \frac{7}{10}z^{2}.
+                \end{equation}
+                Rearranging [3.15] gives
+                \begin{equation*}
+                    7z^{2}-9z+2=0,
+                \end{equation*}
+                whose smallest root is
+                \begin{equation*}
+                    \frac{9-\sqrt{81-56}}{14} = \frac{4}{14} = \frac{2}{7}.
+                \end{equation*}
+                Thus $\pi_0 = \frac{2}{7}$.
+            \end{subproof}
+    \end{enumerate}
+
+    \np We have some remarks.
+    \begin{enumerate}
+        \item In the case when $X_0=n$ almost surely for some $n\in\N$, the population will die out if and only if the families of each of the $n$ members of the initial generation die out. As a result, it immediately follows out that the \textit{extinction probability} is simply $\pi_0^n$.
+
+        \item For certain choices of the offspring distriubtion, the Galton-Watson branching process is not very interesting to analyze. For example, with $X_0=1, a_r=1$ for some $r\in\N\cup\left\lbrace 0 \right\rbrace$, the evolution of the process is almost surely deterministic:
+            \begin{equation*}
+                \PP\left( X_n=r^n \right) = 1
+            \end{equation*}
+            for all $n\in\N\cup\left\lbrace 0 \right\rbrace$. Another uninteresting case occurs when $\alpha_0,\alpha_1>0$ and $\alpha_0+\alpha_1=1$. In this situation, the polulation remains at its initial size $X_0=1$ for a random number of generations (according to a geometric distribution), before dying out completely.
+    \end{enumerate}
+
+    \section{Gambler's Ruin}
+
+    \np One of the most powerful ideas in the theory of DTMCs is that many fundamental probabilities and expectations can be computed as the solutions of systems of linear equations. We have already seen one such example of this through the application of the BLT. In what follows, we will continue to illustrate this idea by deriving appropirate linear systems for a number of key probabilities and expectations that arise in certain settings.
+
+    \ex[Gambler's Ruin Problem]Consider a gambler who, at each play of a game, has probability $p\in\left( 0,1 \right)$ of winning one unit and probability $q=1-p$ of losing one unit. Assume that successive plays of the game are independent. If the gambler initially begins with $i$ units, what is the probability that the gambler's fortune will reach $N\in\N$ units before reaching $0$ units?
+
+    \begin{subproof}[Answer]
+        For each $n\in\N\cup\left\lbrace 0 \right\rbrace$, define $X_n$ as the gambler's fortune after the $n$th play of the game, with $X_0=i$ for some $i\in\N$. Clearly, $\left( X_{n} \right)^{}_{n\in\N\cup\left\lbrace 0 \right\rbrace}$ is a stationary DTMC with TPM
+        \begin{equation*}
+            P = 
+            \begin{bmatrix}
+                1 &  &  &  &  \\
+                q & 0 & p &  &  \\
+                 & \ddots & \ddots & \ddots &  \\
+                 &  & q & 0 & p \\
+                 &  &  &  & 1 \\
+            \end{bmatrix}.
+        \end{equation*}
+        Note that states $0,N$ are absorving, so recurrent. States $1,\ldots,N-1$ are in the same communication class, and it is straightforward to show that they are transient. The goal is to determine
+        \begin{equation*}
+            G_i = \PP\left( \text{the gambler's fortune will eventually reach $N$}|X_0=i \right)
+        \end{equation*}
+        for all $i\in\left\lbrace 0,\ldots,N \right\rbrace$. This means
+        \begin{equation*}
+            \lim_{n\to\infty} P^{\left( n \right)} = 
+            \begin{bmatrix}
+                1 & 0 & \cdots & 0 & 0 \\
+                1-G_1 & 0 & \cdots & 0 & G_1 \\
+                \vdots & \vdots & \ddots & \vdots & \vdots \\
+                1-G_{N-1} & 0 & \cdots & 0 & G_{N-1} \\
+                0 & 0 & \vdots & 0 & 1 \\
+            \end{bmatrix}.
+        \end{equation*}
+        From above, note that $G_0=0, G_N=1$. Moreover, by conditioning on the outcome of the very first game, we readily obtain for all $i\in\left\lbrace 1,\ldots,N-1 \right\rbrace$ that
+        \begin{equation*}
+            G_i = pG_{i+1}+qG_{i-1}.
+        \end{equation*}
+        But by definition, $p+q=1$, so
+        \begin{equation*}
+            pG_i+qG_i = pG_{i+1}+qG_{i-1},
+        \end{equation*}
+        rearranging which gives
+        \begin{equation*}
+            G_{i+1}-G_i = \frac{q}{p}\left( G_i-G_{i-1} \right).
+        \end{equation*}
+        But note that
+        \begin{flalign*}
+            && G_2-G_1 & = \frac{q}{p}\left( G_1-G_0 \right) = \frac{q}{p}G_1 && \\
+            && G_3-G_2 & = \frac{q}{p}\left( G_2-G_1 \right) = \left( \frac{q}{p} \right)^{2}G_1 && \\
+            && G_4-G_3 & = \frac{q}{p}\left( G_3-G_2 \right) = \left( \frac{q}{p} \right)^{3}G_1 \\
+            && & \vdots && \\
+            && G_{i+1}-G_i & = \frac{q}{p}\left( G_i-G_{i-1} \right) = \left( \frac{q}{p} \right)^{i}G_1
+        \end{flalign*}
+        by induction. Note that the above $i$ equations are linear, in terms of $G_1,\ldots,G_{i+1}$. Moreover, summing these $i$ equations results in
+        \begin{equation*}
+            G_{i+1}-G_1 = G_1 \sum^{i}_{j=1} \left( \frac{q}{p} \right)^j 
+        \end{equation*}
+        so
+        \begin{equation*}
+            G_{i+1} = G_1 \sum^{i}_{j=0} \left( \frac{q}{p} \right)^j .
+        \end{equation*}
+        Equivalently,
+        \begin{equation*}
+            G_i = 
+            \begin{cases} 
+                G_1 \frac{1-\left( \frac{q}{p} \right)^{i-1}}{1-\frac{q}{p}} & \text{if $p\neq \frac{1}{2}$}\\
+                iG_1 & \text{if $p=\frac{1}{2}$}
+            \end{cases}
+        \end{equation*}
+        by geometric series. In particular, when $i=N$, we obtain
+        \begin{equation*}
+            1 = G_N = \frac{1-\left( \frac{q}{p} \right)^N}{1-\left( \frac{q}{p} \right)} G_1
+        \end{equation*}
+        for $p\neq \frac{1}{2}$, which means
+        \begin{equation*}
+            G_1 = \frac{1-\left( \frac{q}{p} \right)}{1-\left( \frac{q}{p} \right)^N}.
+        \end{equation*}
+        Similarly, for $p=\frac{1}{2}$, we find
+        \begin{equation*}
+            G_1 = \frac{1}{N}.
+        \end{equation*}
+        Combining both cases, we obtain
+        \begin{equation*}
+            G_i = 
+            \begin{cases} 
+                \frac{1-\left( \frac{q}{p} \right)^i}{1-\left( \frac{q}{p} \right)^N} & \text{if $p\neq \frac{1}{2}$} \\
+                \frac{i}{N} & \text{if $p=\frac{1}{2}$}
+            \end{cases}
+        \end{equation*}
+        for all $i\in\left\lbrace 0,\ldots,N \right\rbrace$ (the formula we derived for $1,\ldots,N-1$ works for $0,N$ as well).
+    \end{subproof}
+
+    \np We have some remarks.
+    \begin{enumerate}
+        \item An interesting question to ask is \textit{what happens to the gambler's probability of winning the jackpot, given an initial fortune of $i$ units, as $N$ grows larger (i.e. $N\to\infty$)?} In other words, we are interested in what happens to the limit of $G_i$ as $N\to\infty$. Lookingg at three cases based on the value of $p$, we see
+            \begin{itemize}
+                \item \textit{when $p=\frac{1}{2}$,} $G_i=\frac{1}{N}\to 0$ as $N\to\infty$;
+                \item \textit{when $p<\frac{1}{2}$,} $G_i = \frac{1-\left( \frac{q}{p} \right)^i}{1-\left( \frac{q}{p} \right)^N}\to 0$ as $N\to\infty$; and
+                \item \textit{when $p>\frac{1}{2}$,} $G_i = \frac{1-\left( \frac{q}{p} \right)^i}{1-\left( \frac{q}{p} \right)^N}\to 1-\left( \frac{q}{p} \right)^i$ as $N\to\infty$.
+            \end{itemize} 
+        Simply put, only when $p>\frac{1}{2}$ does a positive probability exist that the gambler's fortune will increase indefinitely. Otherwise, the gambler is sure to go broke.
+
+        \item In our study of the \textit{random walk} in (EX 3.26) featuringg a DTMC on the state space $\Z$ with transition probabilities analogous to those in the gambler's ruin problem, we previously showed that
+            \begin{equation*}
+                f_{0,0} = \left( 1-p \right)f_{-1,0} + pf_{1,0}.
+            \end{equation*}
+            Suppose that $p>\frac{1}{2}$. First of all, note that
+            \begin{flalign*}
+                && f_{1,0} & = \PP\left( \text{random walk ever makes a future visit to state 0 starting from state 1} \right) && \\ 
+                && & = \lim_{N\to\infty}\PP\left( \text{gambler's ruin ends up in bankruptcy}|X_0=1 \right) && \\
+                && & = 1-\left( 1-\left( \frac{1-p}{p} \right)^1 \right) = \frac{1-p}{p}.
+            \end{flalign*}
+    \end{enumerate}
 
 
 
@@ -1336,12 +1626,12 @@
 
 
 
-
-
-
-
-
-
+    
+    
+    
+    
+    
+    
     
     
     
